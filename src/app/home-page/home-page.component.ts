@@ -1,5 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { NavbarComponent } from "./../navbar/navbar.component"
+import { EventEmitterService } from '../event-emitter.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,12 +11,13 @@ import { NavbarComponent } from "./../navbar/navbar.component"
 export class HomePageComponent implements OnInit {
 
   constructor(
-    private navStatus: NavbarComponent
+    private navStatus: NavbarComponent,
+    private eventEmitterService: EventEmitterService
   ) { }
 
   status: boolean;
   
-  zoom = 13
+  zoom = 14
   center: google.maps.LatLngLiteral
   options: google.maps.MapOptions = {
     mapTypeId: 'roadmap'
@@ -29,8 +31,13 @@ export class HomePageComponent implements OnInit {
       }
     })
     
-    this.status = this.navStatus.getStatus()
-      
-    console.log(this.status); 
+    this.status = this.navStatus.getStatus();
+
+    console.log(this.status)
   }
+
+  getStatus(){
+    this.eventEmitterService.onFirstComponentButtonClick();
+  }
+
 }

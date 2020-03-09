@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventEmitterService } from '../event-emitter.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private eventEmitterService: EventEmitterService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if(this.eventEmitterService.subsVar==undefined){
+      this.eventEmitterService.subsVar = this.eventEmitterService.invokeStatus.subscribe(() => {
+        this.clickEvent();
+      })
+    }
   }
 
   status: boolean = false;

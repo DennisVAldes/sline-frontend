@@ -24,7 +24,8 @@ body{ font-family: 'Comfortaa', cursive; }
 .navbar.complete-menu ul.bottom-menu{ width: 90%; }
 
 .home-page{ float: left; background: #534e9e; height: 100vh; width: calc(100% - 65px); }
-.home-page.less-view{ width: calc(100vw - 220px); }
-.home-page .title{ width: 1160px; margin: 30px auto 0; }
+.home-page.less-view{ width: calc(100% - 220px); }
+.home-page .title{ width: 90%; margin: 30px auto 0; }
 .home-page .title h3{ font-size: 35px; font-weight: 700; color: #fff; }
-.home-page .google-map .map-container{ margin: 50px 0 0 100px; border-radius: 10px; }
+.home-page .google-map .map-container{ margin: 50px 0 0; }
+.home-page .google-map .map-container .gmnoprint{ border-radius: 10px; overflow: hidden; }
