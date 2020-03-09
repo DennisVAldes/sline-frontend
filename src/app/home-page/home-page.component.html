@@ -1,0 +1,14 @@
+<section class="home-page" [ngClass]="status ? 'less-view' : ''">
+    <header class="title">
+        <h3>Casos reportados</h3>
+    </header>
+    <google-map
+        class="google-map"
+        height="600px"
+        width="700px"
+        [zoom]="zoom"
+        [center]="center" 
+        [options]="options"
+    ></google-map>
+
+</section>
