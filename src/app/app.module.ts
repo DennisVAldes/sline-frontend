@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MarkersComponent } from './home-page/markers/markers.component';
-import { EventEmitterService } from './event-emitter.service';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import { EventEmitterService } from './event-emitter.service';
   ],
   providers:[ 
     NavbarComponent,
-    HomePageComponent,
-    EventEmitterService
+    HomePageComponent
   ],
   bootstrap: [AppComponent]
 })

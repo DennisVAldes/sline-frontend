@@ -8,11 +8,5 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 
 export class AppComponent{
   title = 'app';
-
-  status: boolean = false;
-  clickEvent(){
-      this.status = !this.status;       
-  }
-
   
 }
