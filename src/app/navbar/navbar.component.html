@@ -1,5 +1,5 @@
-<div class="navbar" [ngClass]="status ? 'complete-menu' : ''">
-    <figure class="logo-content" (click)='clickEvent()'>
+<div class="navbar" [ngClass]="isNavbarExpand ? 'complete-menu' : ''">
+    <figure class="logo-content" (click)='toggleNavbar()'>
         <a href="#" class="clearfix">
             <img class="logo" src="assets/img/logo.svg" alt="logo-image" />
             <img class="back-button" src="assets/img/back.svg" alt="back-button">

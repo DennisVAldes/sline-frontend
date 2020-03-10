@@ -1,4 +1,4 @@
-<section class="home-page" [ngClass]="status ? 'less-view' : ''">
+<section class="home-page" [ngClass]="isNavbarExpand ? 'less-view' : ''">
     <header class="title">
         <h3>Casos reportados</h3>
     </header>
@@ -10,5 +10,5 @@
         [center]="center" 
         [options]="options"
     ></google-map>
-
+    
 </section>

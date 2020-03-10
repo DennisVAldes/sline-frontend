@@ -1,6 +1,5 @@
-import { Component, OnInit, NgModule } from '@angular/core';
-import { NavbarComponent } from "./../navbar/navbar.component"
-import { Subject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { NavbarService } from './../navbar/navbar.service';
 
 @Component({
   selector: 'app-home-page',
@@ -9,15 +8,14 @@ import { Subject } from 'rxjs';
 })
 
 export class HomePageComponent implements OnInit {
-
-  constructor(
-    private navStatus: NavbarComponent
-  ) { }
-
-  status: boolean;
-
-  statusChange: Subject<boolean> = new Subject<boolean>();
+  constructor( private NavbarService: NavbarService ) { 
   
+  }
+  
+  get isNavbarExpand(): boolean {
+    return this.NavbarService.isNavbarExpand;
+  }
+
   zoom = 14
   center: google.maps.LatLngLiteral
   options: google.maps.MapOptions = {
@@ -31,8 +29,5 @@ export class HomePageComponent implements OnInit {
         lng: position.coords.longitude,
       }
     })
-
-    console.log(this.status)
   }
-
 }

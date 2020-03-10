@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { NavbarService } from './navbar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,15 +11,19 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor( ) { }
+  constructor( private NavbarService: NavbarService ) { 
+    console.log(this.status)
+  }
   
-  status: boolean = false;
-  clickEvent(){
-      this.status = !this.status;       
+  get isNavbarExpand(): boolean {
+    return this.NavbarService.isNavbarExpand;
   }
 
-  getStatus(){
-    return this.status;
+  status:boolean = this.isNavbarExpand;
+
+  toggleNavbar() {
+      this.NavbarService.toggleNavbarSize()
+      console.log(this.isNavbarExpand)
   }
 
 }
