@@ -1,24 +1,25 @@
 <div class="navbar" [ngClass]="isNavbarExpand ? 'complete-menu' : ''">
-    <figure class="logo-content" (click)='toggleNavbar()'>
-        <a href="#" class="clearfix">
+    <a href="#">
+       <figure class="logo-content clearfix" (click)='toggleNavbar()'>
             <img class="logo" src="assets/img/logo.svg" alt="logo-image" />
             <img class="back-button" src="assets/img/back.svg" alt="back-button">
-        </a>
-    </figure>
+        </figure>
+    </a>
+    <span class="line"></span>
     <ul [ngClass]="status ? 'show-list' : ''">
-        <li class="clearfix">
-            <a href="#">
+        <a href="#">
+            <li class="clearfix">
                 <figure class="logo-view"><img src="assets/img/list.svg" alt=""/></figure>
                 <p>Ver casos <span></span></p>
-            </a>
-        </li>
+            </li>
+        </a>
     </ul>
-    <ul class="bottom-menu" [ngClass]="status ? 'show-list' : ''">
-        <li>
-            <a href="#">
-                <figure class="logo-view"><img src="assets/img/ui.svg" alt=""/></figure>
-                <p>Logout <span></span></p>
-            </a>
-        </li>
+    <ul class="sign-in" [ngClass]="status ? 'show-list' : ''">
+        <a href="">
+            <li>
+                <figure><img src="assets/img/login.svg" alt="sign-in"></figure>
+                Sign in
+            </li>
+        </a>
     </ul>
 </div>
