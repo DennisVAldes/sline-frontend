@@ -8,15 +8,13 @@ import { NavbarService } from './../navbar/navbar.service';
 })
 
 export class HomePageComponent implements OnInit {
-  constructor( private NavbarService: NavbarService ) { 
-  
-  }
+  constructor( private NavbarService: NavbarService ) {}
   
   get isNavbarExpand(): boolean {
     return this.NavbarService.isNavbarExpand;
   }
 
-  zoom = 14
+  zoom = 16
   center: google.maps.LatLngLiteral
   options: google.maps.MapOptions = {
     mapTypeId: 'roadmap'

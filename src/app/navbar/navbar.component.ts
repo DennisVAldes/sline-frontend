@@ -11,9 +11,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor( private NavbarService: NavbarService ) { 
-    console.log(this.status)
-  }
+  constructor( private NavbarService: NavbarService ) { }
   
   get isNavbarExpand(): boolean {
     return this.NavbarService.isNavbarExpand;
@@ -23,7 +21,6 @@ export class NavbarComponent implements OnInit {
 
   toggleNavbar() {
       this.NavbarService.toggleNavbarSize()
-      console.log(this.isNavbarExpand)
   }
 
 }

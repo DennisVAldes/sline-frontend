@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MarkersComponent } from './home-page/markers/markers.component';
+import { RegisterComponent } from './register/register.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,18 @@ import { MarkersComponent } from './home-page/markers/markers.component';
     NavbarComponent,
     HomePageComponent,
     MarkersComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    RouterModule.forRoot(
+      [
+        { path:'home', component: HomePageComponent },
+        { path:'', redirectTo: 'home', pathMatch: 'full' }
+      ]
+    )
   ],
   providers:[ 
     NavbarComponent,
