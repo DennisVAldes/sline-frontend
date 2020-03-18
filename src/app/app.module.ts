@@ -9,6 +9,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MarkersComponent } from './home-page/markers/markers.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     GoogleMapsModule,
+    FormsModule,
     RouterModule.forRoot(
       [
         { path:'home', component: HomePageComponent },

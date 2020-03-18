@@ -1,12 +1,38 @@
-<section [ngClass]="isNavbarExpand ? 'less-view' : ''">
-    <div class="left-box">
-        <figure class="logo">
-            <img src="assets/img/logo.svg" alt="sline-logo">
-        </figure>
-    </div>
-    <div class="right-box">
-        <form>
-            
-        </form>
+<section class="register-page" 
+         [ngClass]="isRegisterCalled ? 'view' : ''"
+>
+    <div class="main-content clearfix">
+        <div class="left-box clearfix">
+            <figure class="logo">
+                <img src="assets/img/logo.svg" alt="sline-logo">
+            </figure>
+        </div>
+        <div class="right-box">
+            <form #form="ngForm" ngNativeValidate>
+                <div class="input-name">
+                    <input class="name-input" 
+                       placeholder="Nombre y apellido" spellcheck="false"
+                       type="text" name="name" id="name" [(ngModel)]="users.name"
+                       required minlength="10" #nameInput="ngModel">
+                    <span [hidden]="nameInput.valid || nameInput.untouched">
+                        Este campo es obligatorio
+                    </span>
+                </div>
+                <input placeholder="Direccion de correo electronico" 
+                       type="email" name="email" id="email"
+                       required ngModel>
+                <input placeholder="Password"
+                       type="password" name="password" id="password"
+                       required ngModel>
+                
+                <div class="buttons">
+                    <input type="button" name="accept-button" id="accept-button" value="Aceptar">
+                    <input type="button" name="cancel-button" id="cancel-button" value="Cancelar" 
+                           (click)="closeRegister()"
+                    >
+                </div>
+            </form>
+            {{ users | json }}
+        </div>
     </div>
 </section>

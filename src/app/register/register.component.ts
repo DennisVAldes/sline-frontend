@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NavbarService } from './../navbar/navbar.service';
+import { Component, OnInit} from '@angular/core';
+import { RegisterService } from './register.service';
+import { Users } from './../interfaces/users'
 
 @Component({
   selector: 'app-register',
@@ -7,12 +8,23 @@ import { NavbarService } from './../navbar/navbar.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor( private NavbarService: NavbarService ) {}
+  constructor( private RegisterService: RegisterService ) {}
   
-  get isNavbarExpand(): boolean {
-    return this.NavbarService.isNavbarExpand;
+  users: Users = {
+    name: null,
+    nickname: null,
+    email: null,
+    password: null
   }
+
+  get isRegisterCalled(): boolean {
+    return this.RegisterService.isRegisterCalled;
+  }
+
+  closeRegister() {
+    this.RegisterService.callRegister();
+  }
+
   ngOnInit(): void {
   }
 

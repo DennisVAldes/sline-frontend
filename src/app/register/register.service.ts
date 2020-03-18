@@ -15,7 +15,7 @@ export class RegisterService {
     })
   }
   
-  toggleNavbarSize(){
+  callRegister(){
     this.registerCalled.next(!this.isRegisterCalled);
   }
 }
