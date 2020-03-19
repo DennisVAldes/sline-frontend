@@ -8,31 +8,47 @@
             </figure>
         </div>
         <div class="right-box">
-            <form #form="ngForm" ngNativeValidate>
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)">
                 <div class="input-name">
-                    <input class="name-input" 
-                       placeholder="Nombre y apellido" spellcheck="false"
-                       type="text" name="name" id="name" [(ngModel)]="users.name"
-                       required minlength="10" #nameInput="ngModel">
-                    <span [hidden]="nameInput.valid || nameInput.untouched">
+                    <input placeholder="Nombre y apellido" spellcheck="false" autocomplete="off"
+                           type="text" name="name" id="name" [(ngModel)]="users.name"
+                           required minlength="10" ngModel
+                    >
+                    <span class="obligatorio">
+                        Este campo es obligatorio <hr>
+                        El minimo de caracteres es de 10
+                    </span>
+                </div>
+                <div class="input-email">
+                    <input type="email" name="email" id="email" [(ngModel)]="users.email"
+                        placeholder="Direccion de correo electronico" spellcheck="false" autocomplete="off"   
+                        required ngModel
+                    >
+                    <span class="obligatorio">
                         Este campo es obligatorio
                     </span>
                 </div>
-                <input placeholder="Direccion de correo electronico" 
-                       type="email" name="email" id="email"
-                       required ngModel>
-                <input placeholder="Password"
-                       type="password" name="password" id="password"
-                       required ngModel>
-                
-                <div class="buttons">
-                    <input type="button" name="accept-button" id="accept-button" value="Aceptar">
-                    <input type="button" name="cancel-button" id="cancel-button" value="Cancelar" 
-                           (click)="closeRegister()"
+                <div class="input-password">
+                    <input placeholder="Password" spellcheck="false" autocomplete="off"
+                       type="password" name="password" id="password" [(ngModel)]="users.password"
+                       required ngModel
                     >
+                    <span class="obligatorio">
+                        Este campo es obligatorio
+                    </span>
                 </div>
+                <input class="button" type="submit" value="Aceptar">
+                <input class="button" type="button" value="Cancelar" (click)="closeRegister()">
             </form>
             {{ users | json }}
+        </div>
+        <div class="popup" [ngClass]="{successfulSubmit: onSubmit(form)}">
+            <div class="main-content">
+                <figure class="cross">
+                    <img src="" alt="">
+                </figure>
+                <h3>Registro exitoso!</h3>
+            </div>
         </div>
     </div>
 </section>

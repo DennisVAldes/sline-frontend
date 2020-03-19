@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { RegisterService } from './register.service';
 import { Users } from './../interfaces/users'
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -23,6 +24,10 @@ export class RegisterComponent implements OnInit {
 
   closeRegister() {
     this.RegisterService.callRegister();
+  }
+
+  onSubmit(form: NgForm){
+     console.log( form.valid )
   }
 
   ngOnInit(): void {
