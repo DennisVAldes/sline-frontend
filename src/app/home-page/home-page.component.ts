@@ -17,6 +17,7 @@ export class HomePageComponent implements AfterViewInit {
   }
 
   @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
+  @ViewChild('legend') legend: ElementRef;
   
   initMap() {
     var pos;
@@ -39,7 +40,7 @@ export class HomePageComponent implements AfterViewInit {
             map: map,
             icon: '../../assets/img/home-marker.svg' });
       })
-    }
+    } 
   }
 
   ngAfterViewInit() {

@@ -31,7 +31,6 @@ body{ font-family: 'Comfortaa', cursive; }
 .home-page #map { width: 100%; height: 500px; border-radius: 0 0 10px 10px; }
 .home-page #map .gmnoprint { border-radius: 10px; overflow: hidden; }
 
-
 .register-page { width: 100vw; height: 0;  transition: all .5s ease; overflow: hidden; position: absolute; top: 0; left: 0; background: #fff; z-index: 10; }
 .register-page.view { height: 100vh; }
 .register-page .main-content { width: 1160px; margin: 0 auto; padding: 100px 0; }
