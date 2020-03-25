@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { RegisterService } from './register.service';
-import { Users } from './../interfaces/users'
+import { Users } from '../data/users'
 import { NgForm } from '@angular/forms';
+import { DataService } from '../data/data.service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  constructor( private RegisterService: RegisterService ) {}
+  constructor( private RegisterService: RegisterService, private dataService: DataService ) {}
   
   users: Users = {
     name: null,
@@ -27,7 +28,11 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-     console.log( form.valid )
+    console.log(form.valid);
+    this.dataService.userInformationForm(this.users).subscribe(
+      result => console.log('success: ', result),
+      error => console.log('error: ', error)
+    );
   }
 
   ngOnInit(): void {

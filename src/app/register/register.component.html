@@ -19,6 +19,15 @@
                         El minimo de caracteres es de 10
                     </span>
                 </div>
+                <div class="input-nickname">
+                    <input type="text" name="nickname" id="nickname" [(ngModel)]="users.nickname"
+                        placeholder="Nombre de usuario" spellcheck="false" autocomplete="off"   
+                        required ngModel
+                    >
+                    <span class="obligatorio">
+                        Este campo es obligatorio
+                    </span>
+                </div>
                 <div class="input-email">
                     <input type="email" name="email" id="email" [(ngModel)]="users.email"
                         placeholder="Direccion de correo electronico" spellcheck="false" autocomplete="off"   
@@ -41,14 +50,6 @@
                 <input class="button" type="button" value="Cancelar" (click)="closeRegister()">
             </form>
             {{ users | json }}
-        </div>
-        <div class="popup" [ngClass]="{successfulSubmit: onSubmit(form)}">
-            <div class="main-content">
-                <figure class="cross">
-                    <img src="" alt="">
-                </figure>
-                <h3>Registro exitoso!</h3>
-            </div>
         </div>
     </div>
 </section>

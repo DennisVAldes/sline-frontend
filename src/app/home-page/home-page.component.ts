@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+
 import { NavbarService } from './../navbar/navbar.service';
+import {} from '@angular/google-maps';
 
 @Component({
   selector: 'app-home-page',
@@ -7,25 +9,40 @@ import { NavbarService } from './../navbar/navbar.service';
   styleUrls: ['./home-page.component.css']
 })
 
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements AfterViewInit {
   constructor( private NavbarService: NavbarService ) {}
   
   get isNavbarExpand(): boolean {
     return this.NavbarService.isNavbarExpand;
   }
 
-  zoom = 16
-  center: google.maps.LatLngLiteral
-  options: google.maps.MapOptions = {
-    mapTypeId: 'roadmap'
+  @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
+  
+  initMap() {
+    var pos;
+    var map = new google.maps.Map(this.gmap.nativeElement, {
+      center: pos,
+      zoom: 16
+    });
+
+    // Geolocation
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        map.setCenter(pos);
+        var marker = new google.maps.Marker(
+          { 
+            position:pos,
+            map: map,
+            icon: '../../assets/img/home-marker.svg' });
+      })
+    }
   }
 
-  ngOnInit() {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      }
-    })
+  ngAfterViewInit() {
+    this.initMap();
   }
 }

@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { MarkersComponent } from './home-page/markers/markers.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +15,6 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     NavbarComponent,
     HomePageComponent,
-    MarkersComponent,
     RegisterComponent,
   ],
   imports: [

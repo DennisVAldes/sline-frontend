@@ -1,16 +1,3 @@
-<section class="home-page" [ngClass]="isNavbarExpand ? 'less-view' : ''">
-    <google-map
-        class="google-map"
-        height="70%"
-        width="100%"
-        [zoom]="zoom"
-        [center]="center" 
-        [options]="options"
-    >
-        <map-marker
-            [position]="center"
-        >
-        </map-marker>
-    </google-map>
-    
+<section class="home-page" [ngClass]="isNavbarExpand ? 'less-view' : ''" onload="initMap()">
+    <div #mapContainer id="map"></div>
 </section>
