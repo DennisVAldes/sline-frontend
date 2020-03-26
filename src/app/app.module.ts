@@ -9,6 +9,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MapComponent } from './components/map/map.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     HomePageComponent,
     RegisterComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GoogleMapsModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(
       [
         { path:'home', component: HomePageComponent },
