@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
-import { NavbarService } from './../navbar/navbar.service';
+import { NavbarService } from '../../components/navbar/navbar.service';
 import {} from '@angular/google-maps';
 
 @Component({

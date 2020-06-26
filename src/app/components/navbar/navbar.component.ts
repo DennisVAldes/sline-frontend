@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { NavbarService } from './navbar.service';
-import { RegisterService } from './../register/register.service'
+import { RegisterService } from '../../pages/register/register.service'
 
 @Component({
   selector: 'app-navbar',

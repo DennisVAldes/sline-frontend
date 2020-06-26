@@ -4,13 +4,14 @@ import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { RegisterComponent } from './register/register.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MapComponent } from './components/map/map.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { CreateCaseComponent } from './components/create-case/create-case.component'
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http'
     HomePageComponent,
     RegisterComponent,
     MapComponent,
+    CreateCaseComponent,
   ],
   imports: [
     BrowserModule,
