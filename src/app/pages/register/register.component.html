@@ -1,0 +1,55 @@
+<section class="register-page" 
+         [ngClass]="isRegisterCalled ? 'view' : ''"
+>
+    <div class="main-content clearfix">
+        <div class="left-box clearfix">
+            <figure class="logo">
+                <img src="assets/img/logo.svg" alt="sline-logo">
+            </figure>
+        </div>
+        <div class="right-box">
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                <div class="input-name">
+                    <input placeholder="Nombre y apellido" spellcheck="false" autocomplete="off"
+                           type="text" name="name" id="name" [(ngModel)]="users.name"
+                           required minlength="10" ngModel
+                    >
+                    <span class="obligatorio">
+                        Este campo es obligatorio <hr>
+                        El minimo de caracteres es de 10
+                    </span>
+                </div>
+                <div class="input-nickname">
+                    <input type="text" name="nickname" id="nickname" [(ngModel)]="users.nickname"
+                        placeholder="Nombre de usuario" spellcheck="false" autocomplete="off"   
+                        required ngModel
+                    >
+                    <span class="obligatorio">
+                        Este campo es obligatorio
+                    </span>
+                </div>
+                <div class="input-email">
+                    <input type="email" name="email" id="email" [(ngModel)]="users.email"
+                        placeholder="Direccion de correo electronico" spellcheck="false" autocomplete="off"   
+                        required ngModel
+                    >
+                    <span class="obligatorio">
+                        Este campo es obligatorio
+                    </span>
+                </div>
+                <div class="input-password">
+                    <input placeholder="Password" spellcheck="false" autocomplete="off"
+                       type="password" name="password" id="password" [(ngModel)]="users.password"
+                       required ngModel
+                    >
+                    <span class="obligatorio">
+                        Este campo es obligatorio
+                    </span>
+                </div>
+                <input class="button" type="submit" value="Aceptar">
+                <input class="button" type="button" value="Cancelar" (click)="closeRegister()">
+            </form>
+            {{ users | json }}
+        </div>
+    </div>
+</section>
