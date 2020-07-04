@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
-import { NavbarService } from '../../components/navbar/navbar.service';
 import {} from '@angular/google-maps';
 
 @Component({
@@ -10,12 +9,8 @@ import {} from '@angular/google-maps';
 })
 
 export class HomePageComponent implements AfterViewInit {
-  constructor( private NavbarService: NavbarService ) {}
+  constructor() {}
   
-  get isNavbarExpand(): boolean {
-    return this.NavbarService.isNavbarExpand;
-  }
-
   ngAfterViewInit() {
   }
 }

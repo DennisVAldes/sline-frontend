@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MapComponent } from './components/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CreateCaseComponent } from './components/create-case/create-case.component'
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import { CreateCaseComponent } from './components/create-case/create-case.compon
     NavbarComponent,
     HomePageComponent,
     RegisterComponent,
-    MapComponent,
-    CreateCaseComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +28,7 @@ import { CreateCaseComponent } from './components/create-case/create-case.compon
     HttpClientModule,
     RouterModule.forRoot(
       [
+        { path:'register', component: RegisterComponent },
         { path:'home', component: HomePageComponent },
         { path:'', redirectTo: 'home', pathMatch: 'full' }
       ]

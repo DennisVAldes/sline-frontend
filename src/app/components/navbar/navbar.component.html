@@ -1,23 +1,18 @@
-<div class="navbar" [ngClass]="isNavbarExpand ? 'complete-menu' : ''">
-    <figure class="logo-content clearfix" (click)='toggleNavbar()'>
-        <img class="logo" src="assets/img/logo.svg" alt="logo-image" />
-        <img class="back-button" src="assets/img/back.svg" alt="back-button">
+<div class="menu">
+    <figure class="logo-content clearfix">
+
     </figure>
     <span class="line"></span>
-    <ul [ngClass]="isNavbarExpand ? 'show-list' : ''">
+    <ul>
         <li class="clearfix">
             <a [routerLink]="['/home']" routerLinkActive="router-link-active" >
-                <figure class="logo-view"><img src="assets/img/list.svg" alt=""/></figure>
                 <p>Ver casos <span></span></p>
             </a>
         </li>
     </ul>
-    <ul class="sign-in" [ngClass]="isNavbarExpand ? 'show-list' : ''">
-        <li (click)='callRegister()'>
-            <figure><img src="assets/img/login.svg" alt="sign-in"></figure>
-            <p>Sign up <span></span></p>
+    <ul class="sign-in">
+        <li>
+            <a [routerLink]="['/register']">Sign up</a>
         </li>
     </ul>
 </div>
-
-<app-register></app-register>
