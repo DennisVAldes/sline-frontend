@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MapComponent } from './components/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CasesComponent } from './pages/cases/cases.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     HomePageComponent,
     RegisterComponent,
-    MapComponent
+    MapComponent,
+    CasesComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
       [
         { path:'register', component: RegisterComponent },
         { path:'home', component: HomePageComponent },
+        { path:'cases', component: CasesComponent },
         { path:'', redirectTo: 'home', pathMatch: 'full' }
       ]
     )
