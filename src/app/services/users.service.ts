@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
-import { UserDto } from '../types/dtos/models';
+import { UserDto, ApiResponse } from '../types/dtos/models';
 
 @Injectable({
 	providedIn: 'root',
@@ -11,10 +11,12 @@ export class UserService {
 
     private apiHost = environment.API_ENDPOINT;
 
-    public getUsers = async() => 
-        this.http.get(`${this.apiHost}/user/`, {
-            withCredentials: true
-        })
-    .toPromise()
-    .then((res) => ({...res}));
+    public getUsers = async(
+
+    ): Promise<ApiResponse<UserDto[]>> => 
+        this.http
+            .get<ApiResponse<UserDto[]>>(`${this.apiHost}/user/`)
+            .toPromise()
+            .then((res) => ({...res}));
+        
 }
