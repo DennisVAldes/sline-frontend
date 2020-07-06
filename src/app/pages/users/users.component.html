@@ -1,0 +1,17 @@
+<section class="container">
+    <div class="main-content">
+        <table>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Fecha de ingreso</th>
+              <th>Casos denunciados</th>
+            </tr>
+            <tr *ngFor="let user of users">
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.fechaActual }}</td>
+            </tr>
+          </table>
+    </div>
+</section>

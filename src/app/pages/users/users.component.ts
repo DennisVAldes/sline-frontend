@@ -11,7 +11,7 @@ export class UsersComponent implements OnInit {
 
   constructor( private userService: UserService ) { }
 
-  users:UserDto[];
+  users: UserDto[];
 
   private getUsers = async () => {
     try {
