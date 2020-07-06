@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { MapComponent } from './components/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CasesComponent } from './pages/cases/cases.component';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CasesComponent } from './pages/cases/cases.component';
     HomePageComponent,
     RegisterComponent,
     MapComponent,
-    CasesComponent
+    CasesComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
