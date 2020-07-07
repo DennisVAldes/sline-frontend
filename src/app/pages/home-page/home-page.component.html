@@ -1,3 +1,44 @@
-<section class="home-page" [ngClass]="isNavbarExpand ? 'less-view' : ''" onload="initMap()">
-    <app-map></app-map>
+<section class="home-page">
+    <div class="top-navbar">
+        <div class="main-content clearfix">
+            <figure>
+                <img src="assets/img/sline.svg" alt="Sline logo">
+            </figure>
+            <ul class="clearfix">
+                <li>
+                    <button (click)='openModal(login)'>Log in</button>
+                </li>
+                <li>
+                    <button (click)='openModal(signup)'>Sign up</button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Modal -->
+        <ng-template #login let-modal>
+            <div class="modal-header">
+                <span>Log in</span>
+                <button class="close" (click)='closeModal()'>Close</button>
+            </div>
+        </ng-template>
+        <ng-template #signup let-modal>
+            <div class="modal-header">
+                <span>Sign up</span>
+                <button class="close" (click)='closeModal()'>Close</button>
+            </div>
+            <div class="form-content">
+                <form [formGroup]="myForm">
+                    <ul>
+                        <li><input type="text" formControlName="username" placeholder="User123"></li>
+                        <li><input type="email" formControlName="email" placeholder="ejemplo@gmail.com"></li>
+                        <li><input type="password"formControlName="password" placeholder="*********"></li>
+                        <li><input type="text" formControlName="sexo" placeholder="Masculino o Femenino"></li>
+                    </ul>
+                </form>
+
+                <button (click)="submitUser()">Aceptar</button>
+                <button (click)="closeModal()">Cancelar</button>
+            </div>
+        </ng-template>
+    </div>
 </section>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarService } from './../navbar/navbar.service';
 
 @Component({
   selector: 'app-cases',
@@ -8,11 +7,7 @@ import { NavbarService } from './../navbar/navbar.service';
 })
 export class CasesComponent implements OnInit {
 
-  constructor( private NavbarService: NavbarService ) { }
-
-  get isNavbarExpand(): boolean {
-    return this.NavbarService.isNavbarExpand;
-  }
+  constructor( ) { }
   
   ngOnInit(): void {
   }
