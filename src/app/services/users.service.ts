@@ -11,12 +11,14 @@ export class UserService {
 
     private apiHost = environment.API_ENDPOINT;
 
-    public getUsers = async(
-
-    ): Promise<ApiResponse<UserDto[]>> => 
+    public getUsers = async(): Promise<ApiResponse<UserDto[]>> => 
         this.http
             .get<ApiResponse<UserDto[]>>(`${this.apiHost}/user/`)
             .toPromise()
             .then((res) => ({...res}));
-        
+    
+    public createUser = async (newUser: UserDto): Promise<ApiResponse<UserDto>> =>
+            this.http
+                .post<ApiResponse<UserDto>>(`${this.apiHost}/signup`, newUser)
+                .toPromise();
 }

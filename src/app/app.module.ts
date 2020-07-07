@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CasesComponent } from './pages/cases/cases.component';
 import { UsersComponent } from './pages/users/users.component';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
-import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,6 @@ import { LoginComponent } from './components/login/login.component';
     CasesComponent,
     UsersComponent,
     InfoPageComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +31,7 @@ import { LoginComponent } from './components/login/login.component';
     GoogleMapsModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       [
         { path:'info', component: InfoPageComponent },

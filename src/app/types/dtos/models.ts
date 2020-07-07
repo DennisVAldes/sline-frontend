@@ -11,6 +11,6 @@ export interface UserDto{
     password: string;
     sexo: string;
     fechaActual?: Date;
-    fechaNac: Date;
+    fechaNac?: Date;
     id?: number;
 }
