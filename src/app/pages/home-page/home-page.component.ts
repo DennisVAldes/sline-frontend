@@ -64,6 +64,6 @@ export class HomePageComponent implements AfterViewInit {
 		}
 	};
 
-  ngAfterViewInit() {
+  ngAfterViewInit(){
   }
 }
