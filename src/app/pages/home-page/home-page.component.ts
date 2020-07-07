@@ -1,11 +1,10 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
-import {} from '@angular/google-maps';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserDto } from 'src/app/types/dtos/models';
 import { UserService } from 'src/app/services/users.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -16,18 +15,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomePageComponent implements AfterViewInit {
 
   modal : NgbModalRef;
+  
   public myForm = new FormGroup({
     username: new FormControl(),
     email: new FormControl(),
     password: new FormControl(),
     sexo: new FormControl(),
-    fechaNac: new FormControl()
+    fechanac: new FormControl()
   });
 
   constructor(
     private modalService: NgbModal, 
     private userService: UserService,
-    private route: ActivatedRoute,
 		private router: Router,
   ) {}
 
@@ -40,13 +39,12 @@ export class HomePageComponent implements AfterViewInit {
   }
   
   private setUser = (): UserDto => {
-		console.log(this.myForm.value.assigned);
 		return {
 			username: this.myForm.value.username,
 			email: this.myForm.value.email,
 			password: this.myForm.value.password,
 			sexo: this.myForm.value.sexo,
-			fechaNac: null,
+			fechaNac: this.myForm.value.fechanac,
 		};
   };
   
