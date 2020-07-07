@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CasesComponent } from './pages/cases/cases.component';
 import { UsersComponent } from './pages/users/users.component';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { InfoPageComponent } from './pages/info-page/info-page.component';
     CasesComponent,
     UsersComponent,
     InfoPageComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { InfoPageComponent } from './pages/info-page/info-page.component';
         { path:'home', component: HomePageComponent },
         { path:'cases', component: CasesComponent },
         { path:'users', component: UsersComponent },
-        { path:'', redirectTo: 'info', pathMatch: 'full' }
+        { path:'PageNotFound', component: PageNotFoundComponent },
+        { path:'', redirectTo: 'home', pathMatch: 'full' }
       ]
     )
   ],
