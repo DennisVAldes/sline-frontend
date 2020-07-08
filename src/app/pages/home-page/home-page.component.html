@@ -6,25 +6,16 @@
             </figure>
             <ul class="clearfix">
                 <li>
-                    <button (click)='openModal(login)'>Log in</button>
-                </li>
-                <li>
-                    <button (click)='openModal(signup)'>Sign up</button>
+                    <button class="ele-blue-white" (click)='openModal(modal)'><i class="icon-menu"></i></button>
                 </li>
             </ul>
         </div>
 
-        <!-- Modal -->
-        <ng-template #login let-modal>
-            <div class="modal-header">
-                <span>Log in</span>
-                <button class="close" (click)='closeModal()'>Close</button>
-            </div>
-        </ng-template>
-        <ng-template #signup let-modal>
+        <!-- Modal login/sign up -->
+        <ng-template #modal let-modal>
             <div class="modal-header">
                 <span>Sign up</span>
-                <button class="close" (click)='closeModal()'>Close</button>
+                <button class="close ele-blue-white" (click)='closeModal()'>Close</button>
             </div>
             <div class="form-content">
                 <form [formGroup]="myForm">
