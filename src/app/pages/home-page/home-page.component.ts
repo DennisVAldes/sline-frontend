@@ -1,10 +1,11 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserDto } from 'src/app/types/dtos/models';
 import { UserService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
@@ -17,17 +18,17 @@ export class HomePageComponent implements AfterViewInit {
   modal : NgbModalRef;
   
   public myForm = new FormGroup({
-    username: new FormControl(),
-    email: new FormControl(),
-    password: new FormControl(),
-    sexo: new FormControl(),
-    fechanac: new FormControl()
+    username: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    sexo: new FormControl('', Validators.required),
+    fechanac: new FormControl('', Validators.required)
   });
 
   constructor(
     private modalService: NgbModal, 
     private userService: UserService,
-		private router: Router,
+    private router: Router
   ) {}
 
   public openModal(content) {
@@ -40,23 +41,24 @@ export class HomePageComponent implements AfterViewInit {
   
   private setUser = (): UserDto => {
 		return {
-			username: this.myForm.value.username,
-			email: this.myForm.value.email,
-			password: this.myForm.value.password,
-			sexo: this.myForm.value.sexo,
-			fechaNac: '2020/09/18',
+			"username": this.myForm.value.username,
+			"email": this.myForm.value.email,
+			"password": this.myForm.value.password,
+			"sexo": this.myForm.value.sexo,
+			"fechanac": this.myForm.value.fechanac,
 		};
   };
   
   public submitUser = async () => {
-		try {
-
+    try {
 			const user = await this.setUser();
-			console.log(user);
+      console.log(user);
 
-      const response = await this.userService.createUser(user);
+      await this.userService.createUser(user);
 
-			this.router.navigate(['/home'], {state: {back: true}});
+      this.closeModal();
+
+      this.router.navigate(['/users'], {state: {back: true}});
 		} catch (err) {
 			console.error(err);
 		}

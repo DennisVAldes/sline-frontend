@@ -15,6 +15,7 @@ import { CasesComponent } from './pages/cases/cases.component';
 import { UsersComponent } from './pages/users/users.component';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
   ],
   providers:[ 
     NavbarComponent,
-    HomePageComponent
+    HomePageComponent,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

@@ -29,14 +29,38 @@
             <div class="form-content">
                 <form [formGroup]="myForm">
                     <ul>
-                        <li><input type="text" formControlName="username" placeholder="User123"></li>
-                        <li><input type="email" formControlName="email" placeholder="ejemplo@gmail.com"></li>
-                        <li><input type="password"formControlName="password" placeholder="*********"></li>
-                        <li><input type="text" formControlName="sexo" placeholder="Masculino o Femenino"></li>
+                        <li>
+                            <span class="title">Nombre de usuario</span>
+                            <input type="text" formControlName="username" placeholder="usuario123" required>
+                            <div class="required">Este campo es obligatorio.</div>
+                        </li>
+                        <li>
+                            <span class="title">Correo electronico</span>
+                            <input type="email" formControlName="email" placeholder="ejemplo@gmail.com" required>
+                            <div class="required">Este campo es obligatorio.</div>
+                        </li>
+                        <li>
+                            <span class="title">Contraseña</span>
+                            <input type="password" formControlName="password" placeholder="Minimo 8 caracteres" required>
+                            <div class="required">Este campo es obligatorio.</div>
+                        </li>
+                        <li>
+                            <span class="title">Seleccione su sexo</span>
+                            <select formControlName="sexo" required>
+                                <option ngValue="Mujer">Mujer</option>
+                                <option ngValue="Hombre">Hombre</option>
+                                <option ngValue="Prefiero no decirlo">Prefiero no decirlo</option>
+                            </select>
+                        </li>
+                        <li>
+                            <span class="title">Fecha de nacimiento</span>
+                            <input type="date" formControlName="fechanac" required>
+                            <div class="required">Este campo es obligatorio.</div>
+                        </li>
                     </ul>
                 </form>
 
-                <button (click)="submitUser()">Aceptar</button>
+                <button disabled="!myForm.valid" (click)="submitUser()">Aceptar</button>
                 <button (click)="closeModal()">Cancelar</button>
             </div>
         </ng-template>

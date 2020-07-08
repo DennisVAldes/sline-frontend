@@ -10,7 +10,7 @@ export interface UserDto{
     email: string;
     password: string;
     sexo: string;
-    fechaActual?: Date;
-    fechaNac?: Date;
+    fecharegistro?: string;
+    fechanac?: string;
     id?: number;
 }
