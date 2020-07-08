@@ -1,8 +1,8 @@
 export interface ApiResponse<T>{
     status: number;
-	statusText?: string;
-	message?: string;
-	data: T;
+	statusText: string;
+	message: string;
+	data?: T;
 }
 
 export interface UserDto{

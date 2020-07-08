@@ -44,7 +44,7 @@ export class HomePageComponent implements AfterViewInit {
 			email: this.myForm.value.email,
 			password: this.myForm.value.password,
 			sexo: this.myForm.value.sexo,
-			fechaNac: this.myForm.value.fechanac,
+			fechaNac: '2020/09/18',
 		};
   };
   

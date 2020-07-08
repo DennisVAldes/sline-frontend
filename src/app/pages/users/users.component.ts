@@ -15,12 +15,12 @@ export class UsersComponent implements OnInit {
 
   private getUsers = async () => {
     try {
-      const result = await this.userService.getUsers();
-      this.users = result.data;
+      const response = await this.userService.getUsers();
+      this.users = response.data;
       console.log(this.users);
     
     } catch (error) {
-      
+      console.log(error);
     }
   }
 
