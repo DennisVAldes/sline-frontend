@@ -18,16 +18,18 @@ export class MapComponent implements AfterViewInit {
       center: pos,
       zoom: 16
     });
+   
     map.setTilt(45);
 
     var infowindow = new google.maps.InfoWindow({
       content: 
-      '<div id="content">'+
+      '<div id="content" class="icon-mail">'+
         'Usted está aquí.'+
       '</div>'
     });
 
     var userMarker = new google.maps.Marker;
+
     // Geolocation
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -42,7 +44,7 @@ export class MapComponent implements AfterViewInit {
           map: map,
           icon: '../../assets/img/home-marker.svg',
           title: 'Su posicion' });
-        });
+      });
 
         userMarker.addListener('click', function(){
           infowindow.open(map, userMarker)

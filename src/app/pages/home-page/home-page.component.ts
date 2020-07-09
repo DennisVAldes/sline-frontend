@@ -21,8 +21,8 @@ export class HomePageComponent implements AfterViewInit {
     username: new FormControl('', [Validators.required, Validators.minLength(6)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    sexo: new FormControl('', Validators.required),
-    fechanac: new FormControl('', Validators.required)
+    sexo: new FormControl('', [Validators.required]),
+    fechanac: new FormControl('', [Validators.required])
   });
 
   constructor(

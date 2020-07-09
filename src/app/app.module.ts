@@ -35,16 +35,7 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(
-      [
-        { path:'info', component: InfoPageComponent },
-        { path:'home', component: HomePageComponent },
-        { path:'cases', component: CasesComponent },
-        { path:'users', component: UsersComponent },
-        { path:'PageNotFound', component: PageNotFoundComponent },
-        { path:'', redirectTo: 'home', pathMatch: 'full' }
-      ]
-    )
+    RouterModule
   ],
   providers:[ 
     NavbarComponent,
