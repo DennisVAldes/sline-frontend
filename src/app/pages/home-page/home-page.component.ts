@@ -17,12 +17,19 @@ export class HomePageComponent implements AfterViewInit {
 
   modal : NgbModalRef;
   
-  public myForm = new FormGroup({
+  letModal = false;
+
+  public signupForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(6)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     sexo: new FormControl('', [Validators.required]),
     fechanac: new FormControl('', [Validators.required])
+  });
+
+  public loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required])
   });
 
   constructor(
@@ -41,11 +48,11 @@ export class HomePageComponent implements AfterViewInit {
   
   private setUser = (): UserDto => {
 		return {
-			"username": this.myForm.value.username,
-			"email": this.myForm.value.email,
-			"password": this.myForm.value.password,
-			"sexo": this.myForm.value.sexo,
-			"fechanac": this.myForm.value.fechanac,
+			"username": this.signupForm.value.username,
+			"email": this.signupForm.value.email,
+			"password": this.signupForm.value.password,
+			"sexo": this.signupForm.value.sexo,
+			"fechanac": this.signupForm.value.fechanac,
 		};
   };
   
