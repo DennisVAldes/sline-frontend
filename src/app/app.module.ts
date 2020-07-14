@@ -16,7 +16,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { DatePipe } from '@angular/common';
-import { NotifierModule } from 'angular-notifier';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +35,7 @@ import { NotifierModule } from 'angular-notifier';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule,
-    NotifierModule
+    RouterModule
   ],
   providers:[ 
     NavbarComponent,
