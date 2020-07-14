@@ -6,6 +6,7 @@ import { UserDto } from 'src/app/types/dtos/models';
 import { UserService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-home-page',
@@ -14,10 +15,19 @@ import { DatePipe } from '@angular/common';
 })
 
 export class HomePageComponent implements AfterViewInit {
-
+  
+  constructor(
+    private modalService: NgbModal, 
+    private userService: UserService,
+    private router: Router,
+    private notifierService: NotifierService
+  ){}
+  
   modal : NgbModalRef;
   
   letModal = false;
+
+  private readonly notifier: NotifierService = this.notifierService;
 
   public signupForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -31,12 +41,6 @@ export class HomePageComponent implements AfterViewInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required])
   });
-
-  constructor(
-    private modalService: NgbModal, 
-    private userService: UserService,
-    private router: Router
-  ) {}
 
   public openModal(content) {
     this.modal = this.modalService.open(content)          
@@ -59,13 +63,14 @@ export class HomePageComponent implements AfterViewInit {
   public submitUser = async () => {
     try {
 			const user = await this.setUser();
-      console.log(user);
-
       await this.userService.createUser(user);
 
       this.closeModal();
-
-      this.router.navigate(['/users'], {state: {back: true}});
+      this.notifier.notify(
+        "success",
+        "Usuario registrado correctamente!"
+      );
+      this.router.navigate(['/users'], {state: {back: false}});
 		} catch (err) {
 			console.error(err);
 		}

@@ -15,8 +15,8 @@
         <ng-template #modal let-modal>
             <div class="header-buttons">
                 <ul class="clearfix">
-                    <li (click)="letModal = false" [ngClass]="{selected: !letModal}"><i class="icon-user-o"></i> <span>Login</span> </li>
-                    <li (click)="letModal = true" [ngClass]="{selected: letModal}"><i class="icon-contact"></i> <span>Registro</span> </li>
+                    <li (click)="letModal = false" [ngClass]="{selected: !letModal}"><i class="icon-user"></i> <span>Login</span> </li>
+                    <li (click)="letModal = true" [ngClass]="{selected: letModal}"><i class="icon-user-plus"></i> <span>Registro</span> </li>
                 </ul>
             </div>
             <div class="login-modal" *ngIf="!letModal">
@@ -86,6 +86,7 @@
                     <button (click)="closeModal()">Cancelar</button>
                 </div>
             </div>
+            <notifier-container></notifier-container>
         </ng-template>
     </div>
 </section>
