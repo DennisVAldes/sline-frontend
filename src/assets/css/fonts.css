@@ -29,7 +29,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-   
+  
+  .icon-contact:before { content: '\e801'; } /* '' */
   .icon-mail:before { content: '\e800'; } /* '' */
   .icon-menu-outline:before { content: '\e801'; } /* '' */
   .icon-key-1:before { content: '\e802'; } /* '' */
