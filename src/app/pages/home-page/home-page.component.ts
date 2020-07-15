@@ -44,6 +44,8 @@ export class HomePageComponent implements AfterViewInit {
 
   public closeModal() {
     this.modal.close();
+    this.signupForm.reset();
+    this.loginForm.reset();
   }
   
   private setUser = (): UserDto => {

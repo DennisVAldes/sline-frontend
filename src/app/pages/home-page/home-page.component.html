@@ -6,7 +6,7 @@
             </figure>
             <ul class="clearfix">
                 <li>
-                    <button class="ele-blue-white" (click)='openModal(modal)'><i class="icon-menu"></i></button>
+                    <button class="ele-blue-white" (click)='openModal(modal)'><i class="icon-menu-outline"></i></button>
                 </li>
             </ul>
         </div>
@@ -28,12 +28,12 @@
                         <ul>
                             <li>
                                 <span class="title">Correo electronico</span>
-                                <input type="email" formControlName="email" placeholder="ejemplo@gmail.com" required>
+                                <input type="email" formControlName="email" placeholder="ejemplo@ejemplo.com">
                                 <div class="required">Este campo es obligatorio.</div>
                             </li>
                             <li>
                                 <span class="title">Contraseña</span>
-                                <input type="password" formControlName="password" placeholder="Minimo 8 caracteres" required>
+                                <input type="password" formControlName="password" placeholder="********">
                                 <div class="required">Este campo es obligatorio.</div>
                             </li>
                         </ul>
@@ -46,43 +46,74 @@
             <div class="signup-modal" *ngIf="letModal">
                 <div class="modal-header">
                     <span>Registro</span>
-                    <button class="close ele-blue-white" (click)='closeModal()'>Close</button>
                 </div>
                 <div class="form-content">
-                    <form [formGroup]="signupForm">
+                    <form [formGroup]="signupForm"
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    >
                         <ul>
                             <li>
                                 <span class="title">Nombre de usuario</span>
-                                <input type="text" formControlName="username" placeholder="usuario123" required>
-                                <div class="required">Este campo es obligatorio.</div>
+                                <input type="text" formControlName="username" placeholder="usuario123">
+                                <div class="required">Este campo es obligatorio. Minimo 6 caracteres.</div>
                             </li>
                             <li>
                                 <span class="title">Correo electronico</span>
-                                <input type="email" formControlName="email" placeholder="ejemplo@gmail.com" required>
+                                <input type="email" formControlName="email" placeholder="ejemplo@gmail.com">
                                 <div class="required">Este campo es obligatorio.</div>
                             </li>
                             <li>
                                 <span class="title">Contraseña</span>
-                                <input type="password" formControlName="password" placeholder="Minimo 8 caracteres" required>
-                                <div class="required">Este campo es obligatorio.</div>
+                                <input type="password" formControlName="password" placeholder="Minimo 8 caracteres">
+                                <div class="required">Este campo es obligatorio. Minimo 8 caracteres.</div>
                             </li>
                             <li>
                                 <span class="title">Seleccione su sexo</span>
-                                <select formControlName="sexo" required>
+                                <select formControlName="sexo">
                                     <option ngValue="Mujer">Mujer</option>
                                     <option ngValue="Hombre">Hombre</option>
                                     <option ngValue="Prefiero no decirlo">Prefiero no decirlo</option>
                                 </select>
+                                <div class="required">Este campo es obligatorio. Minimo 8 caracteres.</div>
                             </li>
                             <li>
                                 <span class="title">Fecha de nacimiento</span>
-                                <input type="date" formControlName="fechanac" required>
+                                <input type="date" formControlName="fechanac">
                                 <div class="required">Este campo es obligatorio.</div>
                             </li>
                         </ul>
                     </form>
     
-                    <button [disabled]="!signupForm" (click)="submitUser()">Aceptar</button>
+                    <button [disabled]="!signupForm.valid" (click)="submitUser()">Aceptar</button>
                     <button (click)="closeModal()">Cancelar</button>
                 </div>
             </div>
