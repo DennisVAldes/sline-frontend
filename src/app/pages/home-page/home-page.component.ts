@@ -17,7 +17,7 @@ export class HomePageComponent implements AfterViewInit {
 
   modal : NgbModalRef;
   
-  letModal = false;
+  letModal = true;
 
   public signupForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(6)]),

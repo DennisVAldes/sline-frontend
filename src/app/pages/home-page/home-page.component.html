@@ -6,7 +6,7 @@
             </figure>
             <ul class="clearfix">
                 <li>
-                    <button class="ele-blue-white" (click)='openModal(modal)'><i class="icon-menu-outline"></i></button>
+                    <button class="btn-primary btn-submit ele-blue-white" (click)='openModal(modal)'><i class="icon-menu-outline"></i></button>
                 </li>
             </ul>
         </div>
@@ -28,42 +28,43 @@
                         <ul>
                             <li>
                                 <span class="title">Correo electronico</span>
-                                <input type="email" formControlName="email" placeholder="ejemplo@ejemplo.com">
+                                <input type="email" formControlName="email">
                             </li>
                             <li>
                                 <span class="title">Contraseña</span>
-                                <input type="password" formControlName="password" placeholder="********">
+                                <input type="password" formControlName="password">
                             </li>
                         </ul>
                     </form>
     
                     <div class="buttons-content">
-                        <button [disabled]="!loginForm.valid" (click)="submitUser()" class="btn-primary btn-submit">Aceptar</button>
+                        <button [disabled]="!loginForm.valid" (click)="submitUser()" class="btn-primary" [ngClass]="!loginForm.valid === true ? 'btn-disabled' : 'btn-submit'" >Aceptar</button>
                         <button (click)="closeModal()" class="btn-primary btn-cancel">Cancelar</button>
                     </div>
                 </div>
             </div>
             <div class="signup-modal" *ngIf="letModal">
                 <div class="modal-header">
-                    <span>Registro</span>
+                    <span class="title">Registro</span>
+                    
                 </div>
                 <div class="form-content">
                     <form [formGroup]="signupForm">
                         <ul>
                             <li>
                                 <span class="title">Nombre de usuario</span>
-                                <input type="text" formControlName="username" placeholder="usuario123">
-                                <div class="required">Este campo es obligatorio. Minimo 6 caracteres.</div>
+                                <input type="text" formControlName="username">
+                                <div class="required">Minimo 6 caracteres.</div>
                             </li>
                             <li>
                                 <span class="title">Correo electronico</span>
-                                <input type="email" formControlName="email" placeholder="ejemplo@gmail.com">
+                                <input type="email" formControlName="email">
                                 <div class="required">Este campo es obligatorio.</div>
                             </li>
                             <li>
                                 <span class="title">Contraseña</span>
-                                <input type="password" formControlName="password" placeholder="Minimo 8 caracteres">
-                                <div class="required">Este campo es obligatorio. Minimo 8 caracteres.</div>
+                                <input type="password" formControlName="password">
+                                <div class="required">Minimo 8 caracteres.</div>
                             </li>
                             <li>
                                 <span class="title">Seleccione su sexo</span>
@@ -72,7 +73,6 @@
                                     <option ngValue="Hombre">Hombre</option>
                                     <option ngValue="Prefiero no decirlo">Prefiero no decirlo</option>
                                 </select>
-                                <div class="required">Este campo es obligatorio. Minimo 8 caracteres.</div>
                             </li>
                             <li>
                                 <span class="title">Fecha de nacimiento</span>
@@ -83,7 +83,7 @@
                     </form>
     
                     <div class="buttons-content">
-                        <button [disabled]="!signupForm.valid" (click)="submitUser()" class="btn-primary btn-submit">Aceptar</button>
+                        <button [disabled]="!signupForm.valid" (click)="submitUser()" class="btn-primary" [ngClass]="!signupForm.valid === true ? 'btn-disabled' : 'btn-submit'">Aceptar</button>
                         <button (click)="closeModal()" class="btn-primary btn-cancel">Cancelar</button>
                     </div>
                 </div>
