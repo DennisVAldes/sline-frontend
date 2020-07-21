@@ -15,63 +15,19 @@ import { DatePipe } from '@angular/common';
 
 export class HomePageComponent implements AfterViewInit {
 
-  modal : NgbModalRef;
-  
-  letModal = true;
-
-  public signupForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    sexo: new FormControl('', [Validators.required]),
-    fechanac: new FormControl('', [Validators.required])
-  });
-
-  public loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)])
-  });
-
   constructor(
-    private modalService: NgbModal, 
-    private userService: UserService,
-    private router: Router
+    
   ) {}
 
-  public openModal(content) {
-    this.modal = this.modalService.open(content)          
-  }
+  // public openModal(content) {
+  //   this.modal = this.modalService.open(content)          
+  // }
 
-  public closeModal() {
-    this.modal.close();
-    this.signupForm.reset();
-    this.loginForm.reset();
-  }
-  
-  private setUser = (): UserDto => {
-		return {
-			"username": this.signupForm.value.username,
-			"email": this.signupForm.value.email,
-			"password": this.signupForm.value.password,
-			"sexo": this.signupForm.value.sexo,
-			"fechanac": this.signupForm.value.fechanac,
-		};
-  };
-  
-  public submitUser = async () => {
-    try {
-			const user = await this.setUser();
-      console.log(user);
-
-      await this.userService.createUser(user);
-
-      this.closeModal();
-
-      this.router.navigate(['/users'], {state: {back: true}});
-		} catch (err) {
-			console.error(err);
-		}
-	};
+  // public closeModal() {
+  //   this.modal.close();
+  //   this.signupForm.reset();
+  //   this.loginForm.reset();
+  // }
 
   ngAfterViewInit(){
   }

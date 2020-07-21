@@ -6,88 +6,15 @@
             </figure>
             <ul class="clearfix">
                 <li>
-                    <button class="btn-primary btn-submit ele-blue-white" (click)='openModal(modal)'>Comienza ahora</button>
+                    <button class="btn-primary btn-submit ele-blue-white"
+                        data-toggle="modal" data-target="#modalLoginSignup"
+                    >
+                        Comienza ahora
+                    </button>
                 </li>
             </ul>
         </div>
 
-        <!-- Modal login/sign up -->
-        <ng-template #modal let-modal>
-            <div class="header-buttons">
-                <ul class="clearfix">
-                    <li (click)="letModal = false" [ngClass]="{selected: !letModal}"><i class="icon-user-o"></i> <span>Login</span> </li>
-                    <li (click)="letModal = true" [ngClass]="{selected: letModal}"><i class="icon-contact"></i> <span>Registro</span> </li>
-                </ul>
-            </div>
-            <div class="login-modal" *ngIf="!letModal">
-                <div class="modal-header">
-                    <span>Login</span>  
-                </div>
-                <div class="form-content">
-                    <form [formGroup]="loginForm">
-                        <ul>
-                            <li>
-                                <span class="title">Correo electronico</span>
-                                <input type="email" formControlName="email">
-                            </li>
-                            <li>
-                                <span class="title">Contraseña</span>
-                                <input type="password" formControlName="password">
-                            </li>
-                        </ul>
-                    </form>
-    
-                    <div class="buttons-content">
-                        <button [disabled]="!loginForm.valid" (click)="submitUser()" class="btn-primary" [ngClass]="!loginForm.valid === true ? 'btn-disabled' : 'btn-submit'" >Aceptar</button>
-                        <button (click)="closeModal()" class="btn-primary btn-cancel">Cancelar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="signup-modal" *ngIf="letModal">
-                <div class="modal-header">
-                    <span class="title">Registro</span>
-                    
-                </div>
-                <div class="form-content">
-                    <form [formGroup]="signupForm">
-                        <ul>
-                            <li>
-                                <span class="title">Nombre de usuario</span>
-                                <input type="text" formControlName="username">
-                                <div class="required">Minimo 6 caracteres.</div>
-                            </li>
-                            <li>
-                                <span class="title">Correo electronico</span>
-                                <input type="email" formControlName="email">
-                                <div class="required">Este campo es obligatorio.</div>
-                            </li>
-                            <li>
-                                <span class="title">Contraseña</span>
-                                <input type="password" formControlName="password">
-                                <div class="required">Minimo 8 caracteres.</div>
-                            </li>
-                            <li>
-                                <span class="title">Seleccione su sexo</span>
-                                <select formControlName="sexo">
-                                    <option ngValue="Mujer">Mujer</option>
-                                    <option ngValue="Hombre">Hombre</option>
-                                    <option ngValue="Prefiero no decirlo">Prefiero no decirlo</option>
-                                </select>
-                            </li>
-                            <li>
-                                <span class="title">Fecha de nacimiento</span>
-                                <input type="date" formControlName="fechanac">
-                                <div class="required">Este campo es obligatorio.</div>
-                            </li>
-                        </ul>
-                    </form>
-    
-                    <div class="buttons-content">
-                        <button [disabled]="!signupForm.valid" (click)="submitUser()" class="btn-primary" [ngClass]="!signupForm.valid === true ? 'btn-disabled' : 'btn-submit'">Aceptar</button>
-                        <button (click)="closeModal()" class="btn-primary btn-cancel">Cancelar</button>
-                    </div>
-                </div>
-            </div>
-        </ng-template>
+        <app-login-signup></app-login-signup>
     </div>
 </section>
