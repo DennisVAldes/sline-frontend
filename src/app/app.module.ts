@@ -17,6 +17,7 @@ import { InfoPageComponent } from './pages/info-page/info-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginSignupComponent } from './components/login-signup/login-signup.component';
 import { DatePipe } from '@angular/common';
+import { AuthGuardComponent } from './guards/auth-guard/auth-guard.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DatePipe } from '@angular/common';
     UsersComponent,
     InfoPageComponent,
     PageNotFoundComponent,
-    LoginSignupComponent
+    LoginSignupComponent,
+    AuthGuardComponent
   ],
   imports: [
     BrowserModule,
