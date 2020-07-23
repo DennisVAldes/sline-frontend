@@ -1,21 +1,14 @@
 <!-- Modal login/sign up -->
-<div
-    class="modal fade"
-	id="modalLoginSignup"
-	tabindex="-1"
-	role="dialog"
-	aria-labelledby="exampleModalCenterTitle"
-	aria-hidden="true"
->
+<div class="modal fade" id="modalLoginSignup" tabindex="-1" role="dialog">
     <div class="header-buttons">
         <ul class="clearfix">
-            <li ><i class="icon-user-o"></i> <span>Login</span> </li>
-            <li ><i class="icon-contact"></i> <span>Registro</span> </li>
+            <li><i class="icon-user-o"></i> <span>Login</span> </li>
+            <li><i class="icon-contact"></i> <span>Registro</span> </li>
         </ul>
     </div>
     <div class="login-modal">
         <div class="modal-header">
-            <span>Login</span>  
+            <span>Login</span>
         </div>
         <div class="form-content">
             <form [formGroup]="loginForm">
@@ -32,15 +25,15 @@
             </form>
 
             <div class="buttons-content">
-                <button [disabled]="!loginForm.valid" (click)="submitUser()" class="btn-primary" [ngClass]="!loginForm.valid === true ? 'btn-disabled' : 'btn-submit'" >Aceptar</button>
+                <button [disabled]="!loginForm.valid" (click)="submitUser()" class="btn-primary"
+                    [ngClass]="!loginForm.valid === true ? 'btn-disabled' : 'btn-submit'">Aceptar</button>
                 <button class="btn-primary btn-cancel">Cancelar</button>
             </div>
         </div>
     </div>
-    <div class="signup-modal>
-        <div class="modal-header">
+    <div class="signup-modal">
+        <div class=" modal-header">
             <span class="title">Registro</span>
-            
         </div>
         <div class="form-content">
             <form [formGroup]="signupForm">
@@ -77,7 +70,8 @@
             </form>
 
             <div class="buttons-content">
-                <button [disabled]="!signupForm.valid" (click)="submitUser()" class="btn-primary" [ngClass]="!signupForm.valid === true ? 'btn-disabled' : 'btn-submit'">Aceptar</button>
+                <button [disabled]="!signupForm.valid" (click)="submitUser()" class="btn-primary"
+                    [ngClass]="!signupForm.valid === true ? 'btn-disabled' : 'btn-submit'">Aceptar</button>
                 <button class="btn-primary btn-cancel">Cancelar</button>
             </div>
         </div>
