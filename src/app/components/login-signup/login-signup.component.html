@@ -1,12 +1,12 @@
 <!-- Modal login/sign up -->
-<div class="modal fade" id="modalLoginSignup" tabindex="-1" role="dialog">
+<div class="modal fade">
     <div class="header-buttons">
         <ul class="clearfix">
-            <li><i class="icon-user-o"></i> <span>Login</span> </li>
-            <li><i class="icon-contact"></i> <span>Registro</span> </li>
+            <li (click)="letModal=true" [ngClass]="{'selected': letModal}"><i class="icon-user-o"></i> <span>Login</span> </li>
+            <li (click)="letModal=false" [ngClass]="{'selected': !letModal}"><i class="icon-contact"></i> <span>Registro</span> </li>
         </ul>
     </div>
-    <div class="login-modal">
+    <div class="login-modal" *ngIf="letModal">
         <div class="modal-header">
             <span>Login</span>
         </div>
@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    <div class="signup-modal">
+    <div class="signup-modal" *ngIf="!letModal">
         <div class=" modal-header">
             <span class="title">Registro</span>
         </div>
