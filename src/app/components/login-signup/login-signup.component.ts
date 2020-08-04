@@ -12,7 +12,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LoginSignupComponent implements OnInit {
   
-  letModal: false;
+  letModal = false;
 
   constructor(
     private userService: UserService,

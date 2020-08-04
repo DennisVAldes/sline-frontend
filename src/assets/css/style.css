@@ -15,15 +15,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .container .main-content { width: 96%; margin: 0 auto; padding-top: 20px; }
 
 /* Home Page */
-.home-page { width: 100%; height: 100vh; position: relative; background: url("../img/hero-py.jpg") no-repeat; }
-.home-page .top-navbar { height: auto; width: 100%; }
-.home-page .top-navbar .main-content { max-width: 1160px; padding: 5px 0; width: 100%; margin: 0 auto; }
-.home-page .top-navbar .main-content figure { max-width: 150px; width: 100%; height: 60px; float: left; }
-.home-page .top-navbar .main-content figure img { width: 100%; height: 100%; }
-.home-page .top-navbar .main-content ul { float: right; list-style: none; }
-.home-page .top-navbar .main-content ul li { cursor: pointer; float: left; margin: 0 10px; line-height: 60px; }
-.home-page .top-navbar .main-content ul li button { font-size: 20px; padding: 5px; }
-.home-page .top-navbar .main-content ul li button:focus { outline: none; }
+.home-page { width: 100%; height: 100vh; position: relative; background: url("../img/home-page.jpg") no-repeat; background-size: cover; background-position: center; }
 
 /* Modal */
 .modal { max-width: 600px; max-height: 600px; width: 100%; height: 100%; box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3); position: absolute; top: 50%; left: 50%; margin: -300px 0 0 -300px; background: #fff; }
