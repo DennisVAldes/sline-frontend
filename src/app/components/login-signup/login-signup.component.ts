@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserDto } from 'src/app/types/dtos/models';
 import { UserService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-login-signup',
@@ -16,7 +16,8 @@ export class LoginSignupComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private authService: AuthServiceService
   ) { }
 
   ngOnInit(): void {
@@ -45,14 +46,32 @@ export class LoginSignupComponent implements OnInit {
 		};
   };
   
+  private getUser = () => {
+    return {
+      "email": this.loginForm.value.email,
+      "password": this.loginForm.value.password
+    }
+  }
+
+  public login = async () => {
+    try {
+      const user = await this.getUser();
+
+      await this.authService.login(user);
+
+      
+    
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   public submitUser = async () => {
     try {
 			const user = await this.setUser();
-      console.log(user);
 
       await this.userService.createUser(user);
 
-      this.router.navigate(['/users'], {state: {back: true}});
 		} catch (err) {
 			console.error(err);
 		}
