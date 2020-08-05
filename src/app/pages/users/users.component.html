@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <section class="container">
     <div class="main-content">
         <table>
@@ -5,12 +6,13 @@
               <th>Username</th>
               <th>Email</th>
               <th>Fecha de ingreso</th>
-              <th>Casos denunciados</th>
+              <th>Fecha de nacimiento</th>
             </tr>
             <tr *ngFor="let user of users">
-              <td>{{ user.username }}</td>
+              <td>{{ user.username  }}</td>
               <td>{{ user.email }}</td>
-              <td>{{ user.fechaActual }}</td>
+              <td>{{ user.fecharegistro | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ user.fechanac | date: 'dd/MM/yyyy' }}</td>
             </tr>
           </table>
     </div>

@@ -19,6 +19,6 @@ export class UserService {
     
     public createUser = async (newUser: UserDto): Promise<ApiResponse<UserDto>> =>
             this.http
-                .post<ApiResponse<UserDto>>(`${this.apiHost}/`, newUser)
+                .post<ApiResponse<UserDto>>(`${this.apiHost}/user/`, newUser)
                 .toPromise();
 }

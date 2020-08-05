@@ -1,0 +1,162 @@
+{
+  "name": "sline",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "35d0e162e4e9f3630dd0cb91fa24a130",
+      "css": "contact",
+      "code": 59393,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M705 599.7C682.3 495 600.8 412 496.9 387.2 544.7 346.9 575.1 286.7 575.1 219.4 575.1 98.4 476.6 0 355.6 0 234.6 0 136.2 98.4 136.2 219.4 136.2 286.7 166.6 346.9 214.4 387.2 91.6 416.5 0 527.1 0 658.7V876.4H496.3C526.6 948.9 598.3 1000 681.6 1000 792.4 1000 882.5 909.9 882.5 799.2 882.5 696.3 804.7 611.3 705 599.7ZM195.5 219.4C195.5 131.1 267.3 59.3 355.6 59.3 444 59.3 515.8 131.1 515.8 219.4 515.8 307.7 444 379.6 355.6 379.6 267.3 379.6 195.5 307.7 195.5 219.4ZM480.8 799.2C480.8 805.2 481.1 811.2 481.6 817.1H59.3V658.7C59.3 537.5 157.9 438.9 279.2 438.9H432.1C533.7 438.9 619.4 508.1 644.5 601.8 551.5 619.3 480.8 701.1 480.8 799.2ZM681.6 940.7C603.6 940.7 540.1 877.2 540.1 799.2 540.1 721.1 603.6 657.7 681.6 657.7S823.2 721.1 823.2 799.2C823.2 877.2 759.7 940.7 681.6 940.7ZM681.6 940.7M711.3 716.2H652V769.5H598.6V828.8H652V882.2H711.3V828.8H764.7V769.5H711.3ZM711.3 716.2",
+        "width": 1000
+      },
+      "search": [
+        "contact"
+      ]
+    },
+    {
+      "uid": "a151e07df1262b33b210de5d956e4cc8",
+      "css": "menu-outline",
+      "code": 59394,
+      "src": "typicons"
+    },
+    {
+      "uid": "75347b319511175da51af3955919dbac",
+      "css": "key",
+      "code": 59395,
+      "src": "linecons"
+    },
+    {
+      "uid": "1d9b2bb0d0621cd616139c6a441ed442",
+      "css": "down-outline",
+      "code": 59396,
+      "src": "typicons"
+    },
+    {
+      "uid": "abf264d54e3f10187167ebc0e833d12e",
+      "css": "up-outline",
+      "code": 59397,
+      "src": "typicons"
+    },
+    {
+      "uid": "ec3be32c1330a17ef251b378ebd7d3ac",
+      "css": "left-outline",
+      "code": 59398,
+      "src": "typicons"
+    },
+    {
+      "uid": "86bc84e014767f8f1377723c47d1b153",
+      "css": "right-outline",
+      "code": 59399,
+      "src": "typicons"
+    },
+    {
+      "uid": "004882ab2d5c418c5b2060e80596279b",
+      "css": "right-open-big",
+      "code": 59400,
+      "src": "entypo"
+    },
+    {
+      "uid": "884cfc3e6e2d456dd2a2ca0dbb9e6337",
+      "css": "left-open-big",
+      "code": 59401,
+      "src": "entypo"
+    },
+    {
+      "uid": "289b5f92f23acf1059c93fbf401c1ad5",
+      "css": "down-open-big",
+      "code": 59402,
+      "src": "entypo"
+    },
+    {
+      "uid": "0805cca616b3c12714f35af4d0912c10",
+      "css": "up-open-big",
+      "code": 59403,
+      "src": "entypo"
+    },
+    {
+      "uid": "c62cbc7fa604e32cc19731a3bb29be79",
+      "css": "map-o",
+      "code": 62072,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "9725db89b610135dc76cd8a21afffa83",
+      "css": "search",
+      "code": 59404,
+      "src": "linecons"
+    },
+    {
+      "uid": "91bac16b22827347e9ee20477f0b44d2",
+      "css": "mail",
+      "code": 59392,
+      "src": "linecons"
+    },
+    {
+      "uid": "43e4647c57186b5e06874621b5e665be",
+      "css": "calendar",
+      "code": 59405,
+      "src": "linecons"
+    },
+    {
+      "uid": "1ea8ad6dbe1ae9a73565ad16cf88de19",
+      "css": "location",
+      "code": 59406,
+      "src": "linecons"
+    },
+    {
+      "uid": "484b4ad2058d17849f205c4054b6f315",
+      "css": "cog",
+      "code": 59407,
+      "src": "linecons"
+    },
+    {
+      "uid": "5a77a57792f5bfd20fb80827af089d17",
+      "css": "transgender-alt",
+      "code": 61989,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "b86df50a2d898bfcd371fa86c0b8b2fb",
+      "css": "user-o",
+      "code": 62144,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "2c5055a9c9723725f49f0593a08535af",
+      "css": "meh",
+      "code": 61722,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "d862a10e1448589215be19702f98f2c1",
+      "css": "smile",
+      "code": 61720,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "06ddc67d609c477cd5524a7238d7850d",
+      "css": "frown",
+      "code": 61721,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "ef47651da3866460f27baf85ae234e5c",
+      "css": "list",
+      "code": 59408,
+      "src": "iconic"
+    },
+    {
+      "uid": "40c9502d45c736a0a6ec45e6fbc28656",
+      "css": "ok-outline",
+      "code": 59409,
+      "src": "typicons"
+    }
+  ]
+}

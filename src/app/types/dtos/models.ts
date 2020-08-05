@@ -1,8 +1,8 @@
 export interface ApiResponse<T>{
     status: number;
-	statusText?: string;
-	message?: string;
-	data: T;
+	statusText: string;
+	message: string;
+	data?: T;
 }
 
 export interface UserDto{
@@ -10,7 +10,7 @@ export interface UserDto{
     email: string;
     password: string;
     sexo: string;
-    fechaActual?: Date;
-    fechaNac?: Date;
+    fecharegistro?: string;
+    fechanac?: string;
     id?: number;
 }
