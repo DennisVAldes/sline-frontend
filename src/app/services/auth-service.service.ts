@@ -20,7 +20,7 @@ export class AuthServiceService {
 
     async(): Promise<ApiResponse<UserDto[]>> => 
         this.http
-            .get<ApiResponse<UserDto[]>>(`${this.apiHost}/login/`, {params})
+            .get<ApiResponse<UserDto[]>>(`${this.apiHost}/user/login`, {params})
             .toPromise()
             .then((res) => ({...res}));
   }

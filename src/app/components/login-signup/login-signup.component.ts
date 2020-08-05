@@ -4,6 +4,7 @@ import { UserDto } from 'src/app/types/dtos/models';
 import { UserService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { NotifierService } from "angular-notifier";
 
 @Component({
   selector: 'app-login-signup',
@@ -13,12 +14,16 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class LoginSignupComponent implements OnInit {
   
   letModal = false;
+  private readonly notifier: NotifierService;
 
   constructor(
     private userService: UserService,
     private router: Router,
-    private authService: AuthServiceService
-  ) { }
+    private authService: AuthServiceService,
+    notifierService: NotifierService
+  ) { 
+    this.notifier = notifierService; 
+  }
 
   ngOnInit(): void {
   }
@@ -56,10 +61,9 @@ export class LoginSignupComponent implements OnInit {
   public login = async () => {
     try {
       const user = await this.getUser();
-
       await this.authService.login(user);
 
-      
+      this.notifier.notify("success", "Logueo exitoso!")
     
     } catch (error) {
       console.error(error);
@@ -69,11 +73,13 @@ export class LoginSignupComponent implements OnInit {
   public submitUser = async () => {
     try {
 			const user = await this.setUser();
-
       await this.userService.createUser(user);
 
+      this.notifier.notify("success", "Usuario registrado con exito!")
+
 		} catch (err) {
-			console.error(err);
+      console.error(err);
+      
 		}
 	};
 

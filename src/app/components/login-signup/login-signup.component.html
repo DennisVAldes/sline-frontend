@@ -25,7 +25,7 @@
             </form>
 
             <div class="buttons-content">
-                <button [disabled]="!loginForm.valid" (click)="submitUser()" class="btn-primary"
+                <button [disabled]="!loginForm.valid" (click)="login()" class="btn-primary"
                     [ngClass]="!loginForm.valid === true ? 'btn-disabled' : 'btn-submit'">Aceptar</button>
                 <button class="btn-primary btn-cancel">Cancelar</button>
             </div>
@@ -76,4 +76,6 @@
             </div>
         </div>
     </div>
+    
+    <notifier-container></notifier-container>
 </div>
