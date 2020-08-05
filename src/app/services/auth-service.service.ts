@@ -12,17 +12,9 @@ export class AuthServiceService {
 
   constructor( private http: HttpClient ) { }
 
-  public login = (user: Partial<UserDto>) => {
-    
-    const params = new HttpParams()
-    .set('email', user.email)
-    .set('password', user.password);
-
-    async(): Promise<ApiResponse<UserDto[]>> => 
-        this.http
-            .get<ApiResponse<UserDto[]>>(`${this.apiHost}/user/login`, {params})
-            .toPromise()
-            .then((res) => ({...res}));
-  }
+  public login = async (newUser: Partial<UserDto>): Promise<ApiResponse<UserDto>> =>
+            this.http
+                .post<ApiResponse<UserDto>>(`${this.apiHost}/user/login`, newUser)
+                .toPromise();
   
 }

@@ -61,12 +61,10 @@ export class LoginSignupComponent implements OnInit {
   public login = async () => {
     try {
       const user = await this.getUser();
-      await this.authService.login(user);
-
-      this.notifier.notify("success", "Logueo exitoso!")
-    
+      let res = await this.authService.login(user);
+      console.log(res.data)
     } catch (error) {
-      console.error(error);
+      console.error(error); 
     }
   }
 
