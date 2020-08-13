@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserDto } from 'src/app/types/dtos/models';
 import { UserService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
-import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { NotifierService } from "angular-notifier";
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginSignupComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private authService: AuthServiceService,
+    private authService: AuthService,
     notifierService: NotifierService
   ) { 
     this.notifier = notifierService; 
@@ -62,7 +62,8 @@ export class LoginSignupComponent implements OnInit {
     try {
       const user = await this.getUser();
       let res = await this.authService.login(user);
-      console.log(res.data)
+      console.log(res);
+      
     } catch (error) {
       console.error(error); 
     }
