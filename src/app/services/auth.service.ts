@@ -14,7 +14,7 @@ export class AuthService {
 
   public login = async (newUser: Partial<UserDto>): Promise<ApiResponse<UserDto>> => {
     let res = await this.http
-      .post<ApiResponse<UserDto>>(`${this.apiHost}/users/login`, newUser)
+      .post<ApiResponse<UserDto>>(`${this.apiHost}/auth/login`, newUser)
       .toPromise()
       .then((res) => ({...res}));
 
