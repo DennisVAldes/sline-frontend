@@ -6,7 +6,7 @@ import { DatePipe } from '@angular/common';
 import { NotifierModule } from "angular-notifier";
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { LoginSignupComponent } from './components/login-signup/login-signup.com
 
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/users.service";
+import { AuthInterceptorService } from "./services/auth-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,12 @@ import { UserService } from "./services/users.service";
     HomePageComponent,
     DatePipe,
     AuthService,
-    UserService
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

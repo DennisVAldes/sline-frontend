@@ -10,7 +10,13 @@ export class AuthService {
   
   private apiHost = environment.API_ENDPOINT;
 
+  TOKEN_KEY = 'token'
+
   constructor( private http: HttpClient ) { }
+
+  public getToken = () => {
+    return localStorage.getItem(this.TOKEN_KEY);
+  }
 
   public login = async (newUser: Partial<UserDto>): Promise<ApiResponse<UserDto>> => {
     let res = await this.http
@@ -18,7 +24,7 @@ export class AuthService {
       .toPromise()
       .then((res) => ({...res}));
 
-    localStorage.setItem('token', (await res).token);
+    localStorage.setItem(this.TOKEN_KEY, (await res).token);
 
     return res;
   }

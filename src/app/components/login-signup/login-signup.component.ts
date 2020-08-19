@@ -25,6 +25,7 @@ export class LoginSignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    localStorage.clear();
   }
 
   public signupForm = new FormGroup({
