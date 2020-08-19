@@ -18,7 +18,6 @@ export class LoginSignupComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router,
     private authService: AuthService,
     notifierService: NotifierService
   ) { 

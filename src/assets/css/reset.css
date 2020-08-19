@@ -115,3 +115,5 @@ input[type=number]:focus,
 [contenteditable].form-control:focus {
     box-shadow: none !important; outline: none !important;
 }
+
+button:focus{ outline: none; }
