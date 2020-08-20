@@ -14,9 +14,9 @@ export class AuthService {
 
   constructor( private http: HttpClient ) { }
 
-  public getToken = () => {
-    return localStorage.getItem(this.TOKEN_KEY);
-  }
+  public getToken = () => localStorage.getItem(this.TOKEN_KEY);
+
+  public isAuthenticated = () => !!localStorage.getItem(this.TOKEN_KEY);
 
   public login = async (newUser: Partial<UserDto>): Promise<ApiResponse<UserDto>> => {
     let res = await this.http
@@ -25,7 +25,6 @@ export class AuthService {
       .then((res) => ({...res}));
 
     localStorage.setItem(this.TOKEN_KEY, (await res).token);
-
     return res;
   }
                       
