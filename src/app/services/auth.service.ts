@@ -16,7 +16,11 @@ export class AuthService {
 
   public getToken = () => localStorage.getItem(this.TOKEN_KEY);
 
-  public isAuthenticated = () => !!localStorage.getItem(this.TOKEN_KEY);
+  public isAuthenticated = () => {
+    if(localStorage.getItem(this.TOKEN_KEY) !== undefined){
+      return !!localStorage.getItem(this.TOKEN_KEY);
+    }
+  };
 
   public login = async (newUser: Partial<UserDto>): Promise<ApiResponse<UserDto>> => {
     let res = await this.http

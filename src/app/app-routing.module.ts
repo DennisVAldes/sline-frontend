@@ -12,8 +12,9 @@ const routes: Routes = [
   { path:'home', component: HomePageComponent },
   { path:'cases', component: CasesComponent, canActivate: [NoAuthGuard] },
   { path:'users', component: UsersComponent, canActivate: [NoAuthGuard] },
-  { path:'PageNotFound', component: PageNotFoundComponent },
-  { path:'', redirectTo: 'home', pathMatch: 'full' }
+  { path:'', redirectTo: 'home', pathMatch: 'full' },
+  { path: '404', component: PageNotFoundComponent},
+  { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({
