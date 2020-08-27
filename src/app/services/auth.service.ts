@@ -22,6 +22,8 @@ export class AuthService {
     }
   };
 
+  public logout = () => localStorage.removeItem(this.TOKEN_KEY);
+
   public login = async (newUser: Partial<UserDto>): Promise<ApiResponse<UserDto>> => {
     let res = await this.http
       .post<ApiResponse<UserDto>>(`${this.apiHost}/auth/login`, newUser)

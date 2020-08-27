@@ -9,10 +9,10 @@ import { NoAuthGuard } from './services/no-auth-guard.service';
 
 const routes: Routes = [
   { path:'info', component: InfoPageComponent, canActivate: [NoAuthGuard] },
-  { path:'home', component: HomePageComponent },
+  { path:'', component: HomePageComponent },
   { path:'cases', component: CasesComponent, canActivate: [NoAuthGuard] },
   { path:'users', component: UsersComponent, canActivate: [NoAuthGuard] },
-  { path:'', redirectTo: 'home', pathMatch: 'full' },
+  { path:'', redirectTo: '', pathMatch: 'full' },
   { path: '404', component: PageNotFoundComponent},
   { path: '**', redirectTo: '/404' }
 ];

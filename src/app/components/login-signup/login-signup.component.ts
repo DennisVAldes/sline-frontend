@@ -25,7 +25,7 @@ export class LoginSignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    localStorage.clear();
+    localStorage.removeItem('token');
   }
 
   public signupForm = new FormGroup({
