@@ -1,5 +1,5 @@
 <!-- Modal login/sign up -->
-<div class="modal fade">
+<div class="modal">
     <div class="header-buttons">
         <ul class="clearfix">
             <li (click)="letModal = true" [ngClass]="{'selected': letModal}"><i class="icon-user-o"></i> <span>Login</span> </li>
@@ -56,9 +56,7 @@
                     <li>
                         <span class="title">Seleccione su sexo</span>
                         <select formControlName="sexo">
-                            <option ngValue="Mujer">Mujer</option>
-                            <option ngValue="Hombre">Hombre</option>
-                            <option ngValue="Prefiero no decirlo">Prefiero no decirlo</option>
+                            <option ngValue={{types}} *ngFor="let types of sexTypes">{{ types }}</option>
                         </select>
                     </li>
                     <li>

@@ -13,9 +13,6 @@ import { NotifierService } from "angular-notifier";
 })
 export class LoginSignupComponent implements OnInit {
   
-  letModal = false;
-  private readonly notifier: NotifierService;
-
   constructor(
     private userService: UserService,
     private authService: AuthService,
@@ -23,7 +20,10 @@ export class LoginSignupComponent implements OnInit {
   ) { 
     this.notifier = notifierService; 
   }
-
+  
+  letModal = false;
+  private readonly notifier: NotifierService;
+  sexTypes = ['Hombre','Mujer','Prefiero no decirlo'];
   ngOnInit(): void {
     localStorage.removeItem('token');
   }
@@ -60,7 +60,7 @@ export class LoginSignupComponent implements OnInit {
 
   public login = async () => {
     try {
-      const user = await this.getUser();
+      const user = this.getUser();
       let res = await this.authService.login(user);
       console.log(res);
       
@@ -71,10 +71,10 @@ export class LoginSignupComponent implements OnInit {
 
   public submitUser = async () => {
     try {
-			const user = await this.setUser();
-      await this.userService.createUser(user);
+			const user = this.setUser();
+      const res = await this.userService.createUser(user);
 
-      this.notifier.notify("success", "Usuario registrado con exito!")
+      this.notifier.notify("success", res.message);
 
 		} catch (err) {
       console.error(err);
