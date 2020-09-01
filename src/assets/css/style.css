@@ -32,15 +32,17 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .modal .modal-header button.close:focus { outline: none; }
 .modal .modal-header button.close:hover { color: rgba(39, 98, 224, 0.9); background: #fff; border: 1px solid rgba(39, 98, 224, 0.9); }
 .modal .form-content { padding: 10px 0; }
-.modal .form-content ul { padding: 40px 20px; list-style: none; }
-.modal .form-content ul li { margin: 10px auto 15px; max-width: 220px; width: 100%; }
-.modal .form-content ul li span.title { color: rgba(0, 0, 0, 0.5); font-weight: 600; font-size: 15px; margin-left: -10px; }
+.modal .form-content ul { padding: 40px 20px; list-style: none; display: flex !important; flex-direction: row; justify-content: space-between; flex-wrap: wrap; }
+.modal .form-content ul li { position: relative; margin: 10px auto 15px; max-width: 220px; width: 100%; display: flex; flex-direction: column; }
+.modal .form-content ul li p.title { display: inline-block; color: rgba(0, 0, 0, 0.5); font-weight: 600; font-size: 15px; margin-left: -10px; }
+.modal .form-content ul li span{ color: #dd3030; }
 .modal .form-content ul li input { width: 96%; transition: all .3s ease; padding: 10px 0 5px 10px; border-style: none; border-bottom: 1px solid #1979a9; }
-.modal .form-content ul li .required { position: absolute; font-size: 14px; padding: 0; transition: all 0.3s ease; transform: scaleY(0); transform-origin: top; background: #f58484; }
+.modal .form-content ul li .required { position: absolute; bottom: -31px; font-size: 14px; padding: 0; transition: all 0.3s ease; transform: scaleY(0); transform-origin: top; background: #f58484; }
 .modal .form-content ul li input.ng-invalid.ng-touched ~ .required { padding: 5px 10px; line-height: 1.5; transform: scaleY(1); }
 .modal .form-content ul li input::placeholder { font-size: 14px; color: rgba(0, 0, 0, 0.3); font-weight: 600; }
-.modal .form-content ul li select { cursor: pointer; width: 100%; padding: 10px 0 5px 10px; border-style: none; border-bottom: 1px solid #1979a9; }
+.modal .form-content ul li select { cursor: pointer; width: 96%; padding: 10px 0 5px 10px; border-style: none; border-bottom: 1px solid #1979a9; }
 .modal .buttons-content { text-align: center; }
+.modal .buttons-content button{ max-width: 200px; width: 100%; }
 
 /* Buttons */
 .btn-primary { cursor: pointer; transition: all .3s ease;  font-weight: 600; padding: 10px 15px; margin: 0 10px; border-style: none; border: solid 1px transparent; border-radius: 10px; color: #fff; }

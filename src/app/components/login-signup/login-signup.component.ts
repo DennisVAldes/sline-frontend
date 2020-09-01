@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { UserSexTypes } from 'src/app/types/enums';
 import { UserDto } from 'src/app/types/dtos/models';
 import { UserService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
@@ -13,17 +14,22 @@ import { NotifierService } from "angular-notifier";
 })
 export class LoginSignupComponent implements OnInit {
   
+  // En el constructor inicializamos los modulos, servicios, etc que vayamos a usar
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    notifierService: NotifierService
+    notifierService: NotifierService,
+    private routerService: Router
   ) { 
     this.notifier = notifierService; 
   }
   
+  // Aca declaramos variables, arrays, etc
   letModal = false;
+  sexTypes = UserSexTypes;
   private readonly notifier: NotifierService;
-  sexTypes = ['Hombre','Mujer','Prefiero no decirlo'];
+
+  // Esta funcion se ejecuta cuando se carga el componente
   ngOnInit(): void {
     localStorage.removeItem('token');
   }
@@ -32,24 +38,25 @@ export class LoginSignupComponent implements OnInit {
     username: new FormControl('', [Validators.required, Validators.minLength(6)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    confirmPassword: new FormControl('', [Validators.required]), 
     sexo: new FormControl('', [Validators.required]),
     fechanac: new FormControl('', [Validators.required])
-  });
+  }, {validators: this.checkPassword })
 
   public loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
-  });
+  })
 
   private setUser = (): UserDto => {
 		return {
 			"username": this.signupForm.value.username,
 			"email": this.signupForm.value.email,
-			"password": this.signupForm.value.password,
+      "password": this.signupForm.value.password,
 			"sexo": this.signupForm.value.sexo,
 			"fechanac": this.signupForm.value.fechanac,
-		};
-  };
+		}
+  }
   
   private getUser = () => {
     return {
@@ -58,11 +65,22 @@ export class LoginSignupComponent implements OnInit {
     }
   }
 
+  checkPassword(group: FormGroup) { // here we have the 'passwords' group
+    let pass = group.get('password').value;
+    let confirmPass = group.get('confirmPassword').value;
+
+    return pass === confirmPass ? null : { notSame: true };
+  }
+
   public login = async () => {
     try {
       const user = this.getUser();
       let res = await this.authService.login(user);
-      console.log(res);
+      
+      if(res.token){
+        this.notifier.notify("succes", res.message);
+        this.routerService.navigateByUrl("/users");
+      }
       
     } catch (error) {
       console.error(error); 
@@ -74,12 +92,15 @@ export class LoginSignupComponent implements OnInit {
 			const user = this.setUser();
       const res = await this.userService.createUser(user);
 
-      this.notifier.notify("success", res.message);
+      if(res.token){
+        this.notifier.notify("succes", res.message);
+          this.routerService.navigateByUrl("/users");
+      }
 
 		} catch (err) {
       console.error(err);
       
 		}
-	};
+	}
 
 }

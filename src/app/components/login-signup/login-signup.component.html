@@ -2,8 +2,12 @@
 <div class="modal">
     <div class="header-buttons">
         <ul class="clearfix">
-            <li (click)="letModal = true" [ngClass]="{'selected': letModal}"><i class="icon-user-o"></i> <span>Login</span> </li>
-            <li (click)="letModal = false" [ngClass]="{'selected': !letModal}"><i class="icon-contact"></i> <span>Registro</span> </li>
+            <li (click)="letModal = true" [ngClass]="{'selected': letModal}">
+                <em class="icon-user-o"></em> <span>Login</span> 
+            </li>
+            <li (click)="letModal = false" [ngClass]="{'selected': !letModal}">
+                <em class="icon-contact"></em> <span>Registro</span>
+            </li>
         </ul>
     </div>
     <div class="login-modal" *ngIf="letModal">
@@ -14,11 +18,11 @@
             <form [formGroup]="loginForm">
                 <ul>
                     <li>
-                        <span class="title">Correo electronico</span>
+                        <p class="title">Correo electronico <span> *</span></p>
                         <input type="email" formControlName="email" autocomplete="on">
                     </li>
                     <li>
-                        <span class="title">Contraseña</span>
+                        <p class="title">Contraseña <span> *</span></p>
                         <input type="password" formControlName="password" autocomplete="on">
                     </li>
                 </ul>
@@ -26,8 +30,7 @@
 
             <div class="buttons-content">
                 <button [disabled]="!loginForm.valid" (click)="login()" class="btn-primary"
-                    [ngClass]="!loginForm.valid === true ? 'btn-disabled' : 'btn-submit'">Aceptar</button>
-                <button class="btn-primary btn-cancel">Cancelar</button>
+                    [ngClass]="!loginForm.valid === true ? 'btn-disabled' : 'btn-submit'">Ingresar</button>
             </div>
         </div>
     </div>
@@ -39,38 +42,40 @@
             <form [formGroup]="signupForm">
                 <ul>
                     <li>
-                        <span class="title">Nombre de usuario</span>
+                        <p class="title">Nombre de usuario <span> *</span></p>
                         <input type="text" formControlName="username">
                         <div class="required">Minimo 6 caracteres.</div>
                     </li>
                     <li>
-                        <span class="title">Correo electronico</span>
+                        <p class="title">Correo electronico <span> *</span></p>
                         <input type="email" formControlName="email" autocomplete="on">
-                        <div class="required">Este campo es obligatorio.</div>
                     </li>
                     <li>
-                        <span class="title">Contraseña</span>
+                        <p class="title">Contraseña <span> *</span></p>
                         <input type="password" formControlName="password" autocomplete="on">
                         <div class="required">Minimo 8 caracteres.</div>
                     </li>
                     <li>
-                        <span class="title">Seleccione su sexo</span>
+                        <p class="title">Confirmar contraseña <span> *</span></p>
+                        <input type="password" formControlName="confirmPassword">
+                        <div class="required">La contraseña no coincide.</div>
+                    </li>
+                    <li>
+                        <p class="title">Seleccione su sexo <span> *</span></p>
                         <select formControlName="sexo">
                             <option ngValue={{types}} *ngFor="let types of sexTypes">{{ types }}</option>
                         </select>
                     </li>
                     <li>
-                        <span class="title">Fecha de nacimiento</span>
-                        <input type="date" formControlName="fechanac">
-                        <div class="required">Este campo es obligatorio.</div>
+                        <p class="title">Fecha de nacimiento <span> *</span></p>
+                        <input type="date" formControlName="fechanac" max=`${todayDate}`>
                     </li>
                 </ul>
+                
             </form>
-
             <div class="buttons-content">
                 <button [disabled]="!signupForm.valid" (click)="submitUser()" class="btn-primary"
-                    [ngClass]="!signupForm.valid === true ? 'btn-disabled' : 'btn-submit'">Aceptar</button>
-                <button class="btn-primary btn-cancel">Cancelar</button>
+                    [ngClass]="!signupForm.valid === true ? 'btn-disabled' : 'btn-submit'">Registrarse</button>
             </div>
         </div>
     </div>
