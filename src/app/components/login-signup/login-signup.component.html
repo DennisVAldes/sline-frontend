@@ -27,7 +27,7 @@
                     </li>
                 </ul>
             </form>
-
+            <div class="haveAccount">Aun no tienes una cuenta? <a (click)="letModal = false">Registrate</a></div>
             <div class="buttons-content">
                 <button [disabled]="!loginForm.valid" (click)="login()" class="btn-primary"
                     [ngClass]="!loginForm.valid === true ? 'btn-disabled' : 'btn-submit'">Ingresar</button>

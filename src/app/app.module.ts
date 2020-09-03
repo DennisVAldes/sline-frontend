@@ -22,6 +22,7 @@ import { LoginSignupComponent } from './components/login-signup/login-signup.com
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/users.service";
 import { AuthInterceptorService } from "./services/auth-interceptor.service";
+import { CreateCaseComponent } from './components/components/create-case/create-case.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
     InfoPageComponent,
     PageNotFoundComponent,
     LoginSignupComponent,
+    CreateCaseComponent,
   ],
   imports: [
     BrowserModule,

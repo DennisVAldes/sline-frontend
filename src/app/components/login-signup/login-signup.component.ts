@@ -25,7 +25,7 @@ export class LoginSignupComponent implements OnInit {
   }
   
   // Aca declaramos variables, arrays, etc
-  letModal = false;
+  letModal = true;
   sexTypes = UserSexTypes;
   private readonly notifier: NotifierService;
 
