@@ -16,14 +16,15 @@ export class MapComponent implements AfterViewInit {
     
     var map = new google.maps.Map(this.gmap.nativeElement, {
       center: pos,
-      zoom: 16
+      zoom: 16,
+      
     });
    
     map.setTilt(45);
 
     var infowindow = new google.maps.InfoWindow({
       content: 
-      '<div id="content" class="icon-mail">'+
+      '<div id="content">'+
         'Usted está aquí.'+
       '</div>'
     });
@@ -43,7 +44,7 @@ export class MapComponent implements AfterViewInit {
           position: pos,
           map: map,
           icon: '../../assets/img/home-marker.svg',
-          title: 'Su posicion' });
+          title: 'Su posicion', });
       });
 
         userMarker.addListener('click', function(){
@@ -54,5 +55,5 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-  };
+  }
 }

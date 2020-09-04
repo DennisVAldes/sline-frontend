@@ -11,14 +11,14 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .menu ul li a { text-decoration: none; font-size: 19px; }
 
 /* Main container */
-.container { float: right; background: #534e9e; height: 100vh; width: calc(100% - 220px); }
-.container .main-content { width: 96%; margin: 0 auto; padding-top: 20px; }
+.container { float: right; background: #534e9e; height: 100vh; width: calc(100% - 220px); padding: 0px; }
+.container .main-content { width: 96%; margin: 0 auto; padding: 20px; }
 
 /* Home Page */
 .home-page { width: 100%; height: 100vh; position: relative; background: url("../img/home-page.jpg") no-repeat; background-size: cover; background-position: center; overflow: auto; }
 
 /* Modal */
-.modal { opacity: 1; display: inline-block; overflow: visible; max-width: 600px; max-height: 600px; width: 100%; height: 100%; box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3); position: absolute; margin: 100px auto 0; background: #fff; border-radius: 10px; }
+.modal { opacity: 1; display: inline-block; overflow: visible; max-width: 600px; max-height: 530px; width: 100%; height: 100%; box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3); position: absolute; margin: 100px auto 0; background: #fff; border-radius: 10px; }
 .modal-dialog { max-width: 600px; width: 100%; position: relative; left: 50%; margin-left: -300px; margin-top: 100px; }
 .modal .header-buttons { box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5); z-index: 1; position: absolute; max-width: 450px; width: 100%; top: -25px; left: 50%; margin-left: -225px; background: #0277bd; }
 .modal .header-buttons ul { list-style: none; padding: 5px; }
@@ -27,7 +27,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .modal .header-buttons ul li span { margin: 0 5px; }
 
 .modal .login-modal,
-.modal .signup-modal{ max-height: 100%; height: 100%; overflow: hidden; }z
+.modal .signup-modal { max-height: 100%; height: 100%; overflow: hidden; }
 .modal .modal-header { text-align: center; padding: 50px 0 10px !important; position: relative; border: none; }
 .modal .modal-header span { font-size: 32px; font-weight: bold; display: block; }
 .modal .modal-header button.close { transition: all .3s ease; border: 1px solid #fff; color: #fff; font-weight: 600; cursor: pointer; background: rgba(39, 98, 224, 0.9); position: absolute; right: 0; top: 0; border-radius: 5px; margin: 10px 10px 0 0; padding: 5px 10px; }
@@ -39,6 +39,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .modal .form-content ul li p.title { display: inline-block; color: rgba(0, 0, 0, 0.5); font-weight: 600; font-size: 16px; }
 .modal .form-content ul li span{ color: #dd3030; }
 .modal .form-content ul li input { width: 100%; transition: all .3s ease; padding: 10px 0 5px 10px; border-style: none; border-bottom: 1px solid #1979a9; }
+.modal .form-content ul li .check-icon{ position: absolute; right: 25px; bottom: 5px; width: 20px; }
 .modal .form-content ul li .required { position: absolute; bottom: -31px; font-size: 14px; padding: 0; transition: all 0.3s ease; transform: scaleY(0); transform-origin: top; background: #f58484; }
 .modal .form-content ul li input.ng-invalid.ng-touched ~ .required { padding: 5px 10px; line-height: 1.5; transform: scaleY(1); }
 .modal .form-content ul li input::placeholder { font-size: 14px; color: rgba(0, 0, 0, 0.3); font-weight: 600; }
@@ -53,11 +54,12 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .btn-cancel { background: #f58484; }
 .btn-submit { color: #3592cb; border: 1px solid #3592cb; background: #fff; }
 .btn-submit:hover { color: #fff !important; background: #3592cb !important; }
-.btn-disabled:disabled { pointer-events: none; }
+.btn-disabled:disabled { pointer-events: none; background: gray; }
 
 /* Map */
-#map { width: 100%; height: 500px; border-radius: 10px; }
+#map { width: 100%; height: 100%; }
 #map .gmnoprint { border-radius: 10px; overflow: hidden; }
+#map img{ width: 10px; }
 
 /* Page not found */
 .pageNotFound { width: 100vw; height: 100vh; background: #fff; }

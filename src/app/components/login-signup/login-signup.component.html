@@ -27,7 +27,7 @@
                     </li>
                 </ul>
             </form>
-            <div class="haveAccount">Aun no tienes una cuenta? <a (click)="letModal = false">Registrate</a></div>
+            <div class="haveAccount">¿Aun no tienes una cuenta? <a (click)="letModal = false">Registrate</a></div>
             <div class="buttons-content">
                 <button [disabled]="!loginForm.valid" (click)="login()" class="btn-primary"
                     [ngClass]="!loginForm.valid === true ? 'btn-disabled' : 'btn-submit'">Ingresar</button>
@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="signup-modal" *ngIf="!letModal">
-        <div class=" modal-header">
+        <div class="modal-header">
             <span class="title">Registro</span>
         </div>
         <div class="form-content">
@@ -58,6 +58,18 @@
                     <li>
                         <p class="title">Confirmar contraseña <span> *</span></p>
                         <input type="password" formControlName="confirmPassword">
+                        <figure class="check-icon">
+                            <img 
+                                src="/assets/img/correct-icon.svg" 
+                                alt="check icon"
+                                *ngIf="signupForm.get('password').value === signupForm.get('confirmPassword').value && signupForm.get('password').value != ''"
+                            >
+                            <img 
+                                src="/assets/img/wrong-icon.svg" 
+                                alt="check icon"
+                                *ngIf="signupForm.get('password').value !== signupForm.get('confirmPassword').value"
+                            >
+                        </figure>
                         <div class="required">La contraseña no coincide.</div>
                     </li>
                     <li>
@@ -73,6 +85,7 @@
                 </ul>
                 
             </form>
+            <div class="haveAccount">¿Ya tienes una cuenta? <a (click)="letModal = true">Inicia sesión</a></div>
             <div class="buttons-content">
                 <button [disabled]="!signupForm.valid" (click)="submitUser()" class="btn-primary"
                     [ngClass]="!signupForm.valid === true ? 'btn-disabled' : 'btn-submit'">Registrarse</button>

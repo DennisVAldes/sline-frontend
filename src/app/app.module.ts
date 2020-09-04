@@ -22,7 +22,7 @@ import { LoginSignupComponent } from './components/login-signup/login-signup.com
 import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/users.service";
 import { AuthInterceptorService } from "./services/auth-interceptor.service";
-import { CreateCaseComponent } from './components/components/create-case/create-case.component';
+import { CreateCaseComponent } from './components/create-case/create-case.component';2
 
 @NgModule({
   declarations: [

@@ -38,7 +38,7 @@ export class LoginSignupComponent implements OnInit {
     username: new FormControl('', [Validators.required, Validators.minLength(6)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    confirmPassword: new FormControl('', [Validators.required]), 
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)]), 
     sexo: new FormControl('', [Validators.required]),
     fechanac: new FormControl('', [Validators.required])
   }, {validators: this.checkPassword })
@@ -79,7 +79,6 @@ export class LoginSignupComponent implements OnInit {
       
       if(res.token){
         this.notifier.notify("succes", res.message);
-        this.routerService.navigateByUrl("/users");
       }
       
     } catch (error) {
