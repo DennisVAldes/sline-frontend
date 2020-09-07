@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ToggleSizes } from 'src/app/services/width-change.service';
 
 @Component({
   selector: 'app-create-case',
@@ -8,18 +7,8 @@ import { ToggleSizes } from 'src/app/services/width-change.service';
 })
 export class CreateCaseComponent implements OnInit {
 
-  constructor( private toggleSizesService: ToggleSizes ) { }
+  constructor( ) { }
 
   ngOnInit(): void {
-  }
-
-  get isCreateCaseExpand(): boolean {
-    return this.toggleSizesService.isCreateCaseExpand;
-  }
-
-  status:boolean = this.isCreateCaseExpand;
-
-  toggleNavbar() {
-      this.toggleSizesService.toggleCreateCaseSize()  
   }
 }

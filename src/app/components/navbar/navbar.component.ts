@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { ToggleSizes } from 'src/app/services/width-change.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,15 +10,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor( private toggleSizesService: ToggleSizes ) { }
-  
-  get isNavbarExpand(): boolean {
-    return this.toggleSizesService.isNavbarExpand;
-  }
+  expand: false;
 
-  status:boolean = this.isNavbarExpand;
+  constructor( ) { }
 
-  toggleNavbar() {
-      this.toggleSizesService.toggleNavbarSize()
-  }
 }

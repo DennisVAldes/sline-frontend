@@ -30,6 +30,11 @@ export class MapComponent implements AfterViewInit {
     });
 
     var userMarker = new google.maps.Marker;
+    var icon = {
+      url: '../../assets/img/user-pin.svg', // url
+      scaledSize: new google.maps.Size(50, 50), // scaled sizes
+  };
+  
 
     // Geolocation
     if (navigator.geolocation) {
@@ -43,15 +48,15 @@ export class MapComponent implements AfterViewInit {
         userMarker.setValues({
           position: pos,
           map: map,
-          icon: '../../assets/img/home-marker.svg',
-          title: 'Su posicion', });
+          icon: icon,
+          title: 'Su posicion',});
       });
 
-        userMarker.addListener('click', function(){
-          infowindow.open(map, userMarker)
-        });
-    };
-  };
+      userMarker.addListener('click', function(){
+        infowindow.open(map, userMarker)
+      });
+    }
+  }
 
   ngAfterViewInit(): void {
     this.initMap();
