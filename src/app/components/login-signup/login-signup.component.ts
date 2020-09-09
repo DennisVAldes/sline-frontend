@@ -76,17 +76,11 @@ export class LoginSignupComponent implements OnInit {
     try {
       const user = this.getUser();
       let res = await this.authService.login(user);
-   
+      
       if(res.token){
-          this.routerService.navigate(['/cases']);
+        this.notifier.notify("succes", res.message);
       }
-
-      if(!res.token){      
-        this.notifier.show({
-          type: "succes", 
-          message: res.message,
-        });
-      }
+      
     } catch (error) {
       console.error(error); 
     }
@@ -97,13 +91,9 @@ export class LoginSignupComponent implements OnInit {
 			const user = this.setUser();
       const res = await this.userService.createUser(user);
 
-      this.notifier.show({
-        type: "succes", 
-        message: res.message,
-      });
-
       if(res.token){
-          this.routerService.navigate(['/cases']);
+        this.notifier.notify("succes", res.message);
+          this.routerService.navigateByUrl("/users");
       }
 
 		} catch (err) {
