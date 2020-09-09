@@ -16,11 +16,11 @@ export class AuthService {
 
   public getToken = () => localStorage.getItem(this.TOKEN_KEY);
 
-  public isAuthenticated = () => {
+  public isAuthenticated(){
     if(localStorage.getItem(this.TOKEN_KEY) !== undefined){
       return !!localStorage.getItem(this.TOKEN_KEY);
     }
-  };
+  }
 
   public logout = () => localStorage.removeItem(this.TOKEN_KEY);
 

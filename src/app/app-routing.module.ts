@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InfoPageComponent } from './pages/info-page/info-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -12,7 +12,7 @@ const routes: Routes = [
   { path:'login', component: HomePageComponent },
   { path:'cases', component: CasesComponent, canActivate: [NoAuthGuard] },
   { path:'users', component: UsersComponent, canActivate: [NoAuthGuard] },
-  { path:'', redirectTo: 'login', pathMatch: 'full' },
+  { path:'', redirectTo: 'cases', pathMatch: 'full' },
   { path: '404', component: PageNotFoundComponent},
   { path: '**', redirectTo: '/404' }
 ];

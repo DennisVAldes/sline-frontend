@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { environment } from './../environments/environment';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +7,13 @@ import { environment } from './../environments/environment';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent{
-  constructor() {
-    console.log(environment.production); // Logs false for default environment
+export class AppComponent implements OnInit{
+  constructor(
+    private auth: AuthService
+  ) {}
+  
+  isLoggedIn = this.auth.isAuthenticated;
+
+  ngOnInit() {
   }
 }
