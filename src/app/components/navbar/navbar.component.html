@@ -1,29 +1,15 @@
-<div class="menu" [ngClass]="{'open': expand}">
+<div class="menu">
     <div class="nav-head">
-        <figure class="logo-content"
-            [ngClass]="{'open': expand}"
-        >
-            <img [src]="expand ? '/assets/img/sline-complete.svg' : '/assets/img/sline-without-text.svg'" alt="Sline logo">
+        <figure class="logo-content">
+            <img src="/assets/img/sline-complete.svg" alt="Sline logo">
         </figure>
-        <em class="icon-right-open-big arrow-icon"
-            (click)='expand = !expand'>
-        </em>
     </div>
     <span class="line"></span>
     <ul>
         <li class="clearfix">
-            <a [routerLink]="['/info']" routerLinkActive="router-link-active" >
-                Info
-            </a>
-        </li>
-        <li class="clearfix">
             <a [routerLink]="['/cases']" routerLinkActive="router-link-active" >
+                <em class="icon-map-o"></em>
                 Ver casos
-            </a>
-        </li>
-        <li class="clearfix">
-            <a [routerLink]="['/users']" routerLinkActive="router-link-active" >
-                Listado de usuarios
             </a>
         </li>
     </ul>
