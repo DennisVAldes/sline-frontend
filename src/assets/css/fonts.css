@@ -1,22 +1,24 @@
 @font-face {
   font-family: 'sline';
-  src: url('../font/sline.eot?39858721');
-  src: url('../font/sline.eot?39858721#iefix') format('embedded-opentype'),
-       url('../font/sline.woff2?39858721') format('woff2'),
-       url('../font/sline.woff?39858721') format('woff'),
-       url('../font/sline.ttf?39858721') format('truetype'),
-       url('../font/sline.svg?39858721#sline') format('svg');
+  src: url('../font/sline.eot?10224714');
+  src: url('../font/sline.eot?10224714#iefix') format('embedded-opentype'),
+       url('../font/sline.woff2?10224714') format('woff2'),
+       url('../font/sline.woff?10224714') format('woff'),
+       url('../font/sline.ttf?10224714') format('truetype'),
+       url('../font/sline.svg?10224714#sline') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/* @media screen and (-webkit-min-device-pixel-ratio:0) {
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'sline';
-    src: url('../font/sline.svg?39858721#sline') format('svg');
+    src: url('../font/sline.svg?10224714#sline') format('svg');
   }
-} */
+}
+*/
  
  [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "sline";
@@ -54,26 +56,24 @@
 }
  
 .icon-mail:before { content: '\e800'; } /* '' */
-.icon-contact:before { content: '\e801'; } /* '' */
-.icon-menu-outline:before { content: '\e802'; } /* '' */
-.icon-key:before { content: '\e803'; } /* '' */
-.icon-down-outline:before { content: '\e804'; } /* '' */
-.icon-up-outline:before { content: '\e805'; } /* '' */
-.icon-left-outline:before { content: '\e806'; } /* '' */
-.icon-right-outline:before { content: '\e807'; } /* '' */
-.icon-right-open-big:before { content: '\e808'; } /* '' */
-.icon-left-open-big:before { content: '\e809'; } /* '' */
-.icon-down-open-big:before { content: '\e80a'; } /* '' */
-.icon-up-open-big:before { content: '\e80b'; } /* '' */
+.icon-menu-outline:before { content: '\e801'; } /* '' */
+.icon-key-1:before { content: '\e802'; } /* '' */
+.icon-down-outline:before { content: '\e803'; } /* '' */
+.icon-left-outline:before { content: '\e804'; } /* '' */
+.icon-right-outline:before { content: '\e805'; } /* '' */
+.icon-up-outline:before { content: '\e806'; } /* '' */
+.icon-cancel-outline:before { content: '\e807'; } /* '' */
+.icon-logout:before { content: '\e808'; } /* '' */
+.icon-ic-localization-map:before { content: '\e80b'; } /* '' */
 .icon-search:before { content: '\e80c'; } /* '' */
-.icon-calendar:before { content: '\e80d'; } /* '' */
-.icon-location:before { content: '\e80e'; } /* '' */
-.icon-cog:before { content: '\e80f'; } /* '' */
-.icon-list:before { content: '\e810'; } /* '' */
+.icon-logo-instagram:before { content: '\e80d'; } /* '' */
+.icon-ic-map:before { content: '\e80e'; } /* '' */
+.icon-th-list-outline:before { content: '\e80f'; } /* '' */
+.icon-user:before { content: '\e810'; } /* '' */
 .icon-ok-outline:before { content: '\e811'; } /* '' */
+.icon-users:before { content: '\e812'; } /* '' */
 .icon-smile:before { content: '\f118'; } /* '' */
 .icon-frown:before { content: '\f119'; } /* '' */
 .icon-meh:before { content: '\f11a'; } /* '' */
-.icon-transgender-alt:before { content: '\f225'; } /* '' */
-.icon-map-o:before { content: '\f278'; } /* '' */
-.icon-user-o:before { content: '\f2c0'; } /* '' */ 
+.icon-transgender:before { content: '\f224'; } /* '' */
+.icon-user-plus:before { content: '\f234'; } /* '' */
