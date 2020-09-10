@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { UserDto, ApiResponse } from '../types/dtos/models';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class AuthService {
 
   TOKEN_KEY = 'token'
 
-  constructor( private http: HttpClient, private router: Router ) { }
+  constructor( private http: HttpClient ) { }
 
   public getToken = () => localStorage.getItem(this.TOKEN_KEY);
 
@@ -23,12 +22,7 @@ export class AuthService {
     }
   };
 
-  public logout = () => {
-    localStorage.removeItem(this.TOKEN_KEY)
-    setTimeout(() => {
-      this.router.navigateByUrl('/');
-    }, 3000);
-  };
+  public logout = () => localStorage.removeItem(this.TOKEN_KEY);
 
   public login = async (newUser: Partial<UserDto>): Promise<ApiResponse<UserDto>> => {
     let res = await this.http
