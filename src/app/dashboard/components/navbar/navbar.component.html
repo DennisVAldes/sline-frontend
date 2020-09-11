@@ -1,0 +1,25 @@
+<div class="menu">
+    <div class="nav-head">
+        <figure class="logo-content">
+            <img src="/assets/img/sline-complete.svg" alt="Sline logo">
+        </figure>
+    </div>
+    <span class="line"></span>
+    <ul>
+        <li class="clearfix">
+            <a [routerLink]="['/cases']" routerLinkActive="router-link-active" >
+                <em class="icon-ic-map"></em>
+                Ver casos
+            </a>
+        </li>
+    </ul>
+    <ul class="buttom-options">
+        <li class="clearfix"
+            (click)="logout()"
+        >
+            <em class="icon-logout"></em>
+            Logout
+        </li>
+    </ul>
+</div>
+<div class="black-layer"></div>

@@ -13,12 +13,12 @@ export class UserService {
 
     public getUsers = async(): Promise<ApiResponse<UserDto[]>> => 
         this.http
-            .get<ApiResponse<UserDto[]>>(`${this.apiHost}/user/`)
+            .get<ApiResponse<UserDto[]>>(`${this.apiHost}/users/`)
             .toPromise()
             .then((res) => ({...res}));
     
     public createUser = async (newUser: UserDto): Promise<ApiResponse<UserDto>> =>
             this.http
-                .post<ApiResponse<UserDto>>(`${this.apiHost}/user/`, newUser)
+                .post<ApiResponse<UserDto>>(`${this.apiHost}/auth/signup`, newUser)
                 .toPromise();
 }
