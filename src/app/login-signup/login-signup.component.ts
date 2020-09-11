@@ -78,7 +78,11 @@ export class LoginSignupComponent implements OnInit {
       let res = await this.authService.login(user);
       
       if(res.token){
-        this.notifier.notify("succes", res.message);
+        this.routerService.navigateByUrl('/');
+      }
+
+      if(!res.token || res.token === 'undefined'){
+        this.notifier.notify("success", "Email y/o contraseña incorrectos");
       }
       
     } catch (error) {

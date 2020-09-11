@@ -24,10 +24,10 @@ export class AuthService {
   };
 
   public logout = () => {
-    localStorage.removeItem(this.TOKEN_KEY)
+    localStorage.removeItem(this.TOKEN_KEY);
     setTimeout(() => {
-      this.router.navigateByUrl('/');
-    }, 3000);
+      this.router.navigateByUrl('/login');
+    }, 1000);
   };
 
   public login = async (newUser: Partial<UserDto>): Promise<ApiResponse<UserDto>> => {
