@@ -6,7 +6,7 @@ export interface ApiResponse<T>{
     token?: string
 }
 
-export interface UserDto{
+export interface UserDto {
     username: string;
     email: string;
     password: string;

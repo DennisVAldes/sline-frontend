@@ -77,12 +77,12 @@ export class LoginSignupComponent implements OnInit {
       const user = this.getUser();
       let res = await this.authService.login(user);
       
-      if(res.token){
+      if((await res).token){
         this.routerService.navigateByUrl('/');
       }
 
-      if(!res.token || res.token === 'undefined'){
-        this.notifier.notify("success", "Email y/o contraseña incorrectos");
+      if(!(await res).token){
+        this.notifier.notify("success", res.message);
       }
       
     } catch (error) {
@@ -95,14 +95,16 @@ export class LoginSignupComponent implements OnInit {
 			const user = this.setUser();
       const res = await this.userService.createUser(user);
 
-      if(res.token){
-        this.notifier.notify("succes", res.message);
-          this.routerService.navigateByUrl("/users");
+      if((await res).token){
+        this.routerService.navigateByUrl('/');
+      }
+
+      if(!(await res).token){
+        this.notifier.notify("success", res.message);
       }
 
 		} catch (err) {
-      console.error(err);
-      
+      console.error(err);      
 		}
 	}
 
