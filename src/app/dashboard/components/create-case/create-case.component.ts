@@ -9,6 +9,8 @@ export class CreateCaseComponent implements OnInit {
 
   constructor( ) { }
 
+  open = false;
+
   ngOnInit(): void {
   }
 }

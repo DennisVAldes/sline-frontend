@@ -1,3 +1,16 @@
-<div class="create-case-section">
-    
+<div class="create-case" [ngClass]="{'open': open}">
+    <div class="header">
+        <ul class="clearfix">
+            <li class="item" *ngIf="open"> <em class="icon-list"> </em></li>
+            <li class="title" *ngIf="open"><h2>Casos</h2> </li>
+            <li class="arrow item" (click)="open = !open"> <em class="icon-next"> </em></li>
+        </ul>
+    </div>
+    <div class="cases-list">
+
+    </div>
+    <div class="footer">
+        <em class="icon-more"></em>
+    </div>
 </div>
+<div class="black-layer"></div>
