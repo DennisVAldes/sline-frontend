@@ -89,7 +89,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .create-case .header ul .item.arrow em{ font-size: 22px; }
 .create-case .header ul .title h2 { font-size: 34px; padding-left: 10px; }
 
-.create-case .cases-list { width: 0; height: 90%; margin: 0 auto; background: #da81d5; transition: all .3s ease; }
+.create-case .cases-list { width: 0; height: 90%; margin: 0 auto; transition: all .3s ease; }
 
 .create-case .footer{ width: 94%; height: 5%; margin: 0 auto; text-align: center; font-size: 34px; padding: 5px 0; }
 

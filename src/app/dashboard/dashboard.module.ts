@@ -7,7 +7,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CasesComponent } from './pages/cases/cases.component';
-import { CreateCaseComponent } from './components/create-case/create-case.component';
+import { ListCasesComponent } from './components/list-cases/list-cases.component';
 import { MapComponent } from './components/map/map.component';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { MapComponent } from './components/map/map.component';
     DashboardComponent,
     NavbarComponent,
     CasesComponent,
-    CreateCaseComponent,
+    ListCasesComponent,
     MapComponent
   ],
   imports: [
