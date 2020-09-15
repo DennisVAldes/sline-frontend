@@ -15,3 +15,11 @@ export interface UserDto {
     fechanac?: string;
     id?: number;
 }
+
+export interface CaseDto {
+    id?: number;
+    titulo: string;
+    descripcion: string;
+    coordenadas: {"lat": number, "long": number};
+    idUsuario?: number;
+}
