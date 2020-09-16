@@ -1,4 +1,4 @@
-<div class="create-case" [ngClass]="{'open': open}">
+<div class="list-cases" [ngClass]="{'open': open}">
     <div class="header">
         <ul class="clearfix">
             <li class="item" *ngIf="open"> <em class="icon-list"> </em></li>
@@ -6,45 +6,13 @@
             <li class="arrow item" (click)="open = !open"> <em class="icon-right-open"> </em></li>
         </ul>
     </div>
-    <div class="cases-list">
-        <div class="case-content">
-            
-        </div>
+    <div class="list-content">
+        
     </div>
     <div class="footer">
-        <em class="icon-plus"
-            (click)="letModal = !letModal"
-        >
-        </em>
+        <a href="create-case" class="pink-btn">
+            <em class="icon-plus"></em>
+        </a>
     </div>
 </div>
 <div class="black-layer"></div>
-
-<div class="modal modal_createCase" *ngIf='letModal'>
-    <div class="main-content">
-        <div class="header-content">
-            <h2>Agregar un nuevo caso</h2>
-            <em class="icon-wide-cross"
-                (click)="letModal = !letModal"
-            >
-            </em>
-        </div>
-        <div class="form-content">
-            <form [formGroup]="caseForm">
-                <ul>
-                    <li class="title-content">
-                        <p class="title">Titulo <span> *</span></p>
-                        <input type="text" formControlName="titulo">
-                    </li>
-                    <li class="description-content">
-                        <p class="title">Descripcion <span> *</span></p>
-                        <input type="text" formControlName="descripcion">
-                    </li>
-                    <li class="map-content">
-                        <app-map></app-map>
-                    </li>
-                </ul>
-            </form>
-        </div>
-    </div>
-</div>
