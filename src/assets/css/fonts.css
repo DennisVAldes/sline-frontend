@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'sline';
-  src: url('../font/sline.eot?64524327');
-  src: url('../font/sline.eot?64524327#iefix') format('embedded-opentype'),
-       url('../font/sline.woff2?64524327') format('woff2'),
-       url('../font/sline.woff?64524327') format('woff'),
-       url('../font/sline.ttf?64524327') format('truetype'),
-       url('../font/sline.svg?64524327#sline') format('svg');
+  src: url('../font/sline.eot?71676879');
+  src: url('../font/sline.eot?71676879#iefix') format('embedded-opentype'),
+       url('../font/sline.woff2?71676879') format('woff2'),
+       url('../font/sline.woff?71676879') format('woff'),
+       url('../font/sline.ttf?71676879') format('truetype'),
+       url('../font/sline.svg?71676879#sline') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'sline';
-    src: url('../font/sline.svg?64524327#sline') format('svg');
+    src: url('../font/sline.svg?71676879#sline') format('svg');
   }
 }
 */
@@ -55,12 +55,17 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-logout:before { content: '\e800'; } /* '' */
-.icon-list:before { content: '\e802'; } /* '' */
-.icon-useradd:before { content: '\e803'; } /* '' */
-.icon-email:before { content: '\e804'; } /* '' */
-.icon-more:before { content: '\e805'; } /* '' */
-.icon-next:before { content: '\e806'; } /* '' */
-.icon-user:before { content: '\e807'; } /* '' */
-.icon-plus:before { content: '\e808'; } /* '' */
-.icon-map:before { content: '\e809'; } /* '' */
+.icon-list:before { content: '\e800'; } /* '' */
+.icon-mail:before { content: '\e801'; } /* '' */
+.icon-plus:before { content: '\e802'; } /* '' */
+.icon-right-open:before { content: '\e803'; } /* '' */
+.icon-twitter:before { content: '\e804'; } /* '' */
+.icon-facebook:before { content: '\e805'; } /* '' */
+.icon-logout:before { content: '\e808'; } /* '' */
+.icon-wide-cross:before { content: '\e80b'; } /* '' */
+.icon-search:before { content: '\e80c'; } /* '' */
+.icon-instagram:before { content: '\e80d'; } /* '' */
+.icon-map:before { content: '\e80e'; } /* '' */
+.icon-user:before { content: '\e810'; } /* '' */
+.icon-next:before { content: '\e811'; } /* '' */
+.icon-user-plus:before { content: '\f234'; } /* '' */

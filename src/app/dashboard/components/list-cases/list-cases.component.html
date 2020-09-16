@@ -3,7 +3,7 @@
         <ul class="clearfix">
             <li class="item" *ngIf="open"> <em class="icon-list"> </em></li>
             <li class="title" *ngIf="open"><h2>Casos</h2> </li>
-            <li class="arrow item" (click)="open = !open"> <em class="icon-next"> </em></li>
+            <li class="arrow item" (click)="open = !open"> <em class="icon-right-open"> </em></li>
         </ul>
     </div>
     <div class="cases-list">
@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="footer">
-        <em class="icon-more"
+        <em class="icon-plus"
             (click)="letModal = !letModal"
         >
         </em>
@@ -23,20 +23,24 @@
 <div class="modal modal_createCase" *ngIf='letModal'>
     <div class="main-content">
         <div class="header-content">
-            Agregar un nuevo caso
+            <h2>Agregar un nuevo caso</h2>
+            <em class="icon-wide-cross"
+                (click)="letModal = !letModal"
+            >
+            </em>
         </div>
         <div class="form-content">
             <form [formGroup]="caseForm">
                 <ul>
-                    <li>
+                    <li class="title-content">
                         <p class="title">Titulo <span> *</span></p>
                         <input type="text" formControlName="titulo">
                     </li>
-                    <li>
+                    <li class="description-content">
                         <p class="title">Descripcion <span> *</span></p>
                         <input type="text" formControlName="descripcion">
                     </li>
-                    <li>
+                    <li class="map-content">
                         <app-map></app-map>
                     </li>
                 </ul>
