@@ -1,8 +1,14 @@
 <section class="create-case container">
     <div class="main-content">
-        <div class="header-content">
-            <a href="/" class="pink-btn"><em class="icon-next"></em></a>
-            <h2>Agregar un nuevo caso</h2>
+        <div class="header-content clearfix">
+            <em class="icon-form"></em>
+            <h2 class="title">Agregar un nuevo caso</h2>
+            <ul class="buttons-content clearfix">
+                <a href="/">
+                    <li class="btn-primary btn-cancel">Cancelar</li>
+                </a>
+                <li class="btn-primary btn-submit">Guardar</li>
+            </ul>
         </div>
         <div class="form-content">
             <form [formGroup]="caseForm">
@@ -16,6 +22,7 @@
                         <input type="text" formControlName="descripcion">
                     </li>
                     <li class="map-content">
+                        <p class="title">Seleccionar ubicacion <span> *</span></p>
                         <app-map></app-map>
                     </li>
                 </ul>
