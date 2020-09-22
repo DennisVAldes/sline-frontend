@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.getUsers();
+  async ngOnInit() {
+    await this.getUsers();
   }
 }

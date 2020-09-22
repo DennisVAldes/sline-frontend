@@ -1,0 +1,35 @@
+<section class="create-case container">
+    <div class="main-content">
+        <div class="header-content clearfix">
+            <em class="icon-form"></em>
+            <h2 class="title">Agregar un nuevo caso</h2>
+            <ul class="buttons-content clearfix">
+                <a href="/">
+                    <li class="btn-primary btn-cancel">Cancelar</li>
+                </a>
+                <li class="btn-primary" 
+                    [ngClass]="!caseForm.value.descripcion ? 'btn-disabled' : 'btn-submit'"
+                    (click)="submitCase()"
+                >
+                    Guardar
+                </li>
+            </ul>
+        </div>
+        <div class="form-content">
+            <form [formGroup]="caseForm">
+                <ul>
+                    <li class="description-content">
+                        <p class="title">Descripcion <span> *</span></p>
+                        <textarea type="text" formControlName="descripcion"></textarea>
+                    </li>
+                    <li class="map-content">
+                        <p class="title">Seleccionar ubicacion <span> *</span></p>
+                        <div #mapContainer id="map"></div>
+                        <p id="coordenadas"></p>
+                    </li>
+                </ul>
+                {{ caseForm.value | json }}
+            </form>
+        </div>
+    </div>
+</section>

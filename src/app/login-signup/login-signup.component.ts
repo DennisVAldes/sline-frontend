@@ -29,9 +29,7 @@ export class LoginSignupComponent implements OnInit {
   sexTypes = UserSexTypes;
   private readonly notifier: NotifierService;
 
-  // Esta funcion se ejecuta cuando se carga el componente
   ngOnInit(): void {
-    localStorage.removeItem('token');
   }
 
   public signupForm = new FormGroup({

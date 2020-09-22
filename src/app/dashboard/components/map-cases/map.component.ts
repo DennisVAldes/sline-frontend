@@ -33,9 +33,8 @@ export class MapComponent implements AfterViewInit {
     var icon = {
       url: '../../assets/img/user-pin.svg', // url
       scaledSize: new google.maps.Size(50, 50), // scaled sizes
-  };
+    };
   
-
     // Geolocation
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {

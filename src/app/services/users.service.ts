@@ -23,7 +23,7 @@ export class UserService {
             .post<ApiResponse<UserDto>>(`${this.apiHost}/auth/signup`, newUser)
             .toPromise();
         
-        localStorage.setItem(this.authService.TOKEN_KEY, (await res).token);
+        localStorage.setItem(this.authService.TOKEN_KEY, res.token);
         return res;
     }
 }
