@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CasesService } from 'src/app/services/cases.service';
+import { CaseDto } from 'src/app/types/dtos/models';
 
 @Component({
   selector: 'app-list-cases',
@@ -7,10 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListCasesComponent implements OnInit {
 
-  constructor( ) { }
+  constructor(
+    private caseService: CasesService
+  ) { }
 
   open = false;
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.getCases();
+    console.log(this.listCases)
+  }
+
+  listCases: CaseDto[];
+
+  private getCases = async () => {
+    try {
+      const response = await this.caseService.getCases();
+
+      this.listCases = response.data;
+    } catch (error) {
+      console.log()
+    }
   }
 }

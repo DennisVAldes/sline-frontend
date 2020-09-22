@@ -7,18 +7,18 @@ import { AuthService } from './auth.service';
 @Injectable({
 	providedIn: 'root',
 })
-export class UserService {
+export class CasesService {
     constructor( private http: HttpClient, private authService: AuthService ){}
 
     private apiHost = environment.API_ENDPOINT;
 
-    public getUsers = async(): Promise<ApiResponse<CaseDto[]>> => 
-        await this.http
-                .get<ApiResponse<CaseDto[]>>(`${this.apiHost}/users/`)
-                .toPromise()
-                .then((res) => ({...res}));
+    public getCases = async(): Promise<ApiResponse<CaseDto[]>> => 
+        this.http
+            .get<ApiResponse<CaseDto[]>>(`${this.apiHost}/cases/`)
+            .toPromise()
+            .then((res) => ({...res}));
     
-    public createUser = async (newCase: CaseDto) => {
+    public createCase = async (newCase: CaseDto) => {
         await this.http
             .post<ApiResponse<CaseDto[]>>(`${this.apiHost}/cases/add`, newCase)
             .toPromise();

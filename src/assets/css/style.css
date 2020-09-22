@@ -1,12 +1,35 @@
 body{ font-family: 'Source Sans Pro', sans-serif; }
 .clearfix:after{ content: ""; display: block; clear: both; }
 
+/* Scrollbar */
+    /* width */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #FEB6FF;
+        border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #da81d5;
+    }
+
 /* Main container */
-.container { float: right; height: 100vh; width: calc(100% - 190px); padding: 0px; }
-.container .main-content { padding: 0 15px; }
+.container { float: right; height: 100vh; width: calc(100% - 190px); padding: 0px; overflow: hidden; }
+.container .main-content { padding: 0 15px; overflow-y: auto; overflow-x: hidden; }
 
 /* General headers */
-.container .main-content .header-content:before { content: ""; clear: both; display: block; width: calc(100vw - 190px); height: 57px; position: absolute; left: -15px; top: 0; z-index: -1; background: #eca8e9; }
+.container .main-content .header-content:before { content: ""; clear: both; display: block; width: calc(100vw - 190px); height: 57px; position: absolute; left: -15px; top: 0; z-index: -1; background: #ffd1fd; }
 .container .main-content .header-content { position: relative; padding: 10px 0; }
 .container .main-content .header-content em { float: left; font-size: 34px; }
 .container .main-content .header-content .title { font-weight: 600; float: left; font-size: 26px; padding: 5px 0 0 10px; margin-bottom: -10px; }
@@ -27,7 +50,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 
 /* Login Page */
 .login-page { width: 100%; height: 100vh; position: relative; background: url("../img/home-page.jpg") no-repeat; background-size: cover; background-position: center; overflow: auto; }
-.login-page .modal { opacity: 1; display: inline-block; overflow: visible; max-width: 600px; max-height: 530px; width: 100%; height: 100%; box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3); position: absolute; margin: 100px auto 0; background: #fff; border-radius: 10px; }
+.login-page .modal { overflow: visible; max-width: 600px; max-height: 530px; width: 100%; height: 100%; box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3); position: relative; margin: 100px auto 0; background: #fff; border-radius: 10px; }
 .login-page .modal-dialog { max-width: 600px; width: 100%; position: relative; left: 50%; margin-left: -300px; margin-top: 100px; }
 .login-page .modal .header-buttons { box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5); z-index: 1; position: absolute; max-width: 450px; width: 100%; top: -25px; left: 50%; margin-left: -225px; background: #0277bd; }
 .login-page .modal .header-buttons ul { list-style: none; padding: 5px; }
@@ -76,7 +99,8 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .btn-cancel { background: #f58484; }
 .btn-submit { color: #3592cb; border: 1px solid #3592cb; background: #fff; }
 .btn-submit:hover { color: #fff !important; background: #3592cb !important; }
-.btn-disabled:disabled { pointer-events: none; background: gray; }
+.btn-disabled { pointer-events: none; background: gray; }
+.btn-disabled:hover { transform: scale(1); } 
 .pink-btn { font-size: 34px; text-decoration: none; cursor: pointer; color: #FFD1FD; text-shadow: -1px 1px 0 #286090, 1px 1px 0 #286090, 1px -1px 0 #286090, -1px -1px 0 #286090; transition: all .3s ease; }
 .pink-btn:hover { color: #286090;  text-shadow: -1px 1px 0 transparent, 1px 1px 0 transparent, 1px -1px 0 transparent, -1px -1px 0 transparent; }
 
@@ -87,10 +111,10 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 
 /* List of Cases*/
 .list-cases { width: 50px; height: calc(100vh - 40px); position: absolute; padding: 20px 0; right: 0; background: #FFD1FD; overflow: hidden; transition: width .3s ease; z-index: 2; }
+.list-cases .header-content { width: 94%; margin: 0 auto; position: relative; }
 .list-cases .header-content ul .item { bottom: 10px; }
 .list-cases .header-content ul .item em { font-size: 34px; }
 .list-cases .header-content ul .item.arrow { width: 100%; text-align: center; float: right; margin-top: 8px; cursor: pointer; transform: rotate(180deg); transition: all .3s ease; }
-.list-cases .header-content { width: 94%; height: 5%; margin: 0 auto; position: relative; }
 .list-cases .header-content ul { width: 100%; list-style: none; }
 .list-cases .header-content ul li { float: left; }
 .list-cases .header-content ul .item { bottom: 10px; }
@@ -98,27 +122,32 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .list-cases .header-content ul .item.arrow { width: 100%; text-align: center; float: right; margin-top: 8px; cursor: pointer; transform: rotate(180deg); transition: all .3s ease; }
 .list-cases .header-content ul .item.arrow em { font-size: 22px; }
 .list-cases .header-content ul .title h2 { font-size: 34px; padding-left: 10px; }
-.list-cases .list-content { width: 0; height: 90%; margin: 0 auto; transition: all .3s ease; }
-.list-cases .footer-content { width: 94%; height: 5%; margin: 0 auto; text-align: center; padding: 5px 0; }
+.list-cases .list-content { width: 0; max-height: calc(100% - 78px); height: 100%; margin: 0 auto; transition: all .3s ease; overflow-y: auto; }
+.list-cases .list-content .case-content { background: #FEB6FF; max-height: 230px; max-width: 100%; border-radius: 10px; padding: 10px; margin-bottom: 10px; position: relative; }
+.list-cases .list-content .case-content .header p { text-transform: capitalize; font-size: 18px; font-weight: 700; }
+.list-cases .list-content .case-content .body .description-content { margin: 5px 0; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; padding: 0 20px 10px 0; }
+.list-cases .list-content .case-content .body a { font-size: 16px; position: absolute; right: 5px; bottom: 10px; }
+.list-cases .list-content .case-content .body a em { position: relative; bottom: -2px; font-size: 10px; display: inline-block; transform:rotate(-90deg); }
+.list-cases .footer-content { width: 94%; margin: 0 auto; text-align: center; padding: 5px 0; }
 
 .black-layer { background: rgba(0 , 0, 0, 0.5); width: 0; height: 100vh; z-index: 1; position: absolute; right: 0; top: 0; }
 
 .list-cases.open { width: 350px; }
 .list-cases.open .header-content ul li.arrow { width: auto; transform: rotate(0 ); }
-.list-cases.open .list-content { width: 94%; padding: 10px 0; }
+.list-cases.open .list-content { width: 94%; padding: 10px 10px 10px 0; }
 .list-cases.open ~ .black-layer { width: calc(100% - 190px); }
 
 /* Create case page */
 .create-case .main-content .header-content .buttons-content { float: right; list-style: none; height: 100%; }
 .create-case .main-content .header-content .buttons-content li { float: left; }
 .create-case .main-content .form-content { padding-top: 50px; }
-.create-case .main-content .form-content ul { list-style: none; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; }
-.create-case .main-content .form-content ul li { display: flex; flex-direction: column; margin-bottom: 20px; }
+.create-case .main-content .form-content ul { list-style: none; display: flex; flex-direction: column; flex-wrap: wrap; justify-content: space-between; }
+.create-case .main-content .form-content ul li { width: 500px; display: flex; flex-direction: column; margin-bottom: 20px; }
 .create-case .main-content .form-content ul li p { font-weight: 600; font-size: 18px; margin-bottom: 10px; }
 .create-case .main-content .form-content ul li span { color: #dd3030; }
-.create-case .main-content .form-content ul li.map-content { height: 500px; width: 100%; }
-.create-case .main-content .form-content ul li.map-content app-map { height: 100%; width: 100%; }
-.create-case .main-content .form-content ul li.map-content app-map #map { height: 100%; width: 100%; }
+.create-case .main-content .form-content ul .description-content textarea { height: 200px; resize: none; }
+.create-case .main-content .form-content ul .map-content { height: 500px; width: 100%; }
+.create-case .main-content .form-content ul .map-content #map{ height: 100%; width: 100%; }
 
 
 /* Notifier container */

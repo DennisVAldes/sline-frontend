@@ -7,25 +7,28 @@
                 <a href="/">
                     <li class="btn-primary btn-cancel">Cancelar</li>
                 </a>
-                <li class="btn-primary btn-submit">Guardar</li>
+                <li class="btn-primary" 
+                    [ngClass]="!caseForm.value.descripcion ? 'btn-disabled' : 'btn-submit'"
+                    (click)="submitCase()"
+                >
+                    Guardar
+                </li>
             </ul>
         </div>
         <div class="form-content">
             <form [formGroup]="caseForm">
                 <ul>
-                    <li class="title-content">
-                        <p class="title">Titulo <span> *</span></p>
-                        <input type="text" formControlName="titulo">
-                    </li>
                     <li class="description-content">
                         <p class="title">Descripcion <span> *</span></p>
-                        <input type="text" formControlName="descripcion">
+                        <textarea type="text" formControlName="descripcion"></textarea>
                     </li>
                     <li class="map-content">
                         <p class="title">Seleccionar ubicacion <span> *</span></p>
-                        <app-map></app-map>
+                        <div #mapContainer id="map"></div>
+                        <p id="coordenadas"></p>
                     </li>
                 </ul>
+                {{ caseForm.value | json }}
             </form>
         </div>
     </div>

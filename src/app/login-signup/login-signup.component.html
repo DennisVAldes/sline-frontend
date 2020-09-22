@@ -89,7 +89,7 @@
                 <div class="haveAccount">¿Ya tienes una cuenta? <a (click)="letModal = true">Inicia sesión</a></div>
                 <div class="buttons-content">
                     <button [disabled]="!signupForm.valid" (click)="submitUser()" class="btn-primary"
-                        [ngClass]="!signupForm.valid === true ? 'btn-disabled' : 'btn-submit'">Registrarse</button>
+                        [ngClass]="!signupForm.valid ? 'btn-disabled' : 'btn-submit'">Registrarse</button>
                 </div>
             </div>
         </div>    

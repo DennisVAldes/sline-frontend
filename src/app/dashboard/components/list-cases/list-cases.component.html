@@ -7,7 +7,17 @@
         </ul>
     </div>
     <div class="list-content">
-        
+        <div class="case-content" *ngFor="let case of listCases">
+            <div class="header">
+                <p>{{ case.username }}</p>
+            </div>
+            <div class="body">
+                <p class="description-content">
+                    {{ case.descripcion }}
+                </p>
+                <a href="">Ver más<em class="icon-next"></em></a>
+            </div>
+        </div>
     </div>
     <div class="footer-content">
         <a href="create-case" class="pink-btn">
