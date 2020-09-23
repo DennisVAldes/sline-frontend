@@ -1,6 +1,7 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { CasesService } from 'src/app/services/cases.service';
 import { CaseDto } from 'src/app/types/dtos/models';
+import MarkerClusterer from '@google/markerclusterer';
 
 @Component({
   selector: 'app-map',
@@ -12,9 +13,7 @@ export class MapComponent implements AfterViewInit {
   constructor(
     private caseService: CasesService
   ) { }
-
-  @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
-  
+ 
   listCases: CaseDto[] = [];
 
   private getCases = async () => {
@@ -30,7 +29,7 @@ export class MapComponent implements AfterViewInit {
   initMap() {
     var pos;
     
-    var map = new google.maps.Map(this.gmap.nativeElement, {
+    var map = new google.maps.Map(document.getElementById('map'), {
       center: pos,
       zoom: 16,
       
@@ -38,11 +37,11 @@ export class MapComponent implements AfterViewInit {
    
     map.setTilt(45);
 
-    var infowindow = new google.maps.InfoWindow({
+    var infoWindow = new google.maps.InfoWindow({
       content: 
-      '<div id="content">'+
-        'Usted está aquí.'+
-      '</div>'
+      `<div id="content">
+        Usted está aquí.
+      </div>`
     });
 
     var userMarker = new google.maps.Marker;
@@ -53,7 +52,7 @@ export class MapComponent implements AfterViewInit {
     };
 
     var caseIcon = {
-      url: '../../assets/img/user-pin.svg', // url
+      url: '../../assets/img/report.svg', // url
       scaledSize: new google.maps.Size(50, 50), // scaled sizes
     };
   
@@ -73,28 +72,30 @@ export class MapComponent implements AfterViewInit {
           title: 'Su posicion',});
       });
 
-      userMarker.addListener('click', function(){
-        infowindow.open(map, userMarker)
-      });
+      userMarker.addListener('click', () => infoWindow.open(map, userMarker));
     }
 
     // Cases positions
+    let markers = []
     for (let i = 0; i < this.listCases.length; i++) {
-      const caseData = this.listCases[i];
+      const caseData: CaseDto = this.listCases[i];
       
       var casePos = { 
         lat: +caseData.lat, 
         lng: +caseData.lng 
       }
-      
-      console.log(casePos)
+
       var marker = new google.maps.Marker({
         position: casePos,
-        map: map,
         icon: caseIcon,
-        title: 'Marcador de caso',
+        title: `Caso numero ${caseData.idcaso}`,
       });
+
+      markers.push(marker);
     }
+    
+    var markerCluster = new MarkerClusterer(map, markers,
+      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
   }
 
   async ngAfterViewInit(): Promise<void> {

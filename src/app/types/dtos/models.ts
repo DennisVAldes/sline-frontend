@@ -17,7 +17,7 @@ export interface UserDto {
 }
 
 export interface CaseDto {
-    id?: number;
+    idcaso?: number;
     descripcion: string;
     lat: number;
     lng: number;
