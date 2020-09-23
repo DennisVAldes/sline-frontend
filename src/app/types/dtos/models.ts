@@ -19,7 +19,8 @@ export interface UserDto {
 export interface CaseDto {
     id?: number;
     descripcion: string;
-    coordenadas: {"lat": number, "long": number};
+    lat: number;
+    lng: number;
     idUsuario?: number;
     username?: string;
     fechaRegistro?: string;

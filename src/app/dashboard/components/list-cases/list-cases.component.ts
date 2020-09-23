@@ -28,7 +28,7 @@ export class ListCasesComponent implements OnInit {
 
       this.listCases = response.data;
     } catch (error) {
-      console.log()
+      console.log(error)
     }
   }
 }

@@ -1,6 +1,8 @@
 body{ font-family: 'Source Sans Pro', sans-serif; }
 .clearfix:after{ content: ""; display: block; clear: both; }
 
+#lat,
+#lng { display: none; }
 /* Scrollbar */
     /* width */
     ::-webkit-scrollbar {
@@ -125,7 +127,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .list-cases .list-content { width: 0; max-height: calc(100% - 78px); height: 100%; margin: 0 auto; transition: all .3s ease; overflow-y: auto; }
 .list-cases .list-content .case-content { background: #FEB6FF; max-height: 230px; max-width: 100%; border-radius: 10px; padding: 10px; margin-bottom: 10px; position: relative; }
 .list-cases .list-content .case-content .header p { text-transform: capitalize; font-size: 18px; font-weight: 700; }
-.list-cases .list-content .case-content .body .description-content { margin: 5px 0; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; padding: 0 20px 10px 0; }
+.list-cases .list-content .case-content .body .description-content { margin: 5px 0; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; padding: 0 30px 20px 0; }
 .list-cases .list-content .case-content .body a { font-size: 16px; position: absolute; right: 5px; bottom: 10px; }
 .list-cases .list-content .case-content .body a em { position: relative; bottom: -2px; font-size: 10px; display: inline-block; transform:rotate(-90deg); }
 .list-cases .footer-content { width: 94%; margin: 0 auto; text-align: center; padding: 5px 0; }

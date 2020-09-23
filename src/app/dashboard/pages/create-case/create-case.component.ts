@@ -31,7 +31,8 @@ export class CreateCaseComponent implements AfterViewInit {
 
   public caseForm = new FormGroup({
     descripcion: new FormControl('', [Validators.required]),
-    coordenadas: new FormControl('', [Validators.required])
+    lat: new FormControl('', [Validators.required]),
+    lng: new FormControl('', [Validators.required])
   })
 
   initMap() {
@@ -78,7 +79,7 @@ export class CreateCaseComponent implements AfterViewInit {
       });
     }
 
-    let selectedAddress;
+    let coordenadas;
 
     // Configure the click listener.
     map.addListener('click', function(mapsMouseEvent) {
@@ -90,17 +91,21 @@ export class CreateCaseComponent implements AfterViewInit {
       infoWindow.setContent(mapsMouseEvent.latLng.toString());
       infoWindow.open(map);
 
-      selectedAddress = mapsMouseEvent.latLng;
-      document.getElementById('coordenadas').innerText = selectedAddress;
+      coordenadas = mapsMouseEvent.latLng.toJSON();
+
+      document.getElementById('lat').innerText = coordenadas.lat;
+      document.getElementById('lng').innerText = coordenadas.lng;
     });
   }
 
   private setCase = () => {
-    this.caseForm.controls['coordenadas'].setValue(document.getElementById('coordenadas').textContent);
+    this.caseForm.controls['lat'].setValue(document.getElementById('lat').textContent);
+    this.caseForm.controls['lng'].setValue(document.getElementById('lng').textContent);
 
     return {
       "descripcion": this.caseForm.value.descripcion,
-      "coordenadas": this.caseForm.value.coordenadas
+      "lat": this.caseForm.value.lat,
+      "lng": this.caseForm.value.lng,
     }
   }
 
