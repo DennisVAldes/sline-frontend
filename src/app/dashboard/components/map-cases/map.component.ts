@@ -22,7 +22,7 @@ export class MapComponent implements AfterViewInit {
 
       this.listCases = response.data;
     } catch (error) {
-      console.log()
+      console.log(error)
     }
   }
 
@@ -56,7 +56,7 @@ export class MapComponent implements AfterViewInit {
       scaledSize: new google.maps.Size(50, 50), // scaled sizes
     };
   
-    // User position
+    // Let user position on map
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         pos = {
@@ -75,8 +75,12 @@ export class MapComponent implements AfterViewInit {
       userMarker.addListener('click', () => infoWindow.open(map, userMarker));
     }
 
-    // Cases positions
-    let markers = []
+    // Listar casos en el mapa
+    let markers = [];
+    let infoWindows = [];
+    let caseMarker = new google.maps.Marker;
+    let caseInfoWindow = new google.maps.InfoWindow;
+
     for (let i = 0; i < this.listCases.length; i++) {
       const caseData: CaseDto = this.listCases[i];
       
@@ -85,15 +89,34 @@ export class MapComponent implements AfterViewInit {
         lng: +caseData.lng 
       }
 
-      var marker = new google.maps.Marker({
+      caseMarker = new google.maps.Marker({
         position: casePos,
         icon: caseIcon,
         title: `Caso numero ${caseData.idcaso}`,
       });
 
-      markers.push(marker);
+      caseInfoWindow = new google.maps.InfoWindow({
+        content:
+        `<div id="content">
+          ${caseData.idcaso}
+        </div>`
+      })
+
+      infoWindows.push(caseInfoWindow);
+      markers.push(caseMarker);
     }
-    
+
+    // Agregar los cuadros de dialogo a los marcadores
+    for (let i = 0; i < markers.length; i++) {
+      const _marker = markers[i];
+
+      _marker.addListener('click', () => {
+        caseInfoWindow.close();
+        caseInfoWindow = infoWindows[i];
+        caseInfoWindow.open(map, _marker);
+      }) 
+    }
+
     var markerCluster = new MarkerClusterer(map, markers,
       {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
   }

@@ -15,11 +15,6 @@ export class ListCasesComponent implements OnInit {
 
   open = false;
 
-  async ngOnInit() {
-    await this.getCases();
-    console.log(this.listCases)
-  }
-
   listCases: CaseDto[];
 
   private getCases = async () => {
@@ -30,5 +25,9 @@ export class ListCasesComponent implements OnInit {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  async ngOnInit() {
+    await this.getCases();
   }
 }
