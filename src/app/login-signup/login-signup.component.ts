@@ -92,12 +92,10 @@ export class LoginSignupComponent implements OnInit {
     try {
 			const user = this.setUser();
       const res = await this.userService.createUser(user);
-
+      console.log(res)
       if((await res).token){
         this.routerService.navigateByUrl('/');
-      }
-
-      if(!(await res).token){
+      } else {
         this.notifier.notify("success", res.message);
       }
 

@@ -98,7 +98,7 @@ export class MapComponent implements AfterViewInit {
       caseInfoWindow = new google.maps.InfoWindow({
         content:
         `<div id="content">
-          ${caseData.idcaso}
+          <a href="google.com">google pa</a>
         </div>`
       })
 
@@ -106,11 +106,11 @@ export class MapComponent implements AfterViewInit {
       markers.push(caseMarker);
     }
 
-    // Agregar los cuadros de dialogo a los marcadores
+    // Agregar los infoWindow a cada marcador
     for (let i = 0; i < markers.length; i++) {
       const _marker = markers[i];
 
-      _marker.addListener('click', () => {
+      _marker.addListener('click', function () {
         caseInfoWindow.close();
         caseInfoWindow = infoWindows[i];
         caseInfoWindow.open(map, _marker);
