@@ -18,12 +18,12 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
     ::-webkit-scrollbar-thumb:hover { background: #da81d5; }
 
 /* Main container */
-.container { float: right; height: 100vh; width: calc(100% - 190px); padding: 0px; overflow: hidden; }
-.container .main-content { padding: 0 15px; overflow-y: auto; overflow-x: hidden; }
+.container { float: right; height: 100vh; width: calc(100% - 190px); padding: 0px; overflow-y: auto; overflow-x: hidden; }
+.container .main-content { padding: 0 15px; }
 
 /* General headers */
 .container .main-content .header-content:before { content: ""; clear: both; display: block; width: calc(100vw - 190px); height: 57px; position: absolute; left: -15px; top: 0; z-index: -1; background: #ffd1fd; }
-.container .main-content .header-content { position: relative; padding: 10px 0; }
+.container .main-content .header-content { position: fixed; width: calc(100% - 210px); padding: 10px 0; }
 .container .main-content .header-content em { float: left; font-size: 34px; }
 .container .main-content .header-content .title { font-weight: 600; float: left; font-size: 26px; padding: 5px 0 0 10px; margin-bottom: -10px; }
 
@@ -134,7 +134,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 /* Create case page */
 .create-case .main-content .header-content .buttons-content { float: right; list-style: none; height: 100%; }
 .create-case .main-content .header-content .buttons-content li { float: left; }
-.create-case .main-content .form-content { padding-top: 50px; }
+.create-case .main-content .form-content { padding-top: 80px; }
 .create-case .main-content .form-content ul { list-style: none; display: flex; flex-direction: column; flex-wrap: wrap; justify-content: space-between; }
 .create-case .main-content .form-content ul li { width: 500px; display: flex; flex-direction: column; margin-bottom: 20px; }
 .create-case .main-content .form-content ul li p { font-weight: 600; font-size: 18px; margin-bottom: 10px; }
@@ -163,4 +163,8 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
     .modal{ max-width: 90%; margin: 40px auto 0; }
     .modal .header-buttons{ max-width: 300px; margin-left: -150px; }
     .modal .form-content ul li{ padding: 0; }
+}
+
+@media(max-height: 626px){
+    .modal { max-height: 500px !important; }
 }
