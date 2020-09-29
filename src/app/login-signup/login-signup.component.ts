@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { UserSexTypes } from 'src/app/types/enums';
+import { userGender } from 'src/app/types/enums';
 import { UserDto } from 'src/app/types/dtos/models';
 import { UserService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
@@ -26,7 +26,7 @@ export class LoginSignupComponent implements OnInit {
   
   // Aca declaramos variables, arrays, etc
   letModal = true;
-  sexTypes = UserSexTypes;
+  sexTypes = userGender;
   private readonly notifier: NotifierService;
 
   ngOnInit(): void {

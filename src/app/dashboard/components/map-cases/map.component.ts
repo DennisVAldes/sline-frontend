@@ -98,7 +98,9 @@ export class MapComponent implements AfterViewInit {
       caseInfoWindow = new google.maps.InfoWindow({
         content:
         `<div id="content">
-          <a href="google.com">google pa</a>
+          <p>${caseData.tipoviolencia}</p>
+          <p>${caseData.fecharegistro}</p>
+          <p>${caseData.verified}</p>
         </div>`
       })
 

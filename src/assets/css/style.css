@@ -43,15 +43,16 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 
 /* Login Page */
 .login-page { width: 100%; height: 100vh; position: relative; background: url("../img/home-page.jpg") no-repeat; background-size: cover; background-position: center; overflow: auto; }
-.login-page .modal { overflow: visible; max-width: 600px; max-height: 530px; width: 100%; height: 100%; box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3); position: relative; margin: 100px auto 0; background: #fff; border-radius: 10px; }
-.login-page .modal-dialog { max-width: 600px; width: 100%; position: relative; left: 50%; margin-left: -300px; margin-top: 100px; }
+.login-page:before { content: ""; clear: both; display: block; max-width: 50%; width: 100%; height: 100vh; position: absolute; left: 0; background: url("/assets/img/sline.svg") no-repeat; background-position: 50px 160px; background-size: 80%; }
+.login-page .modal-content { width: 50%; height: 100vh; float: right; position: relative; }
+.login-page .modal { max-width: 80%; max-height: 600px; width: 100%; height: 100%; box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3); position: absolute; top: 50%; margin: -300px auto 0; background: #fff; border-radius: 10px; }
 .login-page .modal .header-buttons { box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5); z-index: 1; position: absolute; max-width: 450px; width: 100%; top: -25px; left: 50%; margin-left: -225px; background: #0277bd; }
 .login-page .modal .header-buttons ul { list-style: none; padding: 5px; }
 .login-page .modal .header-buttons ul li { color: #fff; float: left; width: 50%; padding: 10px 0; text-align: center; cursor: pointer; transition: all .3s; font-size: 20px; }
 .login-page .modal .header-buttons ul li.selected { background: #3592cb; }
 .login-page .modal .header-buttons ul li span { margin: 0 5px; }
 .login-page .modal .login-modal,
-.login-page .modal .signup-modal { max-height: 100%; height: 100%; overflow: hidden; }
+.login-page .modal .signup-modal { max-height: 100%; height: 100%; max-width: 70%; width: 100%; margin: 0 auto; }
 .login-page .modal .modal-header { text-align: center; padding: 50px 0 10px !important; position: relative; border: none; }
 .login-page .modal .modal-header span { font-size: 32px; font-weight: bold; display: block; }
 .login-page .modal .modal-header button.close { transition: all .3s ease; border: 1px solid #fff; color: #fff; font-weight: 600; cursor: pointer; background: rgba(39, 98, 224, 0.9); position: absolute; right: 0; top: 0; border-radius: 5px; margin: 10px 10px 0 0; padding: 5px 10px; }
@@ -135,7 +136,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .create-case .main-content .header-content .buttons-content { float: right; list-style: none; height: 100%; }
 .create-case .main-content .header-content .buttons-content li { float: left; }
 .create-case .main-content .form-content { padding-top: 80px; }
-.create-case .main-content .form-content ul { list-style: none; display: flex; flex-direction: column; flex-wrap: wrap; justify-content: space-between; }
+.create-case .main-content .form-content ul { list-style: none; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; }
 .create-case .main-content .form-content ul li { width: 500px; display: flex; flex-direction: column; margin-bottom: 20px; }
 .create-case .main-content .form-content ul li p { font-weight: 600; font-size: 18px; margin-bottom: 10px; }
 .create-case .main-content .form-content ul li span { color: #dd3030; }
@@ -145,10 +146,10 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 
 
 /* Notifier container */
-.notifier__container { position: absolute; bottom: 10px; left: 10px; border-radius: 10px; background: #fff; }
+.notifier__container { position: absolute; bottom: 10px; right: 10px; background: #fff; z-index: 10; }
 .notifier__container ul { list-style: none; }
-.notifier__container ul .notifier__container-list { padding: 10px 50px 10px 10px; position: relative; font-size: 20px; }
-.notifier__container ul .notifier__container-list button { position: absolute; top: 5px; right: 5px; border: none; }
+.notifier__container ul .notifier__container-list { border-radius: 10px; background-image: linear-gradient(to bottom right, #FFD1FD, #da81d5); padding: 10px 50px 10px 10px; position: relative; font-size: 18px; }
+.notifier__container ul .notifier__container-list button { position: absolute; top: 8px; right: 5px; border: none; background: none; color: #fff; }
 
 /* Clustes */
 .cluster img { width: 100% !important; height: 100% !important; }

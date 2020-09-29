@@ -19,10 +19,11 @@ export interface UserDto {
 export interface CaseDto {
     idcaso?: number;
     descripcion: string;
+    tipoviolencia: string;
     lat: number;
     lng: number;
-    idUsuario?: number;
+    idusuario?: number;
     username?: string;
-    fechaRegistro?: string;
+    fecharegistro?: string;
     verified?: boolean;
 }

@@ -8,7 +8,7 @@
                     <li class="btn-primary btn-cancel">Cancelar</li>
                 </a>
                 <li class="btn-primary" 
-                    [ngClass]="!caseForm.value.descripcion ? 'btn-disabled' : 'btn-submit'"
+                    [ngClass]="!caseForm.valid ? 'btn-disabled' : 'btn-submit'"
                     (click)="submitCase()"
                 >
                     Guardar
@@ -19,7 +19,13 @@
             <form [formGroup]="caseForm">
                 <ul>
                     <li class="description-content">
-                        <p class="title">Descripcion <span> *</span></p>
+                        <p class="title">Seleccionar tipo de violencia <span> *</span></p>
+                        <select formControlName="tipoViolencia">
+                            <option ngValue={{types}} *ngFor="let types of violenceTypes">{{ types }}</option>
+                        </select>
+                    </li>
+                    <li class="description-content">
+                        <p class="title">Descripcion de los hechos <span> *</span></p>
                         <textarea type="text" formControlName="descripcion"></textarea>
                     </li>
                     <li class="map-content">

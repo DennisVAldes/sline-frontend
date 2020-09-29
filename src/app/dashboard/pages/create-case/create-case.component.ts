@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { CasesService } from 'src/app/services/cases.service';
 import { CaseDto } from 'src/app/types/dtos/models';
+import { violenceTypes } from 'src/app/types/enums';
 
 @Component({
   selector: 'app-create-case',
@@ -22,17 +23,20 @@ export class CreateCaseComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.initMap()
+    this.initMap();
   }
   
   @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
   
   private readonly notifier: NotifierService;
 
+  violenceTypes = violenceTypes;
+
   public caseForm = new FormGroup({
+    tipoViolencia: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required]),
-    lat: new FormControl('', [Validators.required]),
-    lng: new FormControl('', [Validators.required])
+    lat: new FormControl(''),
+    lng: new FormControl('')
   })
 
   initMap() {
@@ -88,7 +92,7 @@ export class CreateCaseComponent implements AfterViewInit {
 
       // Create a new InfoWindow.
       infoWindow = new google.maps.InfoWindow({position: mapsMouseEvent.latLng});
-      infoWindow.setContent(mapsMouseEvent.latLng.toString());
+      infoWindow.setContent("Ubicacion seleccionada. Puede cambiarla en cualquier momento.");
       infoWindow.open(map);
 
       coordenadas = mapsMouseEvent.latLng.toJSON();
@@ -103,6 +107,7 @@ export class CreateCaseComponent implements AfterViewInit {
     this.caseForm.controls['lng'].setValue(document.getElementById('lng').textContent);
 
     return {
+      "tipoViolencia": this.caseForm.value.tipoViolencia,
       "descripcion": this.caseForm.value.descripcion,
       "lat": this.caseForm.value.lat,
       "lng": this.caseForm.value.lng,
@@ -115,10 +120,10 @@ export class CreateCaseComponent implements AfterViewInit {
 
       await this.casesService.createCase(caseData);
 
+      this.notifier.notify("success", "Caso creado correctamente");
       this.routerService.navigateByUrl('/');
     } catch (error) {
       console.log(error);
     }
   }
-
 }
