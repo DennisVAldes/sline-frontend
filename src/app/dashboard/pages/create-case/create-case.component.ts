@@ -3,8 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { CasesService } from 'src/app/services/cases.service';
-import { CaseDto } from 'src/app/types/dtos/models';
-import { violenceTypes } from 'src/app/types/enums';
+import { ApiResponse, CaseDto } from 'src/app/types/dtos/models';
+import { violenceTypesDefinitions, violenceTypes } from 'src/app/types/enums';
 
 @Component({
   selector: 'app-create-case',
@@ -26,23 +26,22 @@ export class CreateCaseComponent implements AfterViewInit {
     this.initMap();
   }
   
-  @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
-  
   private readonly notifier: NotifierService;
 
-  violenceTypes = violenceTypes;
-
   public caseForm = new FormGroup({
-    tipoViolencia: new FormControl('', [Validators.required]),
+    tipo_violencia: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required]),
     lat: new FormControl(''),
     lng: new FormControl('')
   })
 
+  violenceTypes = violenceTypes;
+  violenceTypesDefinitions = violenceTypesDefinitions;
+
   initMap() {
     var pos;
     
-    var map = new google.maps.Map(this.gmap.nativeElement, {
+    var map = new google.maps.Map(document.getElementById('map'), {
       center: pos,
       zoom: 16,
     });
@@ -107,7 +106,7 @@ export class CreateCaseComponent implements AfterViewInit {
     this.caseForm.controls['lng'].setValue(document.getElementById('lng').textContent);
 
     return {
-      "tipoViolencia": this.caseForm.value.tipoViolencia,
+      "tipo_violencia": this.caseForm.value.tipo_violencia,
       "descripcion": this.caseForm.value.descripcion,
       "lat": this.caseForm.value.lat,
       "lng": this.caseForm.value.lng,
@@ -116,12 +115,16 @@ export class CreateCaseComponent implements AfterViewInit {
 
   public submitCase = async () => {
     try {
-      let caseData = this.setCase();
+      let caseData: CaseDto = this.setCase();
 
-      await this.casesService.createCase(caseData);
+      const response: ApiResponse<any> = await this.casesService.createCase(caseData);
 
-      this.notifier.notify("success", "Caso creado correctamente");
-      this.routerService.navigateByUrl('/');
+      if(response.status === 201){
+        this.notifier.notify("success", "Caso creado correctamente");
+        this.routerService.navigateByUrl('/');
+      } else {
+        this.notifier.notify("success", response.message);
+      }
     } catch (error) {
       console.log(error);
     }

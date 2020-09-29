@@ -21,7 +21,7 @@ export class ListCasesComponent implements OnInit {
     try {
       const response = await this.caseService.getCases();
       this.listCases = response.data;
-      console.log(this.listCases)
+      
     } catch (error) {
       console.log(error)
     }

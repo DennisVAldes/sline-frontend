@@ -38,7 +38,7 @@ export class LoginSignupComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)]), 
     sexo: new FormControl('', [Validators.required]),
-    fechanac: new FormControl('', [Validators.required])
+    fecha_nacimiento: new FormControl('', [Validators.required])
   }, {validators: this.checkPassword })
 
   public loginForm = new FormGroup({
@@ -52,7 +52,7 @@ export class LoginSignupComponent implements OnInit {
 			"email": this.signupForm.value.email,
       "password": this.signupForm.value.password,
 			"sexo": this.signupForm.value.sexo,
-			"fechanac": this.signupForm.value.fechanac,
+			"fecha_nacimiento": this.signupForm.value.fecha_nacimiento,
 		}
   }
   

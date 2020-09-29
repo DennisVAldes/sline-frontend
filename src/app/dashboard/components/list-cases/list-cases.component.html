@@ -16,9 +16,9 @@
                     {{ case.descripcion }}
                 </p>
                 <p class="description-content">
-                    {{ case.tipoviolencia }}
+                    {{ case.fecha_registro }}
                 </p>
-                <a href="">Ver más<em class="icon-next"></em></a>
+                <a [routerLink]="['/cases', case.id_caso]">Ver más<em class="icon-next"></em></a>
             </div>
         </div>
     </div>

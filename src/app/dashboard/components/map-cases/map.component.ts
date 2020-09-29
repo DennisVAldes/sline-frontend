@@ -28,11 +28,10 @@ export class MapComponent implements AfterViewInit {
 
   initMap() {
     var pos;
-    
+
     var map = new google.maps.Map(document.getElementById('map'), {
       center: pos,
       zoom: 16,
-      
     });
    
     map.setTilt(45);
@@ -92,15 +91,16 @@ export class MapComponent implements AfterViewInit {
       caseMarker = new google.maps.Marker({
         position: casePos,
         icon: caseIcon,
-        title: `Caso numero ${caseData.idcaso}`,
+        title: `Caso numero ${caseData.id_caso}`,
       });
 
       caseInfoWindow = new google.maps.InfoWindow({
         content:
-        `<div id="content">
-          <p>${caseData.tipoviolencia}</p>
-          <p>${caseData.fecharegistro}</p>
-          <p>${caseData.verified}</p>
+        `<div id="content case_content">
+          <p>Tipo: ${caseData.tipo_violencia}</p>
+          <p>Registro de caso: ${caseData.fecha_registro}</p>
+          <p>Verificado: ${caseData.verified ? 'Si' : 'No'}</p>
+          <a [routerLink]="['/cases, ${caseData.id_caso}]">Ver mas</a>
         </div>`
       })
 

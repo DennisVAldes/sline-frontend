@@ -11,19 +11,19 @@ export interface UserDto {
     email: string;
     password: string;
     sexo: string;
-    fecharegistro?: string;
-    fechanac?: string;
+    fecha_registro?: string;
+    fecha_nacimiento?: string;
     id?: number;
 }
 
 export interface CaseDto {
-    idcaso?: number;
+    id_caso?: number;
     descripcion: string;
-    tipoviolencia: string;
+    tipo_violencia: string;
     lat: number;
     lng: number;
-    idusuario?: number;
+    id_usuario?: number;
     username?: string;
-    fecharegistro?: string;
+    fecha_registro?: string;
     verified?: boolean;
 }

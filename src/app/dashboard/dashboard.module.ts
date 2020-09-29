@@ -10,6 +10,7 @@ import { CasesComponent } from './pages/cases/cases.component';
 import { ListCasesComponent } from './components/list-cases/list-cases.component';
 import { MapComponent } from './components/map-cases/map.component';
 import { CreateCaseComponent } from './pages/create-case/create-case.component';
+import { CaseDetailComponent } from './pages/case-detail/case-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CreateCaseComponent } from './pages/create-case/create-case.component';
     CasesComponent,
     ListCasesComponent,
     MapComponent,
-    CreateCaseComponent
+    CreateCaseComponent,
+    CaseDetailComponent
   ],
   imports: [
     CommonModule,
