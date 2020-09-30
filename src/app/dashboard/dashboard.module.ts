@@ -6,11 +6,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { CasesComponent } from './pages/cases/cases.component';
+import { CasesComponent } from './pages/cases/cases-map-list/cases.component';
 import { ListCasesComponent } from './components/list-cases/list-cases.component';
 import { MapComponent } from './components/map-cases/map.component';
-import { CreateCaseComponent } from './pages/create-case/create-case.component';
-import { CaseDetailComponent } from './pages/case-detail/case-detail.component';
+import { CreateCaseComponent } from './pages/cases/create-case/create-case.component';
+import { CaseEditComponent } from './pages/cases/case-edit/case-edit.component';
+import { MyCasesComponent } from './pages/cases/my-cases/my-cases.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CaseDetailComponent } from './pages/case-detail/case-detail.component';
     ListCasesComponent,
     MapComponent,
     CreateCaseComponent,
-    CaseDetailComponent
+    CaseEditComponent,
+    MyCasesComponent
   ],
   imports: [
     CommonModule,
