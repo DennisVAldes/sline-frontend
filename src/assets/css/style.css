@@ -101,7 +101,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 /* Map in Cases Page */
 .cases_section #map { width: calc(100% - 50px); height: 100%; float: left; }
 .cases_section #map img { width: 10px; }
-.cases_section #map #case_content p { margin: 5px 0; }
+.cases_section #map #case_content p { margin: 10px 0; }
 
 /* List of Cases*/
 .list-cases { width: 50px; height: calc(100vh - 40px); position: absolute; padding: 20px 0; right: 0; background: #FFD1FD; overflow: hidden; transition: width .3s ease; z-index: 2; }
@@ -137,19 +137,22 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .create-case .main-content .header-content .buttons-content li { float: left; }
 .create-case .main-content .form-content { padding-top: 80px; }
 .create-case .main-content .form-content ul { list-style: none; display: flex; flex-direction: row; flex-wrap: wrap; }
-.create-case .main-content .form-content ul li { width: 45%; display: flex; flex-direction: column; margin: 0 20px 20px 0; }
+.create-case .main-content .form-content ul li { width: 45%; display: flex; flex-direction: column; margin: 0 5% 20px 0; }
 .create-case .main-content .form-content ul li h2 { font-weight: 600; font-size: 18px; margin-bottom: 10px; }
 .create-case .main-content .form-content ul li span { color: #dd3030; }
+.create-case .main-content .form-content ul li.description-content { width: 50%; margin: 0; }
 .create-case .main-content .form-content ul .description-content textarea { height: 200px; resize: none; }
-.create-case .main-content .form-content ul .description-content select { padding: 10px 5px; margin-bottom: 5px; }
-.create-case .main-content .form-content ul .map-content { height: 500px; width: 100%; }
+.create-case .main-content .form-content ul .select-content select { padding: 5px; margin-bottom: 5px; font-size: 18px; }
+.create-case .main-content .form-content ul .select-content p { line-height: 1.4; font-size: 18px; font-weight: 500; }
+.create-case .main-content .form-content ul .select-content p span { font-weight: 600; color: #000; }
+.create-case .main-content .form-content ul .map-content { height: 500px; width: 100%; margin: 0 0 20px 0; }
 .create-case .main-content .form-content ul .map-content #map{ height: 100%; width: 100%; }
 
 /* Case details */
 
 
 /* Notifier container */
-.notifier__container { position: absolute; bottom: 10px; right: 10px; background: transparent; z-index: 10; }
+.notifier__container { position: absolute; bottom: 10px; right: 60px; background: transparent; z-index: 10; }
 .notifier__container ul { list-style: none; }
 .notifier__container ul .notifier__container-list { border-radius: 10px; background-image: linear-gradient(to bottom right, #FFD1FD, #da81d5); padding: 10px 50px 10px 10px; position: relative; font-size: 18px; }
 .notifier__container ul .notifier__container-list button { position: absolute; top: 8px; right: 5px; border: none; background: none; color: #fff; }
