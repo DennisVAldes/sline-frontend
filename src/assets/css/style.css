@@ -100,8 +100,9 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 
 /* Map in Cases Page */
 .cases_section #map { width: calc(100% - 50px); height: 100%; float: left; }
-.cases_section #map img { width: 10px; }
-.cases_section #map #case_content p { margin: 10px 0; }
+.cases_section #map #content p { margin: 5px 0; }
+.cases_section #map #content a { display: block; text-decoration: none; margin-top: 5px; text-align: center; }
+.cases_section #map .gm-style .gm-style-iw-c { padding: 10px !important; }
 
 /* List of Cases*/
 .list-cases { width: 50px; height: calc(100vh - 40px); position: absolute; padding: 20px 0; right: 0; background: #FFD1FD; overflow: hidden; transition: width .3s ease; z-index: 2; }

@@ -96,11 +96,11 @@ export class MapComponent implements AfterViewInit {
 
       caseInfoWindow = new google.maps.InfoWindow({
         content:
-        `<div id="content case_content">
+        `<div id="content">
           <p>Tipo: ${caseData.tipo_violencia}</p>
           <p>Registro de caso: ${caseData.fecha_registro}</p>
           <p>Verificado: ${caseData.verified ? 'Si' : 'No'}</p>
-          <a href="/cases/${caseData.id_caso}" class="btn-primary btn-submit">Ver mas</a>
+          <a href="/cases/${caseData.id_caso}">Ver caso</a>
         </div>`
       })
 
