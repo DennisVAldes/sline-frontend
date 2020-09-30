@@ -12,7 +12,7 @@ export class CaseDetailComponent implements OnInit, OnDestroy {
 
   id: string;
   private sub: any;
-  case;
+  caseData: CaseDto;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,8 +21,7 @@ export class CaseDetailComponent implements OnInit, OnDestroy {
   
   private getCase = async () => {
     try {
-      this.case = (await this.caseService.getCaseById(this.id)).data;
-      console.log(this.case)
+      this.caseData = (await this.caseService.getCaseById(this.id)).data[0];
     } catch (error) {
       console.log(error)
     }

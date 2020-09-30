@@ -145,6 +145,8 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .create-case .main-content .form-content ul .map-content { height: 500px; width: 100%; }
 .create-case .main-content .form-content ul .map-content #map{ height: 100%; width: 100%; }
 
+/* Case details */
+
 
 /* Notifier container */
 .notifier__container { position: absolute; bottom: 10px; right: 10px; background: transparent; z-index: 10; }

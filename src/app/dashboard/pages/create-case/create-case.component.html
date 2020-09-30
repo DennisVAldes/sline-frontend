@@ -29,7 +29,7 @@
                         <select formControlName="tipo_violencia">
                             <option ngValue={{types}} *ngFor="let types of violenceTypes">{{ types }}</option>
                         </select>
-                        <p *ngIf="caseForm.value.tipo_violencia"> Nota: {{ violenceTypesDefinitions }}</p>
+                        <p *ngIf="caseForm.value.tipo_violencia"> Nota: {{ violenceTypesDefinitions[caseForm.value.tipo_violencia] }}</p>
                     </li>
                     <li class="description-content">
                         <h2 class="title">Descripcion de los hechos <span> *</span></h2>
