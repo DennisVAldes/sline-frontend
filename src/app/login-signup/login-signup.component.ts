@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { UserSexTypes } from 'src/app/types/enums';
+import { userGender } from 'src/app/types/enums';
 import { UserDto } from 'src/app/types/dtos/models';
 import { UserService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
@@ -26,12 +26,10 @@ export class LoginSignupComponent implements OnInit {
   
   // Aca declaramos variables, arrays, etc
   letModal = true;
-  sexTypes = UserSexTypes;
+  sexTypes = userGender;
   private readonly notifier: NotifierService;
 
-  // Esta funcion se ejecuta cuando se carga el componente
   ngOnInit(): void {
-    localStorage.removeItem('token');
   }
 
   public signupForm = new FormGroup({
@@ -40,7 +38,7 @@ export class LoginSignupComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)]), 
     sexo: new FormControl('', [Validators.required]),
-    fechanac: new FormControl('', [Validators.required])
+    fecha_nacimiento: new FormControl('', [Validators.required])
   }, {validators: this.checkPassword })
 
   public loginForm = new FormGroup({
@@ -54,7 +52,7 @@ export class LoginSignupComponent implements OnInit {
 			"email": this.signupForm.value.email,
       "password": this.signupForm.value.password,
 			"sexo": this.signupForm.value.sexo,
-			"fechanac": this.signupForm.value.fechanac,
+			"fecha_nacimiento": this.signupForm.value.fecha_nacimiento,
 		}
   }
   
@@ -77,12 +75,12 @@ export class LoginSignupComponent implements OnInit {
       const user = this.getUser();
       let res = await this.authService.login(user);
       
-      if(res.token){
+      if((await res).token){
         this.routerService.navigateByUrl('/');
       }
 
-      if(!res.token || res.token === 'undefined'){
-        this.notifier.notify("success", "Email y/o contraseña incorrectos");
+      if(!(await res).token){
+        this.notifier.notify("success", res.message);
       }
       
     } catch (error) {
@@ -94,15 +92,15 @@ export class LoginSignupComponent implements OnInit {
     try {
 			const user = this.setUser();
       const res = await this.userService.createUser(user);
-
-      if(res.token){
-        this.notifier.notify("succes", res.message);
-          this.routerService.navigateByUrl("/users");
+      console.log(res)
+      if((await res).token){
+        this.routerService.navigateByUrl('/');
+      } else {
+        this.notifier.notify("success", res.message);
       }
 
 		} catch (err) {
-      console.error(err);
-      
+      console.error(err);      
 		}
 	}
 
