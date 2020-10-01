@@ -9,16 +9,16 @@
     <div class="list-content">
         <div class="case-content" *ngFor="let case of listCases">
             <div class="header">
-                <p>{{ case.username }}</p>
+                <p class="username">{{ case.username }} - </p>
+                <p class="date">{{ case.fecha_registro }}</p>
+                <figure class="verified-icon">
+                    <img [src]='case.verified ? "assets/img/correct-icon.svg" : "assets/img/wrong-icon.svg"' [alt]='case.verified ? "Verificado" : "Sin verificar"' [title]='case.verified ? "Verificado" : "Sin verificar"'>
+                </figure>
             </div>
             <div class="body">
                 <p class="description-content">
                     {{ case.descripcion }}
                 </p>
-                <p class="description-content">
-                    {{ case.fecha_registro }}
-                </p>
-                <a [routerLink]="['/cases', case.id_caso]">Ver más<em class="icon-next"></em></a>
             </div>
         </div>
     </div>

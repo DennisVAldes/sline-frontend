@@ -9,7 +9,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
     ::-webkit-scrollbar { width: 8px; }
     
     /* Track */
-    ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; margin: 10px 0; }
     
     /* Handle */
     ::-webkit-scrollbar-thumb { background: #FEB6FF; border-radius: 10px; }
@@ -34,10 +34,10 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .menu .nav-head .logo-content { height: auto; width: 125px; margin: 20px 0; }
 .menu .nav-head .logo-content img { width: 100%; height: 100%; }
 .menu .menu-items { list-style: none; padding: 10px 0; }
-.menu .menu-items li { padding: 10px 0 10px 10px; transition: all .4s ease; color: #000; font-size: 17px; cursor: pointer; }
-.menu .menu-items li:hover { background: rgba(255, 255, 255, 0.5); }
-.menu .menu-items li a { text-decoration: none; color: #000; }
-.menu .menu-items li a em { font-size: 24px; }
+.menu .menu-items a { text-decoration: none; color: #000; }
+.menu .menu-items a li { padding: 10px 0 10px 10px; transition: all .4s ease; color: #000; font-size: 17px; cursor: pointer; }
+.menu .menu-items a li:hover { background: rgba(255, 255, 255, 0.5); }
+.menu .menu-items a li em { font-size: 24px; }
 .menu .buttom-options { position: absolute; width: 190px; bottom: 0; list-style: none; }
 .menu .buttom-options li { cursor: pointer; color: #fff; padding: 10px 20px 20px; }
 
@@ -103,7 +103,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .cases_section #map #content a { transition: all .3s ease; display: block; text-decoration: none; margin-top: 5px; text-align: center; font-size: 18px; font-weight: 600; }
 
 /* List of Cases*/
-.list-cases { width: 50px; height: calc(100vh - 40px); position: absolute; padding: 20px 0; right: 0; background: #FFD1FD; overflow: hidden; transition: width .3s ease; z-index: 2; }
+.list-cases { width: 50px; height: calc(100vh - 40px); position: absolute; padding: 20px 0; right: 0; background: #FEB6FF; overflow: hidden; transition: width .3s ease; z-index: 2; }
 .list-cases .header-content { width: 94%; margin: 0 auto 10px; position: relative; }
 .list-cases .header-content ul .item { bottom: 10px; }
 .list-cases .header-content ul .item em { font-size: 34px; }
@@ -116,9 +116,13 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .list-cases .header-content ul .item.arrow em { font-size: 26px; }
 .list-cases .header-content ul .title h2 { font-size: 34px; padding-left: 10px; }
 .list-cases .list-content { width: 0; max-height: calc(100% - 98px); height: 100%; margin: 0 auto; padding: 10px 0; transition: all .3s ease; overflow-y: auto; }
-.list-cases .list-content .case-content { background: #FEB6FF; max-height: 230px; max-width: 90%; padding: 10px; border-radius: 10px; margin-bottom: 10px; position: relative; }
-.list-cases .list-content .case-content .header { margin-bottom: 20px; }
-.list-cases .list-content .case-content .header p { text-transform: capitalize; font-size: 28px; font-weight: 700; padding-left: 50px; }
+.list-cases .list-content .case-content { background: #FFD1FD; max-height: 230px; max-width: calc(100% - 70px); width: 100%; padding: 10px 10px 10px 50px; border-radius: 10px; margin-bottom: 10px; position: relative; }
+.list-cases .list-content .case-content .header { margin-bottom: 20px; position: relative; }
+.list-cases .list-content .case-content .header p { display: inline-block; white-space: pre; }
+.list-cases .list-content .case-content .header .username { text-transform: capitalize; font-size: 19px; font-weight: 700; }
+.list-cases .list-content .case-content .header .date { color: rgb(101, 119, 134); }
+.list-cases .list-content .case-content .header .verified-icon { width: 20px; height: 20px; position: absolute; right: -5px; top: -5px; }
+.list-cases .list-content .case-content .header .verified-icon img { width: 100%; height: 100%; }
 .list-cases .list-content .case-content .body .description-content { font-size: 18px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; padding: 0 30px 30px 0; }
 .list-cases .list-content .case-content .body a { font-size: 18px; position: absolute; right: 5px; bottom: 10px; }
 .list-cases .list-content .case-content .body a em { position: relative; font-size: 10px; display: inline-block; transform:rotate(-90deg); }
@@ -126,7 +130,7 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 
 .black-layer { background: rgba(0 , 0, 0, 0.5); width: 0; height: 100vh; z-index: 1; position: absolute; right: 0; top: 0; }
 
-.list-cases.open { width: 350px; }
+.list-cases.open { width: 450px; }
 .list-cases.open .header-content ul li.arrow { width: auto; transform: rotate(0 ); }
 .list-cases.open .list-content { width: 94%; border-top: solid 1px #000; border-bottom: solid 1px #000; }
 .list-cases.open ~ .black-layer { width: calc(100% - 190px); }

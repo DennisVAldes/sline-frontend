@@ -11,7 +11,7 @@ import { ListCasesComponent } from './components/list-cases/list-cases.component
 import { MapComponent } from './components/map-cases/map.component';
 import { CreateCaseComponent } from './pages/cases/create-case/create-case.component';
 import { CaseEditComponent } from './pages/cases/case-edit/case-edit.component';
-import { MyCasesComponent } from './pages/cases/my-cases/my-cases.component';
+import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { MyCasesComponent } from './pages/cases/my-cases/my-cases.component';
     MapComponent,
     CreateCaseComponent,
     CaseEditComponent,
-    MyCasesComponent
+    MyProfileComponent,
   ],
   imports: [
     CommonModule,
