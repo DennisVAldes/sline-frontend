@@ -27,6 +27,8 @@ export class MapComponent implements AfterViewInit {
   }
 
   initMap() {
+    document.cookie = "SameSite=none; Secure"
+
     var pos;
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -91,7 +93,7 @@ export class MapComponent implements AfterViewInit {
       caseMarker = new google.maps.Marker({
         position: casePos,
         icon: caseIcon,
-        title: `Caso numero ${caseData.id_caso}`,
+        title: `Caso numero ${caseData.id_caso}`
       });
 
       caseInfoWindow = new google.maps.InfoWindow({
@@ -119,12 +121,14 @@ export class MapComponent implements AfterViewInit {
       }) 
     }
 
-    var markerCluster = new MarkerClusterer(map, markers,
-      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    const markerCluster = new MarkerClusterer(map, markers, {
+      imagePath:
+        "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+    });
   }
 
   async ngAfterViewInit(): Promise<void> {
     await this.getCases();
-    this.initMap();
+    this.initMap(); 
   }
 }

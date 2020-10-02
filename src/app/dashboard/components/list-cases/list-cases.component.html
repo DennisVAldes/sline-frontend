@@ -9,15 +9,21 @@
     <div class="list-content">
         <div class="case-content" *ngFor="let case of listCases">
             <div class="header">
-                <p class="username">{{ case.username }} - </p>
-                <p class="date">{{ case.fecha_registro }}</p>
+                <p class="case-id">Caso n° {{ case.id_caso }} -</p>
+                <p class="verified-text">{{ case.verified ? 'Verificado' : 'Sin verificar' }}</p>
                 <figure class="verified-icon">
                     <img [src]='case.verified ? "assets/img/correct-icon.svg" : "assets/img/wrong-icon.svg"' [alt]='case.verified ? "Verificado" : "Sin verificar"' [title]='case.verified ? "Verificado" : "Sin verificar"'>
                 </figure>
+                <p class="date">
+                    {{ case.fecha_registro }}
+                </p>
             </div>
             <div class="body">
                 <p class="description-content">
                     {{ case.descripcion }}
+                </p>
+                <p class="username">
+                    {{ case.username }}
                 </p>
             </div>
         </div>
@@ -28,4 +34,4 @@
         </a>
     </div>
 </div>
-<div class="black-layer"></div>
+<div class="black-layer" (click)='open = !open'></div>

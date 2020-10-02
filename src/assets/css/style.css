@@ -116,16 +116,16 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .list-cases .header-content ul .item.arrow em { font-size: 26px; }
 .list-cases .header-content ul .title h2 { font-size: 34px; padding-left: 10px; }
 .list-cases .list-content { width: 0; max-height: calc(100% - 98px); height: 100%; margin: 0 auto; padding: 10px 0; transition: all .3s ease; overflow-y: auto; }
-.list-cases .list-content .case-content { background: #FFD1FD; max-height: 230px; max-width: calc(100% - 70px); width: 100%; padding: 10px 10px 10px 50px; border-radius: 10px; margin-bottom: 10px; position: relative; }
+.list-cases .list-content .case-content { background: #FFD1FD; max-height: 230px; max-width: calc(100% - 70px); width: 100%; padding: 20px 10px 10px 50px; border-radius: 10px; margin-bottom: 10px; position: relative; }
 .list-cases .list-content .case-content .header { margin-bottom: 20px; position: relative; }
 .list-cases .list-content .case-content .header p { display: inline-block; white-space: pre; }
-.list-cases .list-content .case-content .header .username { text-transform: capitalize; font-size: 19px; font-weight: 700; }
-.list-cases .list-content .case-content .header .date { color: rgb(101, 119, 134); }
-.list-cases .list-content .case-content .header .verified-icon { width: 20px; height: 20px; position: absolute; right: -5px; top: -5px; }
+.list-cases .list-content .case-content .header .case-id { text-transform: capitalize; font-size: 19px; font-weight: 700; display: inline-block; margin-right: 10px; }
+.list-cases .list-content .case-content .header .verified-text { color: #657786; margin-right: 5px; }
+.list-cases .list-content .case-content .header .verified-icon { width: 20px; height: 20px; display: inline-block; position: relative; top: 5px; }
 .list-cases .list-content .case-content .header .verified-icon img { width: 100%; height: 100%; }
+.list-cases .list-content .case-content .header .date { color: #657786; position: absolute; top: -10px; right: 0; }
 .list-cases .list-content .case-content .body .description-content { font-size: 18px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; padding: 0 30px 30px 0; }
-.list-cases .list-content .case-content .body a { font-size: 18px; position: absolute; right: 5px; bottom: 10px; }
-.list-cases .list-content .case-content .body a em { position: relative; font-size: 10px; display: inline-block; transform:rotate(-90deg); }
+.list-cases .list-content .case-content .body .username { text-align: right; }
 .list-cases .footer-content { width: 94%; margin: 0 auto; text-align: center; padding: 5px 0; }
 
 .black-layer { background: rgba(0 , 0, 0, 0.5); width: 0; height: 100vh; z-index: 1; position: absolute; right: 0; top: 0; }
