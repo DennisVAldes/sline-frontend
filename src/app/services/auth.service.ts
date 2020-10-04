@@ -3,7 +3,6 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { UserDto, ApiResponse } from '../types/dtos/models';
 import { Router } from '@angular/router';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +12,10 @@ export class AuthService {
 
   TOKEN_KEY = 'token'
 
-  constructor( private http: HttpClient, private router: Router ) { }
+  constructor( 
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
   public getToken = () => localStorage.getItem(this.TOKEN_KEY);
 
