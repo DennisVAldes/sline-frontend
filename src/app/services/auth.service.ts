@@ -3,9 +3,13 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { UserDto, ApiResponse } from '../types/dtos/models';
 import { Router } from '@angular/router';
+import JwtDecode from "jwt-decode";
+import { stringify } from 'querystring';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   
   private apiHost = environment.API_ENDPOINT;
@@ -38,7 +42,13 @@ export class AuthService {
       .toPromise()
       .then((res) => ({...res}));
 
+    var token = res.token;
+    var decoded = JwtDecode(token); 
+    
+
     localStorage.setItem(this.TOKEN_KEY, (await res).token);
+    localStorage.setItem("userData", JSON.stringify(decoded));
+    localStorage.setItem("isLogged", "true");
     return res;
   }
                       
