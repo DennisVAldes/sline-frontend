@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserDto } from 'src/app/types/dtos/models';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private authService: AuthService
   ) { }
+
+  userData: UserDto = JSON.parse(localStorage.getItem('userData'));
 
   logout = this.authService.logout;
 }

@@ -14,6 +14,7 @@ export interface UserDto {
     fecha_registro?: string;
     fecha_nacimiento?: string;
     id?: number;
+    profileImageUrl?: string;
 }
 
 export interface CaseDto {
