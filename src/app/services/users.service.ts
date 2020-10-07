@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { UserDto, ApiResponse } from '../types/dtos/models';
 import { AuthService } from './auth.service';
+import JwtDecode from 'jwt-decode';
 
 @Injectable({
 	providedIn: 'root',
@@ -23,7 +24,13 @@ export class UserService {
             .post<ApiResponse<UserDto>>(`${this.apiHost}/auth/signup`, newUser)
             .toPromise();
         
-        localStorage.setItem(this.authService.TOKEN_KEY, res.token);
+        
+        var token = (await res).token;
+        var decoded = JwtDecode(token); 
+    
+        localStorage.setItem('token', (await res).token);
+        localStorage.setItem("userData", JSON.stringify(decoded));
+        localStorage.setItem("isLogged", "true");
         return res;
     }
 }

@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { UserDto, ApiResponse } from '../types/dtos/models';
 import { Router } from '@angular/router';
 import JwtDecode from "jwt-decode";
-import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +30,11 @@ export class AuthService {
 
   public logout = () => {
     localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem('userData');
+    localStorage.setItem("isLogged", "false");
+
     setTimeout(() => {
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/');
     }, 1000);
   };
 
@@ -44,7 +46,6 @@ export class AuthService {
 
     var token = res.token;
     var decoded = JwtDecode(token); 
-    
 
     localStorage.setItem(this.TOKEN_KEY, (await res).token);
     localStorage.setItem("userData", JSON.stringify(decoded));

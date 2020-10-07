@@ -48,12 +48,12 @@ export class MapComponent implements AfterViewInit {
     var userMarker = new google.maps.Marker;
     
     var userIcon = {
-      url: '../../assets/img/user-pin.svg', // url
+      url: 'https://res.cloudinary.com/sline-uy/image/upload/v1602080776/user-pin.svg', // url
       scaledSize: new google.maps.Size(50, 50), // scaled sizes
     };
 
     var caseIcon = {
-      url: '../../assets/img/report.svg', // url
+      url: 'https://res.cloudinary.com/sline-uy/image/upload/v1602080775/report.svg', // url
       scaledSize: new google.maps.Size(50, 50), // scaled sizes
     };
   

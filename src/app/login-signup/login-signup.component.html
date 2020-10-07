@@ -35,7 +35,7 @@
                             [disabled]="!loginForm.valid"
                             (click)="login()" 
                             class="btn-primary"
-                            [ngClass]="!loginForm.valid === true ? 'btn-disabled' : 'btn-submit'"
+                            [ngClass]="loginForm.valid ? 'btn-submit' : 'btn-disabled'"
                         >
                             Ingresar
                         </button>
@@ -68,12 +68,12 @@
                                 <input type="password" formControlName="confirmPassword">
                                 <figure class="check-icon">
                                     <img 
-                                        src="/assets/img/correct-icon.svg" 
+                                        src="https://res.cloudinary.com/sline-uy/image/upload/v1602080773/correct.svg" 
                                         alt="check icon"
                                         *ngIf="signupForm.get('password').value === signupForm.get('confirmPassword').value && signupForm.get('password').value != ''"
                                     >
                                     <img 
-                                        src="/assets/img/wrong-icon.svg" 
+                                        src="https://res.cloudinary.com/sline-uy/image/upload/v1602080777/wrong-icon.svg" 
                                         alt="check icon"
                                         *ngIf="signupForm.get('password').value !== signupForm.get('confirmPassword').value"
                                     >
@@ -88,7 +88,7 @@
                             </li>
                             <li>
                                 <p class="title">Fecha de nacimiento <span> *</span></p>
-                                <input type="date" formControlName="fechanac" max=`${todayDate}`>
+                                <input type="date" formControlName="fecha_nacimiento" max=`${todayDate}`>
                             </li>
                         </ul>
                         
@@ -96,7 +96,7 @@
                     <div class="haveAccount">¿Ya tienes una cuenta? <a (click)="letModal = true">Inicia sesión</a></div>
                     <div class="buttons-content">
                         <button [disabled]="!signupForm.valid" (click)="submitUser()" class="btn-primary"
-                            [ngClass]="!signupForm.valid ? 'btn-disabled' : 'btn-submit'">Registrarse</button>
+                            [ngClass]="signupForm.valid ? 'btn-submit' : 'btn-disabled'">Registrarse</button>
                     </div>
                 </div>
             </div>    
