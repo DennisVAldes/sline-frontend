@@ -33,16 +33,14 @@ export class AuthService {
     localStorage.removeItem('userData');
     localStorage.setItem("isLogged", "false");
 
-    setTimeout(() => {
-      this.router.navigateByUrl('/');
-    }, 1000);
+    this.router.navigateByUrl('/login');
   };
 
   public login = async (newUser: Partial<UserDto>): Promise<ApiResponse<UserDto>> => {
     let res = await this.http
       .post<ApiResponse<UserDto>>(`${this.apiHost}/auth/login`, newUser)
       .toPromise()
-      .then((res) => ({...res}));
+      .then((_res) => ({..._res}));
 
     var token = res.token;
     var decoded = JwtDecode(token); 

@@ -27,9 +27,13 @@ export class LoginSignupComponent implements OnInit {
   // Aca declaramos variables, arrays, etc
   letModal = true;
   sexTypes = userGender;
+  minDate: Date;
+  maxDate: Date;
+
   private readonly notifier: NotifierService;
 
   ngOnInit(): void {
+    
   }
 
   public signupForm = new FormGroup({
