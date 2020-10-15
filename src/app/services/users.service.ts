@@ -22,15 +22,17 @@ export class UserService {
     public createUser = async (newUser: UserDto): Promise<ApiResponse<UserDto>> => {
         let res = await this.http
             .post<ApiResponse<UserDto>>(`${this.apiHost}/auth/signup`, newUser)
-            .toPromise();
+            .toPromise()
+            .then((_res) => ({..._res}));
         
         
         var token = (await res).token;
-        var decoded = JwtDecode(token); 
+        var decoded = await JwtDecode(token); 
     
-        localStorage.setItem('token', (await res).token);
-        localStorage.setItem("userData", JSON.stringify(decoded));
-        localStorage.setItem("isLogged", "true");
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('userData', JSON.stringify(decoded));
+        localStorage.setItem('isLogged', 'true');
+        
         return res;
     }
 }

@@ -1,5 +1,8 @@
 body{ font-family: 'Source Sans Pro', sans-serif; }
-.clearfix:after{ content: ""; display: block; clear: both; }
+
+.clearfix:after { content: ""; display: block; clear: both; }
+
+.inline-block { display: inline-block; }
 
 #lat,
 #lng { display: none; }
@@ -169,6 +172,19 @@ body{ font-family: 'Source Sans Pro', sans-serif; }
 .case-details .main-content .form-content ul { list-style: none; }
 
 /* My profile */
+.my-profile .user-info-container { padding-top: 100px; }
+.my-profile .user-info-container .profile-image { position: relative; max-width: 150px; max-height: 150px; height: 100%; width: 100%; float: left; border-radius: 100%; overflow: hidden; }
+.my-profile .user-info-container .profile-image img { width: 100%; height: 100%; }
+.my-profile .user-info-container .profile-image .change_img { text-indent: -9999px; color: #fff; cursor: pointer; max-width: 150px; max-height: 150px; width: 100%; height: 100%; position: absolute; top: 0; left: 0; border-radius: 100%; background: transparent; }
+.my-profile .user-info-container .profile-image .change_img:hover { background: rgba(0, 0, 0, 0.5); text-indent: 0; }
+.my-profile .user-info-container .profile-image .change_img p { width: 80%; margin: 0 auto; padding: 60px 0; text-align: center; }
+.my-profile .user-info-container .info-content { float: left; padding-left: 20px; }
+.my-profile .user-info-container .info-content .username-content,
+.my-profile .user-info-container .info-content .email-content,
+.my-profile .user-info-container .info-content .birthday-content { margin-bottom: 10px; }
+
+.my-profile .user-info-container .info-content .username-content .info-item { font-size: 18px; }
+.my-profile .user-info-container .info-content .birthday-content .info-item { font-weight: normal; }
 
 /* Disable elements */
 .disable-element { border: solid 1px transparent; background: transparent; color: #000; }

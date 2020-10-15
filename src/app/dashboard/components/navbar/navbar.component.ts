@@ -10,13 +10,14 @@ import { UserDto } from 'src/app/types/dtos/models';
 
 export class NavbarComponent implements OnInit {
   ngOnInit(): void {
+    this.userData = JSON.parse(localStorage.getItem('userData'))
   }
 
   constructor(
     private authService: AuthService
   ) { }
 
-  userData: UserDto = JSON.parse(localStorage.getItem('userData'));
+  userData: UserDto;
 
   logout = this.authService.logout;
 }

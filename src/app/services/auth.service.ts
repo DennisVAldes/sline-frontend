@@ -23,7 +23,7 @@ export class AuthService {
   public getToken = () => localStorage.getItem(this.TOKEN_KEY);
 
   public isAuthenticated = () => {
-    if(localStorage.getItem(this.TOKEN_KEY) !== undefined){
+    if(localStorage.getItem('isLogged') !== 'false'){
       return !!localStorage.getItem(this.TOKEN_KEY);
     }
   };
@@ -42,12 +42,13 @@ export class AuthService {
       .toPromise()
       .then((_res) => ({..._res}));
 
-    var token = res.token;
-    var decoded = JwtDecode(token); 
+      var token = (await res).token;
+      var decoded = await JwtDecode(token);
 
-    localStorage.setItem(this.TOKEN_KEY, (await res).token);
-    localStorage.setItem("userData", JSON.stringify(decoded));
-    localStorage.setItem("isLogged", "true");
+    localStorage.setItem('userData', JSON.stringify(decoded));
+    localStorage.setItem(this.TOKEN_KEY, res.token);
+    localStorage.setItem('isLogged', 'true');
+    
     return res;
   }
                       

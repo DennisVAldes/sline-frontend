@@ -1,11 +1,25 @@
-<section class="container my_profile">
+<section class="container my-profile">
     <div class="main-content">
         <header class="header-content">
             <em class="icon-address-card-o"></em>
-            <h2 class="title">Perfil</h2>
+            <h2 class="title">Mi perfil</h2>
         </header>
-        <div class="user-information">
-            
+        <div class="user-info-container clearfix">
+            <figure class="profile-image">
+                <img [src]='userData.image_url' alt="Profile image">
+                <span class="change_img"><em class="icon link ext"></em> <p>Cambiar imagen de perfil</p></span>
+            </figure>
+            <div class="info-content">
+                <div class="username-content">
+                    <h1 class="info-item inline-block">{{ userData.username }}</h1>
+                </div>
+                <div class="email-content">
+                    <span class="info-item inline-block">{{ userData.email }}</span>
+                </div>
+                <div class="birthday-content">
+                    <h3 class="info-item inline-block">{{ userData.fecha_nacimiento }}</h3>
+                </div>
+            </div>
         </div>
     </div>
 </section>

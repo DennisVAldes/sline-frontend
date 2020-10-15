@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserDto } from 'src/app/types/dtos/models';
-import { userGender } from 'src/app/types/enums';
+import { sexTypes } from 'src/app/types/enums';
 
 @Component({
   selector: 'app-my-profile',
@@ -13,10 +14,14 @@ export class MyProfileComponent implements OnInit {
   constructor() { }
   
   edit = false;
-  userGender = userGender;
-  userData: UserDto = JSON.parse(localStorage.getItem('userData'));
+  sexTypes = sexTypes;
+  userData: UserDto;
 
-  private getUser = async () => {
+  getLocalStorage = () => {
+    this.userData = JSON.parse(localStorage.getItem('userData'));
+  }
+
+  private setUser = () => {
     try {
       this.userForm.controls['username'].setValue(this.userData.username);
       this.userForm.controls['email'].setValue(this.userData.email);
@@ -25,6 +30,8 @@ export class MyProfileComponent implements OnInit {
       this.userForm.controls['fecha_registro'].setValue(this.userData.fecha_registro);
       this.userForm.controls['fecha_nacimiento'].setValue(this.userData.fecha_nacimiento);
       this.userForm.controls['id'].setValue(this.userData.id);
+      this.userForm.controls['image_url'].setValue(this.userData.image_url);
+
     } catch (error) {
       console.log(error)
     }
@@ -38,9 +45,12 @@ export class MyProfileComponent implements OnInit {
     fecha_registro: new FormControl('', [Validators.required]),
     fecha_nacimiento: new FormControl('', [Validators.required]),
     id: new FormControl('', [Validators.required]),
+    image_url: new FormControl('', [])
   })
 
   ngOnInit(): void {
+    this.getLocalStorage();
+    this.setUser();
   }
 
 }
