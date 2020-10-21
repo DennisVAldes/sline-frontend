@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NoAuthGuard } from './services/no-auth-guard.service';
+import { NoAuthGuard } from './services/auth/no-auth-guard.service';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
 
 const routes: Routes = [

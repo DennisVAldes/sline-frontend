@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
@@ -57,7 +57,7 @@ export class CreateCaseComponent implements AfterViewInit {
 
     var userMarker = new google.maps.Marker;
     var icon = {
-      url: '../../assets/img/user-pin.svg', // url
+      url: 'https://res.cloudinary.com/sline-uy/image/upload/v1602080776/user-pin.svg', // url
       scaledSize: new google.maps.Size(50, 50), // scaled sizes
     };
   

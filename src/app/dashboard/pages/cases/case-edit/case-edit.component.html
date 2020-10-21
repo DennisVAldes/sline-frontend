@@ -4,14 +4,14 @@
             <em class="icon-form"></em>
             <h2 class="title">Detalles de caso nº {{ caseData.id_caso }}</h2>
             <ul class="buttons-content">
-                <a [routerLink]="['/my-cases']" routerLinkActive="router-link-active" ><li class="btn-primary btn-cancel"> Cancelar </li></a>
+                <a [routerLink]="['/my-profile']" routerLinkActive="router-link-active" ><li class="btn-primary btn-cancel"> Cancelar </li></a>
                 <li class="btn-primary btn-submit" (click)="edit = !edit">Guardar cambios</li>
             </ul>
         </div>
 
-        <div class="info-content clearfix">
+        <div class="info-content clearfix" *ngIf="caseData">
             <div class="verified-content">
-                <figure><img [src]="caseData.verified ? '/assets/img/correct-icon.svg' : '/assets/img/wrong-icon.svg'" alt="verified-icon"></figure>
+                <figure><img [src]="caseData.verified ? 'https://res.cloudinary.com/sline-uy/image/upload/v1602080773/correct.svg' : 'https://res.cloudinary.com/sline-uy/image/upload/v1602080777/wrong-icon.svg'" alt="verified-icon"></figure>
                 <p>{{ caseData.verified ? 'Verificado' : 'Sin verificar' }}</p>
             </div>
             <p class="registered-date">Fecha de registro: {{ caseData.fecha_registro }}</p>
@@ -24,20 +24,16 @@
             <form [formGroup]="caseForm">
                 <ul>
                     <li class="select-content">
-                        <h2 class="title">{{ !edit ? 'Tipo de violencia:' : 'Seleccionar tipo de violencia: ' }} <span *ngIf="edit">*</span></h2>
-                        <select formControlName="tipo_violencia" 
-                            [attr.disabled]="!edit ? '' : null"
-                            [ngClass]="{'disable-element': !edit}"
-                        >
+                        <h2 class="title">Seleccionar tipo de violencia<span *ngIf="edit">*</span></h2>
+                        <select formControlName="tipo_violencia">
                             <option ngValue={{types}} *ngFor="let types of violenceTypes">{{ types }}</option>
                         </select>
-                        <p *ngIf="edit"> <span>Nota: </span> {{ violenceTypesDefinitions[caseForm.value.tipo_violencia] }}</p>
+                        <p> <span>Nota: </span> {{ violenceTypesDefinitions[caseForm.value.tipo_violencia] }}</p>
                     </li>
                     <li class="description-content">
                         <h2 class="title">Descripcion de los hechos: <span *ngIf="edit">*</span></h2>
                         <textarea type="text" 
-                            formControlName="descripcion"
-                            [ngClass]="{'disable-element': !edit}"    
+                            formControlName="descripcion"  
                         ></textarea>
                     </li>
                 </ul>

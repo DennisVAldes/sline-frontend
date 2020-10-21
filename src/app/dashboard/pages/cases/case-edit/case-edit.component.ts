@@ -23,12 +23,13 @@ export class CaseEditComponent implements OnInit, OnDestroy {
   
   private getCase = async () => {
     try {
-      this.caseData = (await this.caseService.getCaseById(this.id)).data[0];
+      this.caseData = (await this.caseService.getCaseById(this.id)).data;
       
       this.caseForm.controls['tipo_violencia'].setValue(this.caseData.tipo_violencia);
       this.caseForm.controls['descripcion'].setValue(this.caseData.descripcion);
       this.caseForm.controls['lat'].setValue(this.caseData.lat);
       this.caseForm.controls['lng'].setValue(this.caseData.lng);
+
     } catch (error) {
       console.log(error)
     }

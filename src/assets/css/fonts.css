@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'sline';
-  src: url('../font/sline.eot?50691607');
-  src: url('../font/sline.eot?50691607#iefix') format('embedded-opentype'),
-       url('../font/sline.woff2?50691607') format('woff2'),
-       url('../font/sline.woff?50691607') format('woff'),
-       url('../font/sline.ttf?50691607') format('truetype'),
-       url('../font/sline.svg?50691607#sline') format('svg');
+  src: url('../font/sline.eot?7088244');
+  src: url('../font/sline.eot?7088244#iefix') format('embedded-opentype'),
+       url('../font/sline.woff2?7088244') format('woff2'),
+       url('../font/sline.woff?7088244') format('woff'),
+       url('../font/sline.ttf?7088244') format('truetype'),
+       url('../font/sline.svg?7088244#sline') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'sline';
-    src: url('../font/sline.svg?50691607#sline') format('svg');
+    src: url('../font/sline.svg?7088244#sline') format('svg');
   }
 }
 */
@@ -80,6 +80,7 @@
 .icon-calendar-empty:before { content: '\f133'; } /* '' */
 .icon-ellipsis:before { content: '\f141'; } /* '' */
 .icon-ellipsis-vert:before { content: '\f142'; } /* '' */
+.icon-birthday:before { content: '\f1fd'; } /* '' */
 .icon-toggle-off:before { content: '\f204'; } /* '' */
 .icon-toggle-on:before { content: '\f205'; } /* '' */
 .icon-user-plus:before { content: '\f234'; } /* '' */

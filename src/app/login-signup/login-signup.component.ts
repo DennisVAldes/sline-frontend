@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { userGender } from 'src/app/types/enums';
+import { sexTypes } from 'src/app/types/enums';
 import { UserDto } from 'src/app/types/dtos/models';
 import { UserService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { NotifierService } from "angular-notifier";
 
 @Component({
@@ -26,10 +26,14 @@ export class LoginSignupComponent implements OnInit {
   
   // Aca declaramos variables, arrays, etc
   letModal = true;
-  sexTypes = userGender;
+  sexTypes = sexTypes;
+  minDate: Date;
+  maxDate: Date;
+
   private readonly notifier: NotifierService;
 
   ngOnInit(): void {
+    
   }
 
   public signupForm = new FormGroup({
@@ -92,8 +96,8 @@ export class LoginSignupComponent implements OnInit {
     try {
 			const user = this.setUser();
       const res = await this.userService.createUser(user);
-      console.log(res)
-      if((await res).token){
+
+      if(res.token){
         this.routerService.navigateByUrl('/');
       } else {
         this.notifier.notify("success", res.message);
