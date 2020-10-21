@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { UserDto, ApiResponse } from '../types/dtos/models';
+import { UserDto, ApiResponse } from '../../types/dtos/models';
 import { Router } from '@angular/router';
 import JwtDecode from "jwt-decode";
 

@@ -9,9 +9,9 @@
             </ul>
         </div>
 
-        <div class="info-content clearfix">
+        <div class="info-content clearfix" *ngIf="caseData">
             <div class="verified-content">
-                <figure><img [src]="caseData.verified ? '/assets/img/correct-icon.svg' : '/assets/img/wrong-icon.svg'" alt="verified-icon"></figure>
+                <figure><img [src]="caseData.verified ? 'https://res.cloudinary.com/sline-uy/image/upload/v1602080773/correct.svg' : 'https://res.cloudinary.com/sline-uy/image/upload/v1602080777/wrong-icon.svg'" alt="verified-icon"></figure>
                 <p>{{ caseData.verified ? 'Verificado' : 'Sin verificar' }}</p>
             </div>
             <p class="registered-date">Fecha de registro: {{ caseData.fecha_registro }}</p>

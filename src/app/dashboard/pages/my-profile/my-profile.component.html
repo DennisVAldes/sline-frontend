@@ -7,17 +7,62 @@
         <div class="user-info-container clearfix">
             <figure class="profile-image">
                 <img [src]='userData.image_url' alt="Profile image">
-                <span class="change_img"><em class="icon link ext"></em> <p>Cambiar imagen de perfil</p></span>
+                <span class="change_img" (click)='updateImage = !updateImage'><p>Cambiar imagen de perfil</p></span>
             </figure>
+            
+            <div class="change-profile-image-container" *ngIf="updateImage">
+                <div class="arrow">
+                    <div class="outer"></div>
+                    <div class="inner"></div>
+                </div>
+                <p>Presione el boton que se encuentra debajo </p><hr>
+                <input type="file" accept="image/png, image/jpeg" [(ngModel)]="newImage"> <hr>
+                <button class="btn-primary btn-submit" (click)='updateProfileImage()'>Aceptar</button>
+                <button class="btn-primary btn-cancel" (click)='updateImage = false'>Cancelar</button>
+            </div>
+            
             <div class="info-content">
                 <div class="username-content">
-                    <h1 class="info-item inline-block">{{ userData.username }}</h1>
+                    <em class="icon-user"></em><h1 class="info-item inline-block">{{ userData.username }}</h1>
                 </div>
                 <div class="email-content">
-                    <span class="info-item inline-block">{{ userData.email }}</span>
+                    <em class="icon-mail"></em><span class="info-item inline-block">{{ userData.email }}</span>
                 </div>
                 <div class="birthday-content">
-                    <h3 class="info-item inline-block">{{ userData.fecha_nacimiento }}</h3>
+                    <em class="icon-birthday"></em><h3 class="info-item inline-block">{{ userData.fecha_nacimiento }}</h3>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="my-cases">
+            <div class="main-content">
+                <header class="header-content">
+                    <em class="icon-list"></em>
+                    <h2>Mis casos</h2>
+                </header>
+                <ul class="cases-list" *ngIf="myCases">
+                    <li class="case clearfix" *ngFor="let case of myCases">
+                        <p class="case-id">Caso N° {{ case.id_caso }} -</p>
+                        <p class="date" title="Fecha de registro">{{ case.fecha_registro }}</p>
+                        <div class="buttons">
+                            <a [routerLink]="['/cases/', case.id_caso]" routerLinkActive="router-link-active" >
+                                <button class="btn-primary btn-submit"    
+                                        title="Editar caso"
+                                >
+                                <em class="icon-envelope-open-o"></em>
+                            </button>
+                            </a>
+                            <button class="btn-primary btn-cancel"
+                                    (click)='deleteCaseById(case.id_caso)'
+                                    title="Eliminar caso"
+                            >
+                                <em class="icon-wide-cross"></em>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="not-cases" *ngIf="!myCases">
+                    <p>No tienes reportes registrados</p>
                 </div>
             </div>
         </div>

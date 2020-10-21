@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { async } from '@angular/core/testing';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserDto } from 'src/app/types/dtos/models';
+import { NotifierService } from 'angular-notifier';
+import { CasesService } from 'src/app/services/cases.service';
+import { CaseDto, UserDto } from 'src/app/types/dtos/models';
 import { sexTypes } from 'src/app/types/enums';
 
 @Component({
@@ -10,17 +11,25 @@ import { sexTypes } from 'src/app/types/enums';
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
-
-  constructor() { }
   
-  edit = false;
-  sexTypes = sexTypes;
-  userData: UserDto;
-
-  getLocalStorage = () => {
-    this.userData = JSON.parse(localStorage.getItem('userData'));
+  constructor(
+    private casesService: CasesService,
+    notifierService: NotifierService,
+  ) {
+    this.notifier = notifierService;
   }
 
+  private readonly notifier: NotifierService;
+
+  edit = false;
+  updateImage = false;
+  newImage: any;
+
+  userData: UserDto = JSON.parse(localStorage.getItem('userData'));
+  
+  sexTypes = sexTypes;
+  myCases: CaseDto[];
+  
   private setUser = () => {
     try {
       this.userForm.controls['username'].setValue(this.userData.username);
@@ -48,9 +57,33 @@ export class MyProfileComponent implements OnInit {
     image_url: new FormControl('', [])
   })
 
+  public updateProfileImage = () => {
+    try {
+      console.log(this.newImage)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  private getMyCases = async () => {
+    try {
+      const res = await this.casesService.getCaseByUserId();
+
+      this.myCases = res.data;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  public deleteCaseById = async (id: string) => {
+    let res = await this.casesService.deleteCaseById(id);
+    this.ngOnInit();
+    this.notifier.notify("succes", res.message)
+  }
+
   ngOnInit(): void {
-    this.getLocalStorage();
     this.setUser();
+    this.getMyCases();
   }
 
 }

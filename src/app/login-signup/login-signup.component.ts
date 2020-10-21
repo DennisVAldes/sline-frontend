@@ -4,7 +4,7 @@ import { sexTypes } from 'src/app/types/enums';
 import { UserDto } from 'src/app/types/dtos/models';
 import { UserService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { NotifierService } from "angular-notifier";
 
 @Component({
