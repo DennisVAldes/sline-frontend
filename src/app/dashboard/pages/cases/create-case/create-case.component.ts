@@ -119,7 +119,7 @@ export class CreateCaseComponent implements AfterViewInit {
 
       const response: ApiResponse<any> = await this.casesService.createCase(caseData);
 
-      if(response.status === 201){
+      if(response.status === 200){
         this.notifier.notify("success", "Caso creado correctamente");
         this.routerService.navigateByUrl('/');
       } else {

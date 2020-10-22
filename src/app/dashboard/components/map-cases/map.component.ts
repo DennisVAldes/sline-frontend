@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { CasesService } from 'src/app/services/cases.service';
 import { CaseDto } from 'src/app/types/dtos/models';
 import MarkerClusterer from '@google/markerclusterer';
@@ -9,7 +9,8 @@ import MarkerClusterer from '@google/markerclusterer';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements AfterViewInit {
-
+  @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
+  
   constructor(
     private caseService: CasesService
   ) { }
@@ -27,11 +28,10 @@ export class MapComponent implements AfterViewInit {
   }
 
   initMap() {
-    document.cookie = "SameSite=none; Secure"
 
     var pos;
 
-    var map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map(this.gmap.nativeElement, {
       center: pos,
       zoom: 16,
     });
@@ -82,6 +82,7 @@ export class MapComponent implements AfterViewInit {
     let caseMarker = new google.maps.Marker;
     let caseInfoWindow = new google.maps.InfoWindow;
 
+    // Creo un marcador por cada elemento del array, y lo agrego al mapa 
     for (let i = 0; i < this.listCases.length; i++) {
       const caseData: CaseDto = this.listCases[i];
       
