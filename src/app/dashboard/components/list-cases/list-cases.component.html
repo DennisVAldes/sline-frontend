@@ -2,7 +2,7 @@
     <div class="header-content">
         <ul class="clearfix">
             <li class="item" *ngIf="open"> <em class="icon-list"> </em></li>
-            <li class="title" *ngIf="open"><h2>Casos</h2> </li>
+            <li class="title" *ngIf="open"><h2>Reportes</h2> </li>
             <li class="arrow item" (click)="open = !open"> <em class="icon-right-open"> </em></li>
         </ul>
     </div>
@@ -10,20 +10,20 @@
         <div class="case-content" *ngFor="let case of listCases">
             <div class="header">
                 <p class="case-id">
-                    Caso n° {{ case.id_caso }} -
+                    Reporte n° {{ case.id_caso }} -
                 </p>
                 <p class="verified-text">
-                    {{ case.verified ? 'Verificado' : 'Sin verificar' }}
+                    {{ case.verificado ? 'Verificado' : 'Sin verificar' }}
                 </p>
                 <figure class="verified-icon">
                     <img 
                         [src]='
-                            case.verified 
+                            case.verificado 
                             ? "https://res.cloudinary.com/sline-uy/image/upload/v1602080773/correct.svg" 
                             : "https://res.cloudinary.com/sline-uy/image/upload/v1602080777/wrong-icon.svg"' 
                             
-                        [alt]='case.verified ? "Verificado" : "Sin verificar"' 
-                        [title]='case.verified ? "Verificado" : "Sin verificar"'
+                        [alt]='case.verificado ? "Verificado" : "Sin verificar"' 
+                        [title]='case.verificado ? "Verificado" : "Sin verificar"'
                     >
                 </figure>
                 <p class="date">

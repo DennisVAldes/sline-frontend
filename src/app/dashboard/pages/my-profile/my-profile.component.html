@@ -1,9 +1,9 @@
 <section class="container my-profile">
+    <header class="header-content clearfix">
+        <em class="icon-address-card-o"></em>
+        <h2 class="title">Mi perfil</h2>
+    </header>
     <div class="main-content">
-        <header class="header-content">
-            <em class="icon-address-card-o"></em>
-            <h2 class="title">Mi perfil</h2>
-        </header>
         <div class="user-info-container clearfix">
             <figure class="profile-image">
                 <img [src]='userData.image_url' alt="Profile image">
@@ -42,7 +42,7 @@
                 </header>
                 <ul class="cases-list" *ngIf="myCases">
                     <li class="case clearfix" *ngFor="let case of myCases">
-                        <p class="case-id">Caso N° {{ case.id_caso }} -</p>
+                        <p class="case-id">Reporte N° {{ case.id_caso }} -</p>
                         <p class="date" title="Fecha de registro">{{ case.fecha_registro }}</p>
                         <div class="buttons">
                             <a [routerLink]="['/cases/', case.id_caso]" routerLinkActive="router-link-active" >

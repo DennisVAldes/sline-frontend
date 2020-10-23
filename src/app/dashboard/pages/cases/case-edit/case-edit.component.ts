@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { CasesService } from 'src/app/services/cases.service';
-import { CaseDto } from 'src/app/types/dtos/models';
+import { CaseDto, UserDto } from 'src/app/types/dtos/models';
 import { violenceTypes, violenceTypesDefinitions } from 'src/app/types/enums';
 
 @Component({
@@ -12,7 +12,6 @@ import { violenceTypes, violenceTypesDefinitions } from 'src/app/types/enums';
   styleUrls: ['./case-edit.component.css']
 })
 export class CaseEditComponent implements OnInit, OnDestroy {
-  @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +25,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
   id: string;
   private sub: any;
   caseData: Partial<CaseDto>;
+  userData: UserDto = JSON.parse(localStorage.getItem('userData'));
 
   violenceTypes = violenceTypes;
   violenceTypesDefinitions = violenceTypesDefinitions;
@@ -36,6 +36,7 @@ export class CaseEditComponent implements OnInit, OnDestroy {
     try {
       this.caseData = (await this.caseService.getCaseById(this.id)).data[0];
       
+      this.caseForm.controls['id_caso'].setValue(this.caseData.id_caso);
       this.caseForm.controls['tipo_violencia'].setValue(this.caseData.tipo_violencia);
       this.caseForm.controls['descripcion'].setValue(this.caseData.descripcion);
 

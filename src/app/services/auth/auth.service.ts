@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { UserDto, ApiResponse } from '../../types/dtos/models';
+import { userProfile } from '../../types/enums';
 import { Router } from '@angular/router';
 import JwtDecode from "jwt-decode";
 
@@ -42,12 +43,16 @@ export class AuthService {
       .toPromise()
       .then((_res) => ({..._res}));
 
-      var token = (await res).token;
-      var decoded = await JwtDecode(token);
+    var token = (await res).token;
+    var decoded: UserDto = await JwtDecode(token);
 
+    decoded.image_url === undefined ? decoded.image_url = userProfile(decoded.sexo) : '';
+
+    console.log(decoded)
+    
+    localStorage.setItem('isLogged', 'true');
     localStorage.setItem('userData', JSON.stringify(decoded));
     localStorage.setItem(this.TOKEN_KEY, res.token);
-    localStorage.setItem('isLogged', 'true');
     
     return res;
   }
