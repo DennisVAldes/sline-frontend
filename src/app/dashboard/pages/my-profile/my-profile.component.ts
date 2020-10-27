@@ -24,6 +24,7 @@ export class MyProfileComponent implements OnInit {
   edit = false;
   updateImage = false;
   newImage: any;
+  deleteCase = false;
 
   userData: UserDto = JSON.parse(localStorage.getItem('userData'));
   

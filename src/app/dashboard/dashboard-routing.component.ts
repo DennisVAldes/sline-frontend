@@ -12,7 +12,7 @@ const routes: Routes = [
       component: DashboardComponent,
       children: [
         { path: 'cases', component: CasesComponent },
-        { path: 'cases/:id', component: CaseEditComponent},
+        { path: 'cases/:id', component: CreateCaseComponent },
         { path: 'create-case', component: CreateCaseComponent },
         { path: 'my-profile', component: MyProfileComponent },
         { path: '', redirectTo: 'cases', pathMatch: 'full' }

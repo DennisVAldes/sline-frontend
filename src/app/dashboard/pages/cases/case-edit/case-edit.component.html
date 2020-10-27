@@ -1,13 +1,13 @@
-<section class="container case-edit create-case">
+<!-- <section class="container case-edit create-case">
     <div class="header-content clearfix">
         <em class="icon-form"></em>
-        <h2 class="title">Detalles de reporte nº {{ caseData.id_caso }}</h2>
+        <h2 class="title">Detalles de reporte nº {{ caseData.id_caso}}</h2>
         <ul class="buttons-content">
             <a [routerLink]="['/my-profile']" routerLinkActive="router-link-active" ><li class="btn-primary btn-cancel"> Cancelar </li></a>
             <li class="btn-primary btn-submit" (click)='updateCase()'>Guardar cambios</li>
         </ul>
     </div>
-    <div class="main-content clearfix" *ngIf="caseData">
+    <div class="main-content clearfix">
 
         <div class="info-content clearfix">
             <p class="registered-date">Fecha de registro: {{ caseData.fecha_registro }}</p>
@@ -37,7 +37,7 @@
                         <select formControlName="tipo_violencia">
                             <option ngValue={{types}} *ngFor="let types of violenceTypes">{{ types }}</option>
                         </select>
-                        <p> <span>Nota: </span> {{ violenceTypesDefinitions[caseForm.value.tipo_violencia] }}</p>
+                        <p>{{ violenceTypesDefinitions[caseForm.value.tipo_violencia] }}</p>
                     </li>
                     <li class="description-content">
                         <h2 class="title">Descripcion de los hechos: <span>*</span></h2>
@@ -49,4 +49,4 @@
             </form>
         </div>
     </div>
-</section>
+</section> -->

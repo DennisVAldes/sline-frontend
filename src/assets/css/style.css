@@ -29,7 +29,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Main container */
 .container { float: right; height: 100vh; width: calc(100% - 190px); padding: 0px; overflow-y: auto; overflow-x: hidden; }
-.container .main-content { max-width: 96%; width: 100%; margin: 0 auto; position: relative; padding-top: 20px; }
+.container .main-content { max-width: 94%; width: 100%; margin: 0 auto; position: relative; padding-top: 25px; }
 
 /* General headers */
 .container .header-content:before { content: ""; clear: both; display: block; width: calc(100vw - 190px); height: 62px; position: absolute; left: -36px; top: 0; z-index: -1; background: #ffd1fd; }
@@ -153,31 +153,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* Create case page */
 .create-case .header-content .buttons-content { float: right; list-style: none; height: 100%; }
 .create-case .header-content .buttons-content li { float: left; }
-.create-case .main-content .form-content { padding-top: 80px; }
 .create-case .main-content .form-content ul { list-style: none; display: flex; flex-direction: row; flex-wrap: wrap; }
 .create-case .main-content .form-content ul li { width: 45%; display: flex; flex-direction: column; margin: 0 5% 20px 0; }
 .create-case .main-content .form-content ul li h2 { font-weight: 600; font-size: 18px; margin-bottom: 10px; }
 .create-case .main-content .form-content ul li span { color: #dd3030; }
 .create-case .main-content .form-content ul li.description-content { width: 50%; margin: 0; }
-.create-case .main-content .form-content ul .description-content textarea { height: 200px; resize: none; }
+.create-case .main-content .form-content ul .description-content textarea { height: 200px; resize: none; font-size: 16px; }
 .create-case .main-content .form-content ul .select-content select { padding: 5px; margin-bottom: 5px; font-size: 18px; }
-.create-case .main-content .form-content ul .select-content p { line-height: 1.4; font-size: 18px; font-weight: 500; }
+.create-case .main-content .form-content ul .select-content p { line-height: 1.4; font-size: 16px; font-weight: 500; padding: 10px; }
 .create-case .main-content .form-content ul .select-content p span { font-weight: 600; color: #000; }
 .create-case .main-content .form-content ul .map-content { height: 500px; width: 100%; margin: 0 0 20px 0; }
 .create-case .main-content .form-content ul .map-content #map{ height: 100%; width: 100%; }
 
 /* Case edit */
-.case-edit .main-content .info-content .user-info { padding-top: 40px; }
-.case-edit .main-content .info-content .user-info p { margin-bottom: 10px; }
-.case-edit .main-content .info-content .user-info .profile-img { vertical-align: middle; max-width: 50px; max-height: 50px; width: 100%; height: 100%; }
-.case-edit .main-content .info-content .user-info .profile-img img { width: 100%; height: 100%; }
-.case-edit .main-content .info-content .user-info h3 { padding-left: 10px; }
-.case-edit .main-content .info-content { padding: 80px 20px 0; }
 .case-edit .main-content .info-content .verified-content { float: left; }
 .case-edit .main-content .info-content .verified-content figure { display: inline-block; max-width: 20px; width: 100%; max-height: 20px; height: 100%; }
 .case-edit .main-content .info-content .verified-content figure img { width: 100%; height: 100%; }
-.case-edit .main-content .info-content .verified-content p { display: inline-block; padding-left: 5px; position: relative; top: -5px; }
-.case-edit .main-content .info-content .registered-date { float: right; }
+.case-edit .main-content .info-content .verified-content p { display: inline-block; padding-left: 5px; position: relative; top: -5px; font-size: 16px; }
+.case-edit .main-content .info-content .registered-date { float: right; font-size: 16px; color: #657786; }
 .case-edit .main-content .form-content ul { list-style: none; }
 
 /* My profile */
@@ -205,8 +198,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .my-profile .user-info-container .change-profile-image-container .arrow .outer { width: 0; height: 0; border-right: 20px solid #000000; border-top: 10px solid transparent; border-bottom: 10px solid transparent; position: absolute; top: 0; left: 0; }
 .my-profile .user-info-container .change-profile-image-container .arrow .inner { width: 0; height: 0; border-right: 20px solid #ffffff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; position: absolute; top: 0; left: 2px; }
 
-.my-profile .my-cases .main-content { max-width: 100%; }
-.my-profile .my-cases .main-content .header-content:before { background: none; }
+.my-profile .my-cases .header-content { width: 100%; }
+.my-profile .my-cases .header-content:before { background: none; }
+.my-profile .my-cases .main-content { max-width: 96%; }
 .my-profile .my-cases .main-content .cases-list .case { border-radius: 10px; border: solid 1px #000; padding: 10px 10px 10px 20px; margin-bottom: 10px; }
 .my-profile .my-cases .main-content .cases-list .case p { float: left; }
 .my-profile .my-cases .main-content .cases-list .case .case-id { font-size: 18px; margin-right: 8px; padding-top: 8px }
