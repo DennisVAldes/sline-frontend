@@ -49,11 +49,11 @@ export class CreateCaseComponent implements OnInit, OnDestroy {
   }
 
   public caseForm = new FormGroup({
-    id_caso: new FormControl(''),
+    id_caso: new FormControl('', [Validators.required]),
     tipo_violencia: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required]),
-    lat: new FormControl(''),
-    lng: new FormControl('')
+    lat: new FormControl('', [Validators.required]),
+    lng: new FormControl('', [Validators.required])
   })
 
   public initMap = async () => {
@@ -135,47 +135,50 @@ export class CreateCaseComponent implements OnInit, OnDestroy {
   }
 
   private setCase = () => {
-    this.caseForm.controls['lat'].setValue(document.getElementById('lat').textContent);
-    this.caseForm.controls['lng'].setValue(document.getElementById('lng').textContent);
+    if(document.getElementById('lat').textContent && document.getElementById('lng').textContent !== ''){
+      this.caseForm.controls['lat'].setValue(document.getElementById('lat').textContent);
+      this.caseForm.controls['lng'].setValue(document.getElementById('lng').textContent);
+    }
 
     return {
+      "id_caso": this.caseForm.value.id_caso,
       "tipo_violencia": this.caseForm.value.tipo_violencia,
       "descripcion": this.caseForm.value.descripcion,
-      "lat": this.caseForm.value.lat,
-      "lng": this.caseForm.value.lng,
+      "lat": +this.caseForm.value.lat,
+      "lng": +this.caseForm.value.lng,
     }
   }
 
   public submitCase = async () => {
-    try {
-      let caseData: CaseDto = this.setCase();
-
-      const response: ApiResponse<any> = await this.casesService.createCase(caseData);
-
-      if(response.status === 200){
-        this.notifier.notify("success", "Caso creado correctamente");
-        this.routerService.navigateByUrl('/');
-      } else {
-        this.notifier.notify("success", response.message);
+    if(this.caseData){
+      try {
+        let _case: CaseDto = this.setCase();
+  
+        let res = await this.casesService.updateCase(_case);
+        console.log(res)
+  
+        this.notifier.notify("success", res.message);
+        this.routerService.navigateByUrl("/my-profile");
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      try {
+        let caseData: CaseDto = this.setCase();
+  
+        const response: ApiResponse<any> = await this.casesService.createCase(caseData);
+  
+        if(response.status === 200){
+          this.notifier.notify("success", "Caso creado correctamente");
+          this.routerService.navigateByUrl('/');
+        } else {
+          this.notifier.notify("success", response.message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
-
-  public updateCase = async () => {
-    try {
-      let _case: Partial<CaseDto> = this.setCase();
-
-      let res = await this.casesService.updateCase(_case);
-      console.log(res)
-
-      this.notifier.notify("success", res.message);
-      this.routerService.navigateByUrl("/my-profile");
-    } catch (error) {
-      console.log(error);
-    }
-  } 
 
   async ngOnInit(){
     this.sub = this.route.params.subscribe(params => {

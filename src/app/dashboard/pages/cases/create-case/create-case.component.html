@@ -10,7 +10,7 @@
                 [ngClass]="!caseForm.valid ? 'btn-disabled' : 'btn-submit'"
                 (click)="submitCase()"
             >
-                Guardar
+                {{ caseData ? 'Guardar cambios' : 'Guardar' }}
             </li>
         </ul>
     </header>

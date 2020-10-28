@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { DashboardComponent } from './dashboard.component';
 import { CasesComponent } from './pages/cases/cases-map-list/cases.component';
 import { CreateCaseComponent } from './pages/cases/create-case/create-case.component';
-import { CaseEditComponent } from './pages/cases/case-edit/case-edit.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 
 const routes: Routes = [
