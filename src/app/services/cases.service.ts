@@ -24,12 +24,12 @@ export class CasesService {
             .post<ApiResponse<CaseDto[]>>(`${this.apiHost}/cases/add`, newCase)
             .toPromise();
 
-    public getCaseById = async (id: string): Promise<ApiResponse<CaseDto>> => {
+    public getCaseById = async (id: string): Promise<ApiResponse<Partial<CaseDto>>> => {
         let params = new HttpParams();
         params = params.append('dato', id);
 
         return await this.http
-            .get<ApiResponse<CaseDto>>(`${this.apiHost}/cases/id/${id}`)
+            .get<ApiResponse<Partial<CaseDto>>>(`${this.apiHost}/cases/id/${id}`)
             .toPromise()
             .then((res) => ({...res}));
     }
@@ -49,8 +49,8 @@ export class CasesService {
             .toPromise();
     }
 
-    public updateCase = async (newCase: CaseDto): Promise<ApiResponse<any>> => 
+    public updateCase = async (newCase: Partial<CaseDto>): Promise<ApiResponse<any>> => 
         this.http
-            .put<ApiResponse<CaseDto[]>>(`${this.apiHost}/update`, newCase)
+            .put<ApiResponse<CaseDto[]>>(`${this.apiHost}/cases/update`, newCase)
             .toPromise();
 }

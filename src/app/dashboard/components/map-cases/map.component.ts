@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { CasesService } from 'src/app/services/cases.service';
 import { CaseDto } from 'src/app/types/dtos/models';
 import MarkerClusterer from '@google/markerclusterer';
@@ -9,7 +9,8 @@ import MarkerClusterer from '@google/markerclusterer';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements AfterViewInit {
-
+  @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
+  
   constructor(
     private caseService: CasesService
   ) { }
@@ -27,11 +28,10 @@ export class MapComponent implements AfterViewInit {
   }
 
   initMap() {
-    document.cookie = "SameSite=none; Secure"
 
     var pos;
 
-    var map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map(this.gmap.nativeElement, {
       center: pos,
       zoom: 16,
     });
@@ -76,55 +76,60 @@ export class MapComponent implements AfterViewInit {
       userMarker.addListener('click', () => infoWindow.open(map, userMarker));
     }
 
-    // Listar casos en el mapa
-    let markers = [];
-    let infoWindows = [];
-    let caseMarker = new google.maps.Marker;
-    let caseInfoWindow = new google.maps.InfoWindow;
+    try {
+      // Listar casos en el mapa
+      let markers = [];
+      let infoWindows = [];
+      let caseMarker = new google.maps.Marker;
+      let caseInfoWindow = new google.maps.InfoWindow;
 
-    for (let i = 0; i < this.listCases.length; i++) {
-      const caseData: CaseDto = this.listCases[i];
-      
-      var casePos = { 
-        lat: +caseData.lat, 
-        lng: +caseData.lng 
+      // Creo un marcador por cada elemento del array, y lo agrego al mapa 
+      for (let i = 0; i < this.listCases.length; i++) {
+        const caseData: CaseDto = this.listCases[i];
+        
+        var casePos = { 
+          lat: +caseData.lat, 
+          lng: +caseData.lng 
+        }
+
+        caseMarker = new google.maps.Marker({
+          position: casePos,
+          icon: caseIcon,
+          title: `Caso numero ${caseData.id_caso}`
+        });
+
+        caseInfoWindow = new google.maps.InfoWindow({
+          content:
+          `<div id="content">
+            <p>Tipo: ${caseData.tipo_violencia}</p>
+            <p>Registro de caso: ${caseData.fecha_registro}</p>
+            <p>Verificado: ${caseData.verificado ? 'Si' : 'No'}</p>
+            <a href="/cases/${caseData.id_caso}">Ver caso</a>
+          </div>`
+        })
+
+        infoWindows.push(caseInfoWindow);
+        markers.push(caseMarker);
       }
 
-      caseMarker = new google.maps.Marker({
-        position: casePos,
-        icon: caseIcon,
-        title: `Caso numero ${caseData.id_caso}`
+      // Agregar los infoWindow a cada marcador
+      for (let i = 0; i < markers.length; i++) {
+        const _marker = markers[i];
+
+        _marker.addListener('click', function () {
+          caseInfoWindow.close();
+          caseInfoWindow = infoWindows[i];
+          caseInfoWindow.open(map, _marker);
+        }) 
+      }
+
+      const markerCluster = new MarkerClusterer(map, markers, {
+        imagePath:
+          "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
       });
-
-      caseInfoWindow = new google.maps.InfoWindow({
-        content:
-        `<div id="content">
-          <p>Tipo: ${caseData.tipo_violencia}</p>
-          <p>Registro de caso: ${caseData.fecha_registro}</p>
-          <p>Verificado: ${caseData.verified ? 'Si' : 'No'}</p>
-          <a href="/cases/${caseData.id_caso}">Ver caso</a>
-        </div>`
-      })
-
-      infoWindows.push(caseInfoWindow);
-      markers.push(caseMarker);
+    } catch(error){
+      console.log("Lista de casos vacia")
     }
-
-    // Agregar los infoWindow a cada marcador
-    for (let i = 0; i < markers.length; i++) {
-      const _marker = markers[i];
-
-      _marker.addListener('click', function () {
-        caseInfoWindow.close();
-        caseInfoWindow = infoWindows[i];
-        caseInfoWindow.open(map, _marker);
-      }) 
-    }
-
-    const markerCluster = new MarkerClusterer(map, markers, {
-      imagePath:
-        "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-    });
   }
 
   async ngAfterViewInit(): Promise<void> {

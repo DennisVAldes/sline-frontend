@@ -1,9 +1,9 @@
 <section class="container my-profile">
+    <header class="header-content clearfix">
+        <em class="icon-address-card-o"></em>
+        <h2 class="title">Mi perfil</h2>
+    </header>
     <div class="main-content">
-        <header class="header-content">
-            <em class="icon-address-card-o"></em>
-            <h2 class="title">Mi perfil</h2>
-        </header>
         <div class="user-info-container clearfix">
             <figure class="profile-image">
                 <img [src]='userData.image_url' alt="Profile image">
@@ -35,14 +35,14 @@
         </div>
         <hr>
         <div class="my-cases">
+            <header class="header-content">
+                <em class="icon-list"></em>
+                <h2>Mis casos</h2>
+            </header>
             <div class="main-content">
-                <header class="header-content">
-                    <em class="icon-list"></em>
-                    <h2>Mis casos</h2>
-                </header>
                 <ul class="cases-list" *ngIf="myCases">
                     <li class="case clearfix" *ngFor="let case of myCases">
-                        <p class="case-id">Caso N° {{ case.id_caso }} -</p>
+                        <p class="case-id">Reporte N° {{ case.id_caso }} -</p>
                         <p class="date" title="Fecha de registro">{{ case.fecha_registro }}</p>
                         <div class="buttons">
                             <a [routerLink]="['/cases/', case.id_caso]" routerLinkActive="router-link-active" >
@@ -53,11 +53,17 @@
                             </button>
                             </a>
                             <button class="btn-primary btn-cancel"
-                                    (click)='deleteCaseById(case.id_caso)'
+                                    (click)='deleteCase = !deleteCase'
                                     title="Eliminar caso"
                             >
                                 <em class="icon-wide-cross"></em>
                             </button>
+                            
+                            <ng-component *ngIf="deleteCase">
+                                <div class="modal">
+                                    
+                                </div>
+                            </ng-component>
                         </div>
                     </li>
                 </ul>

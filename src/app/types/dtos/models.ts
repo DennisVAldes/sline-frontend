@@ -26,5 +26,5 @@ export interface CaseDto {
     id_usuario?: number;
     username?: string;
     fecha_registro?: string;
-    verified?: boolean;
+    verificado?: boolean;
 }

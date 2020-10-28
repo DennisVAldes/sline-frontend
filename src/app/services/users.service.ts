@@ -4,6 +4,7 @@ import { environment } from './../../environments/environment';
 import { UserDto, ApiResponse } from '../types/dtos/models';
 import { AuthService } from './auth/auth.service';
 import JwtDecode from 'jwt-decode';
+import { userProfile } from '../types/enums';
 
 @Injectable({
 	providedIn: 'root',
@@ -27,11 +28,13 @@ export class UserService {
         
         
         var token = (await res).token;
-        var decoded = await JwtDecode(token); 
+        var decoded: UserDto = await JwtDecode(token); 
     
+        decoded.image_url = userProfile(decoded.sexo);
+
+        localStorage.setItem('isLogged', 'true');
         localStorage.setItem('token', res.token);
         localStorage.setItem('userData', JSON.stringify(decoded));
-        localStorage.setItem('isLogged', 'true');
         
         return res;
     }

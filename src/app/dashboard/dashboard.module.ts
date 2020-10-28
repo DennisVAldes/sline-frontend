@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.component';
-import { FormsModule, NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../services/auth/auth-interceptor.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -10,10 +10,8 @@ import { CasesComponent } from './pages/cases/cases-map-list/cases.component';
 import { ListCasesComponent } from './components/list-cases/list-cases.component';
 import { MapComponent } from './components/map-cases/map.component';
 import { CreateCaseComponent } from './pages/cases/create-case/create-case.component';
-import { CaseEditComponent } from './pages/cases/case-edit/case-edit.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -24,7 +22,6 @@ import { BrowserModule } from '@angular/platform-browser';
     ListCasesComponent,
     MapComponent,
     CreateCaseComponent,
-    CaseEditComponent,
     MyProfileComponent,
   ],
   imports: [

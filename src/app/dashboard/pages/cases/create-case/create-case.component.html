@@ -1,25 +1,25 @@
 <section class="create-case container">
+    <header class="header-content clearfix">
+        <em class="icon-form"></em>
+        <h2 class="title">{{ caseData ? "Detalles de reporte nº " + caseData.id_caso : "Agregar un nuevo caso" }}</h2>
+        <ul class="buttons-content clearfix">
+            <a href="/">
+                <li class="btn-primary btn-cancel">Cancelar</li>
+            </a>
+            <li class="btn-primary" 
+                [ngClass]="!caseForm.valid ? 'btn-disabled' : 'btn-submit'"
+                (click)="submitCase()"
+            >
+                {{ caseData ? 'Guardar cambios' : 'Guardar' }}
+            </li>
+        </ul>
+    </header>
     <div class="main-content">
-        <header class="header-content clearfix">
-            <em class="icon-form"></em>
-            <h2 class="title">Agregar un nuevo caso</h2>
-            <ul class="buttons-content clearfix">
-                <a href="/">
-                    <li class="btn-primary btn-cancel">Cancelar</li>
-                </a>
-                <li class="btn-primary" 
-                    [ngClass]="!caseForm.valid ? 'btn-disabled' : 'btn-submit'"
-                    (click)="submitCase()"
-                >
-                    Guardar
-                </li>
-            </ul>
-        </header>
         <div class="form-content">
             <form [formGroup]="caseForm">
                 <ul>
                     <li class="map-content">
-                        <h2 class="title">Seleccionar ubicacion <span> *</span></h2>
+                        <h2 class="title">{{ caseData ? "Editar ubicacion" : "Seleccionar ubicacion" }}<span> *</span></h2>
                         <div #mapContainer id="map"></div>
                         <p id="lat"></p>
                         <p id="lng"></p>
@@ -29,7 +29,7 @@
                         <select formControlName="tipo_violencia">
                             <option ngValue={{types}} *ngFor="let types of violenceTypes">{{ types }}</option>
                         </select>
-                        <p *ngIf="caseForm.value.tipo_violencia"> <span>Nota: </span> {{ violenceTypesDefinitions[caseForm.value.tipo_violencia] }}</p>
+                        <p *ngIf="caseForm.value.tipo_violencia">{{ violenceTypesDefinitions[caseForm.value.tipo_violencia] }}</p>
                     </li>
                     <li class="description-content">
                         <h2 class="title">Descripcion de los hechos <span> *</span></h2>

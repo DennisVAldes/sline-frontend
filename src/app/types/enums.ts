@@ -1,4 +1,4 @@
-export const sexTypes = ['Hombre', 'Mujer', 'Prefiero no decirlo'];
+export const sexTypes = ['Hombre', 'Mujer', 'Otro', 'Prefiero no decirlo'];
 
 export const violenceTypes = ['Violencia física', 'Violencia psicológica', 'Violencia sexual', 'Violencia económica', 'Violencia patrimonial', 'Violencia social', 'Violencia vicaria'];
 
@@ -10,4 +10,18 @@ export const violenceTypesDefinitions = {
     'Violencia patrimonial': 'Se considera violencia patrimonial la usurpación o destrucción de objetos, bienes y propiedades de la persona víctima de violencia con intención de dominarla o producirle un daño psicológico. En muchos sentidos, estos bienes son el fruto de décadas de trabajo, y destruirlos es una manera de hacer ver que todos esos esfuerzos no han servido de nada.',
     'Violencia social': 'La violencia social se basa en la limitación, control y la inducción al aislamiento social de la persona. Se separa a la víctima de familia y amigos, privándola de apoyo social y alejándola de su entorno habitual. En ocasiones se pone a la víctima en contra de su entorno, produciendo que o víctima o entorno decidan desvincularse.',
     'Violencia vicaria': 'Un gran número de parejas en las que se produce violencia de género tienen hijos. En muchas ocasiones el agresor decide amenazar, agredir e incluso matar a dichos hijos con el propósito de dañar a su pareja o ex-pareja. Este tipo de violencia es denominada violencia vicaria, que también incluye el daño causado a los menores por la observación de malos tratos entre los progenitores. El impacto psicológico es lo que se busca, a través del control, el sometimiento y las agresiones a personas que no están directamente involucradas en el núcleo del conflicto.'
+}
+
+export const userProfile = (sexo: string) => {
+    let out: string;
+
+    if(sexo === 'Hombre'){
+        out = 'https://res.cloudinary.com/sline-uy/image/upload/v1602080778/male-profile.png';
+    } else if(sexo === 'Mujer'){
+        out = 'https://res.cloudinary.com/sline-uy/image/upload/v1602080775/female-profile.png'
+    } else if(sexo === 'Otro' || 'Prefiero no decirlo'){
+        out = 'https://res.cloudinary.com/sline-uy/image/upload/v1602080775/general-profile.png';
+    }
+
+    return out;
 }

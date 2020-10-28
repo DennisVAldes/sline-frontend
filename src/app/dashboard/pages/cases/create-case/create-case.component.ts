@@ -1,9 +1,9 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { CasesService } from 'src/app/services/cases.service';
-import { ApiResponse, CaseDto } from 'src/app/types/dtos/models';
+import { ApiResponse, CaseDto, UserDto } from 'src/app/types/dtos/models';
 import { violenceTypesDefinitions, violenceTypes } from 'src/app/types/enums';
 
 @Component({
@@ -12,9 +12,10 @@ import { violenceTypesDefinitions, violenceTypes } from 'src/app/types/enums';
   styleUrls: ['./create-case.component.css']
 })
 
-export class CreateCaseComponent implements AfterViewInit {
+export class CreateCaseComponent implements OnInit, OnDestroy {
 
   constructor(
+    private route: ActivatedRoute,
     private casesService: CasesService,
     notifierService: NotifierService,
     private routerService: Router
@@ -22,23 +23,40 @@ export class CreateCaseComponent implements AfterViewInit {
     this.notifier = notifierService; 
   }
 
-  ngAfterViewInit(): void {
-    this.initMap();
-  }
-  
   private readonly notifier: NotifierService;
-
-  public caseForm = new FormGroup({
-    tipo_violencia: new FormControl('', [Validators.required]),
-    descripcion: new FormControl('', [Validators.required]),
-    lat: new FormControl(''),
-    lng: new FormControl('')
-  })
+  id: string;
+  private sub: any;
+  caseData: Partial<CaseDto>;
+  userData: UserDto = JSON.parse(localStorage.getItem('userData'));
 
   violenceTypes = violenceTypes;
   violenceTypesDefinitions = violenceTypesDefinitions;
+  
+  private getCase = async () => {
+    try {
+      let res = await this.casesService.getCaseById(this.id);
+      this.caseData = res.data[0];
 
-  initMap() {
+      this.caseForm.controls['id_caso'].setValue(this.caseData.id_caso);
+      this.caseForm.controls['tipo_violencia'].setValue(this.caseData.tipo_violencia);
+      this.caseForm.controls['descripcion'].setValue(this.caseData.descripcion);
+      this.caseForm.controls['lat'].setValue(this.caseData.lat);
+      this.caseForm.controls['lng'].setValue(this.caseData.lng);
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  public caseForm = new FormGroup({
+    id_caso: new FormControl('', [Validators.required]),
+    tipo_violencia: new FormControl('', [Validators.required]),
+    descripcion: new FormControl('', [Validators.required]),
+    lat: new FormControl('', [Validators.required]),
+    lng: new FormControl('', [Validators.required])
+  })
+
+  public initMap = async () => {
     var pos;
     
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -51,18 +69,32 @@ export class CreateCaseComponent implements AfterViewInit {
     var infoWindow = new google.maps.InfoWindow({
       content: 
       '<div id="content">'+
-        'Usted está aquí.'+
+        this.caseData ? 'Ubicacion de reporte' : 'Usted está aquí.'+
       '</div>'
     });
-
+    
     var userMarker = new google.maps.Marker;
+    
     var icon = {
-      url: 'https://res.cloudinary.com/sline-uy/image/upload/v1602080776/user-pin.svg', // url
+      url: this.caseData ? 'https://res.cloudinary.com/sline-uy/image/upload/v1602080775/report.svg' : 'https://res.cloudinary.com/sline-uy/image/upload/v1602080776/user-pin.svg',
       scaledSize: new google.maps.Size(50, 50), // scaled sizes
     };
-  
-    // Geolocation
-    if (navigator.geolocation) {
+
+    if (this.caseData) {
+      pos = {
+        lat: +this.caseData.lat,
+        lng: +this.caseData.lng
+      };
+
+      map.setCenter(pos);
+      
+      userMarker.setValues({
+        position: pos,
+        map: map,
+        icon: icon,
+        title: 'Ultima posicion seleccionada'
+      });
+    } else {
       navigator.geolocation.getCurrentPosition(function(position) {
         pos = {
           lat: position.coords.latitude,
@@ -74,13 +106,14 @@ export class CreateCaseComponent implements AfterViewInit {
           position: pos,
           map: map,
           icon: icon,
-          title: 'Su posicion',});
-      });
-
-      userMarker.addListener('click', function(){
-        infoWindow.open(map, userMarker)
+          title: 'Su posicion'
+        });
       });
     }
+
+    userMarker.addListener('click', function(){
+      infoWindow.open(map, userMarker)
+    });
 
     let coordenadas;
 
@@ -102,31 +135,60 @@ export class CreateCaseComponent implements AfterViewInit {
   }
 
   private setCase = () => {
-    this.caseForm.controls['lat'].setValue(document.getElementById('lat').textContent);
-    this.caseForm.controls['lng'].setValue(document.getElementById('lng').textContent);
+    if(document.getElementById('lat').textContent && document.getElementById('lng').textContent !== ''){
+      this.caseForm.controls['lat'].setValue(document.getElementById('lat').textContent);
+      this.caseForm.controls['lng'].setValue(document.getElementById('lng').textContent);
+    }
 
     return {
+      "id_caso": this.caseForm.value.id_caso,
       "tipo_violencia": this.caseForm.value.tipo_violencia,
       "descripcion": this.caseForm.value.descripcion,
-      "lat": this.caseForm.value.lat,
-      "lng": this.caseForm.value.lng,
+      "lat": +this.caseForm.value.lat,
+      "lng": +this.caseForm.value.lng,
     }
   }
 
   public submitCase = async () => {
-    try {
-      let caseData: CaseDto = this.setCase();
-
-      const response: ApiResponse<any> = await this.casesService.createCase(caseData);
-
-      if(response.status === 201){
-        this.notifier.notify("success", "Caso creado correctamente");
-        this.routerService.navigateByUrl('/');
-      } else {
-        this.notifier.notify("success", response.message);
+    if(this.caseData){
+      try {
+        let _case: CaseDto = this.setCase();
+  
+        let res = await this.casesService.updateCase(_case);
+        console.log(res)
+  
+        this.notifier.notify("success", res.message);
+        this.routerService.navigateByUrl("/my-profile");
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      try {
+        let caseData: CaseDto = this.setCase();
+  
+        const response: ApiResponse<any> = await this.casesService.createCase(caseData);
+  
+        if(response.status === 200){
+          this.notifier.notify("success", "Caso creado correctamente");
+          this.routerService.navigateByUrl('/');
+        } else {
+          this.notifier.notify("success", response.message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
+  }
+
+  async ngOnInit(){
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+    await this.getCase();
+    this.initMap();
+  }
+  
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
