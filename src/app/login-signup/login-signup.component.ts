@@ -24,7 +24,7 @@ export class LoginSignupComponent implements OnInit {
     this.notifier = notifierService; 
   }
   
-  // Aca declaramos variables, arrays, etc
+  // Declaramos variables
   letModal = true;
   sexTypes = sexTypes;
   minDate: Date;
@@ -36,6 +36,7 @@ export class LoginSignupComponent implements OnInit {
     
   }
 
+  // Metodos
   public signupForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(6)]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -78,17 +79,15 @@ export class LoginSignupComponent implements OnInit {
     try {
       const user = this.getUser();
       let res = await this.authService.login(user);
-      
-      if((await res).token){
-        this.routerService.navigateByUrl('/');
-      }
 
-      if(!(await res).token){
+      if(res.token){
+        this.routerService.navigateByUrl('/');
+      } else {
         this.notifier.notify("success", res.message);
       }
       
     } catch (error) {
-      console.error(error); 
+      console.log(error);
     }
   }
 
@@ -96,7 +95,7 @@ export class LoginSignupComponent implements OnInit {
     try {
 			const user = this.setUser();
       const res = await this.userService.createUser(user);
-
+      
       if(res.token){
         this.routerService.navigateByUrl('/');
       } else {
