@@ -1,7 +1,16 @@
 <!-- Modal login/sign up -->
 <section class="login-page container clearfix">
+    <figure class="shape-1 login-shape">
+        <img src="https://res.cloudinary.com/sline-uy/image/upload/v1604501300/shape-1.svg" alt="shape 1">
+    </figure>
+    <figure class="shape-2 login-shape">
+        <img src="https://res.cloudinary.com/sline-uy/image/upload/v1604501300/shape-2.svg" alt="shape 1">
+    </figure>
+    <figure class="shape-3 login-shape">
+        <img src="https://res.cloudinary.com/sline-uy/image/upload/v1604501300/shape-3_ebycev.svg" alt="shape 1">
+    </figure>
     <div class="main-content">
-        <figure>
+        <figure class="logo-content inline-block">
             <img src="https://res.cloudinary.com/sline-uy/image/upload/v1602770440/sline_uqcix5.svg" alt="sline logo">
         </figure>
         <div class="modal-content">
@@ -9,7 +18,6 @@
                 <div class="login-modal" *ngIf="letModal">
                     <div class="modal-header">
                         <h1 class="title">Inicio de sesión</h1>
-                        <span class="underline"></span>
                     </div>
                     <div class="form-content">
                         <form [formGroup]="loginForm">
@@ -26,11 +34,11 @@
                         </form>
                         <div class="haveAccount">¿Aun no tienes una cuenta? <a (click)="letModal = false">Registrate</a></div>
                         <div class="buttons-content">
-                            <button 
-                                (click)="login()" 
+                            <button
                                 class="btn-primary btn-submit"
+                                (click)="login()"
                             >
-                                Ingresar
+                                <em class="icon-right-open"></em> Continuar
                             </button>
                         </div>
                     </div>
@@ -38,7 +46,6 @@
                 <div class="signup-modal" *ngIf="!letModal">
                     <div class="modal-header">
                         <h1 class="title">Registro</h1>
-                        <span class="underline"></span>
                     </div>
                     <div class="form-content">
                         <form [formGroup]="signupForm">
@@ -91,8 +98,13 @@
                         </form>
                         <div class="haveAccount">¿Ya tienes una cuenta? <a (click)="letModal = true">Inicia sesión</a></div>
                         <div class="buttons-content">
-                            <button [disabled]="!signupForm.valid" (click)="submitUser()" class="btn-primary"
-                                [ngClass]="signupForm.valid ? 'btn-submit' : 'btn-disabled'">Registrarse</button>
+                            <button 
+                                class="btn-primary btn-submit"
+                                [disabled]="!signupForm.valid"
+                                (click)="submitUser()"
+                            >
+                                <em class="icon-right-open"></em>Continuar
+                            </button>
                         </div>
                     </div>
                 </div>    
