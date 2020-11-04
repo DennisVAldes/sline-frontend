@@ -23,13 +23,13 @@
             
             <div class="info-content">
                 <div class="username-content">
-                    <em class="icon-user"></em><h1 class="info-item inline-block">{{ userData.username }}</h1>
+                    <h1 class="info-item inline-block">{{ userData.username }}</h1>
                 </div>
                 <div class="email-content">
-                    <em class="icon-mail"></em><span class="info-item inline-block">{{ userData.email }}</span>
+                    <h1 class="info-item inline-block">{{ userData.email }}</h1>
                 </div>
                 <div class="birthday-content">
-                    <em class="icon-birthday"></em><h3 class="info-item inline-block">{{ userData.fecha_nacimiento }}</h3>
+                    <h1 class="info-item inline-block">{{ userData.fecha_nacimiento }}</h1>
                 </div>
             </div>
         </div>
@@ -58,12 +58,23 @@
                             >
                                 <em class="icon-wide-cross"></em>
                             </button>
-                            
-                            <ng-component *ngIf="deleteCase">
-                                <div class="modal">
-                                    
+                        </div>
+                        <div class="confirm-dlt-case black-layer" *ngIf="deleteCase">
+                            <div class="modal clearfix">
+                                <h2>¿Seguro que desea eliminar el reporte? Esta acción es irreversible.</h2>
+                                <div class="buttons">
+                                    <button class="btn-primary btn-cancel"
+                                            (click)="deleteCase = !deleteCase"
+                                    >
+                                        Cancelar
+                                    </button>
+                                    <button class="btn-primary btn-submit"
+                                            (click)="deleteCaseById(case.id_caso)"
+                                    >
+                                        Confirmar
+                                    </button>
                                 </div>
-                            </ng-component>
+                            </div>
                         </div>
                     </li>
                 </ul>

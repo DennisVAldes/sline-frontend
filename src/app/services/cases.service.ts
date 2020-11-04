@@ -38,7 +38,7 @@ export class CasesService {
         this.http
             .get<ApiResponse<CaseDto[]>>(`${this.apiHost}/cases/user`)
             .toPromise()
-            .then((res) => ({ ...res }));
+            .then((res) => ({...res}));
     
     public deleteCaseById = async (id: string) => {
         let params = new HttpParams();

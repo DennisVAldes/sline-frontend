@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotifierService } from 'angular-notifier';
 import { CasesService } from 'src/app/services/cases.service';
+import { UserService } from 'src/app/services/users.service';
 import { CaseDto, UserDto } from 'src/app/types/dtos/models';
 import { sexTypes } from 'src/app/types/enums';
 
@@ -14,6 +15,7 @@ export class MyProfileComponent implements OnInit {
   
   constructor(
     private casesService: CasesService,
+    private userService: UserService,
     notifierService: NotifierService,
   ) {
     this.notifier = notifierService;
@@ -26,13 +28,22 @@ export class MyProfileComponent implements OnInit {
   newImage: any;
   deleteCase = false;
 
-  userData: UserDto = JSON.parse(localStorage.getItem('userData'));
+  userLocalData: UserDto = JSON.parse(localStorage.getItem('userData'));
   
-  sexTypes = sexTypes;
+  userData: Partial<UserDto>;
+  
+  sexTypes = sexTypes;  
   myCases: CaseDto[];
   
-  private setUser = () => {
+  private getUser = async() => {
     try {
+      const res = await this.userService.getUserById();
+      this.userData = res.data;
+
+      if(this.userData.image_url === undefined) {
+        this.userData.image_url = this.userLocalData.image_url;
+      }
+
       this.userForm.controls['username'].setValue(this.userData.username);
       this.userForm.controls['email'].setValue(this.userData.email);
       this.userForm.controls['password'].setValue(this.userData.password);
@@ -83,7 +94,7 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setUser();
+    this.getUser();
     this.getMyCases();
   }
 
