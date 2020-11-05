@@ -26,23 +26,37 @@
                     <ul>
                         <li>
                             <p class="title">Nombre de usuario</p>
-                            <input type="text" formControlName="username">
-                            <div class="required">Minimo 6 caracteres.</div>
+                            <input 
+                                type="text" 
+                                formControlName="username"
+                                [ngClass]="{'disable-element': !edit}"
+                            >
                         </li>
                         <li>
                             <p class="title">Correo electronico</p>
-                            <input type="email" formControlName="email" autocomplete="off">
+                            <input 
+                                type="email" 
+                                formControlName="email" 
+                                autocomplete="off"
+                                [ngClass]="{'disable-element': !edit}"    
+                            >
                         </li>
                         <li>
                             <p class="title">Seleccione su sexo</p>
-                            <select formControlName="sexo">
+                            <select 
+                                formControlName="sexo"
+                                [ngClass]="{'disable-element': !edit}"
+                                disabled="!edit"
+                            >
                                 <option ngValue={{types}} *ngFor="let types of sexTypes">{{ types }}</option>
                             </select>
                         </li>
                         <li>
                             <p class="title">Fecha de nacimiento</p>
-                            <input type="date" 
+                            <input 
+                                type="date" 
                                 formControlName="fecha_nacimiento"
+                                [ngClass]="{'disable-element': !edit}"
                             >
                         </li>
                     </ul>

@@ -45,7 +45,7 @@ export class AuthService {
     
     if(res.token){
       var token = res.token;
-      var decoded: UserDto = await JwtDecode(token);
+      var decoded: any = await JwtDecode(token);
 
       decoded.image_url === undefined ? decoded.image_url = userProfile(decoded.sexo) : '';
       

@@ -27,7 +27,7 @@ export class UserService {
         
         
         var token = (await res).token;
-        var decoded: UserDto = await JwtDecode(token); 
+        var decoded: any = await JwtDecode(token); 
     
         decoded.image_url = userProfile(decoded.sexo);
 
