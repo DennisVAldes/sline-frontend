@@ -42,17 +42,17 @@ export class AuthService {
       .post<ApiResponse<UserDto>>(`${this.apiHost}/auth/login`, newUser)
       .toPromise()
       .then((_res) => ({..._res}));
-
-    var token = (await res).token;
-    var decoded: UserDto = await JwtDecode(token);
-
-    decoded.image_url === undefined ? decoded.image_url = userProfile(decoded.sexo) : '';
-
-    console.log(decoded)
     
-    localStorage.setItem('isLogged', 'true');
-    localStorage.setItem('userData', JSON.stringify(decoded));
-    localStorage.setItem(this.TOKEN_KEY, res.token);
+    if(res.token){
+      var token = res.token;
+      var decoded: any = await JwtDecode(token);
+
+      decoded.image_url === undefined ? decoded.image_url = userProfile(decoded.sexo) : '';
+      
+      localStorage.setItem('isLogged', 'true');
+      localStorage.setItem('userData', JSON.stringify(decoded));
+      localStorage.setItem(this.TOKEN_KEY, res.token);
+    }
     
     return res;
   }

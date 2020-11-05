@@ -6,8 +6,7 @@
             <a href="/">
                 <li class="btn-primary btn-cancel">Cancelar</li>
             </a>
-            <li class="btn-primary" 
-                [ngClass]="!caseForm.valid ? 'btn-disabled' : 'btn-submit'"
+            <li class="btn-primary btn-submit"
                 (click)="submitCase()"
             >
                 {{ caseData ? 'Guardar cambios' : 'Guardar' }}

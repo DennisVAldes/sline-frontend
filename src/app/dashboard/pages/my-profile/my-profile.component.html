@@ -21,16 +21,46 @@
                 <button class="btn-primary btn-cancel" (click)='updateImage = false'>Cancelar</button>
             </div>
             
-            <div class="info-content">
-                <div class="username-content">
-                    <em class="icon-user"></em><h1 class="info-item inline-block">{{ userData.username }}</h1>
-                </div>
-                <div class="email-content">
-                    <em class="icon-mail"></em><span class="info-item inline-block">{{ userData.email }}</span>
-                </div>
-                <div class="birthday-content">
-                    <em class="icon-birthday"></em><h3 class="info-item inline-block">{{ userData.fecha_nacimiento }}</h3>
-                </div>
+            <div class="form-content">
+                <form [formGroup]="userForm">
+                    <ul>
+                        <li>
+                            <p class="title">Nombre de usuario</p>
+                            <input 
+                                type="text" 
+                                formControlName="username"
+                                [ngClass]="{'disable-element': !edit}"
+                            >
+                        </li>
+                        <li>
+                            <p class="title">Correo electronico</p>
+                            <input 
+                                type="email" 
+                                formControlName="email" 
+                                autocomplete="off"
+                                [ngClass]="{'disable-element': !edit}"    
+                            >
+                        </li>
+                        <li>
+                            <p class="title">Seleccione su sexo</p>
+                            <select 
+                                formControlName="sexo"
+                                [ngClass]="{'disable-element': !edit}"
+                                disabled="!edit"
+                            >
+                                <option ngValue={{types}} *ngFor="let types of sexTypes">{{ types }}</option>
+                            </select>
+                        </li>
+                        <li>
+                            <p class="title">Fecha de nacimiento</p>
+                            <input 
+                                type="date" 
+                                formControlName="fecha_nacimiento"
+                                [ngClass]="{'disable-element': !edit}"
+                            >
+                        </li>
+                    </ul>
+                </form>
             </div>
         </div>
         <hr>
@@ -58,12 +88,23 @@
                             >
                                 <em class="icon-wide-cross"></em>
                             </button>
-                            
-                            <ng-component *ngIf="deleteCase">
-                                <div class="modal">
-                                    
+                        </div>
+                        <div class="confirm-dlt-case black-layer" *ngIf="deleteCase">
+                            <div class="modal clearfix">
+                                <h2>¿Seguro que desea eliminar el reporte? Esta acción es irreversible.</h2>
+                                <div class="buttons">
+                                    <button class="btn-primary btn-cancel"
+                                            (click)="deleteCase = !deleteCase"
+                                    >
+                                        Cancelar
+                                    </button>
+                                    <button class="btn-primary btn-submit"
+                                            (click)="deleteCaseById(case.id_caso)"
+                                    >
+                                        Confirmar
+                                    </button>
                                 </div>
-                            </ng-component>
+                            </div>
                         </div>
                     </li>
                 </ul>

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { UserDto, ApiResponse } from '../types/dtos/models';
-import { AuthService } from './auth/auth.service';
 import JwtDecode from 'jwt-decode';
 import { userProfile } from '../types/enums';
 
@@ -10,7 +9,7 @@ import { userProfile } from '../types/enums';
 	providedIn: 'root',
 })
 export class UserService {
-    constructor( private http: HttpClient, private authService: AuthService ){}
+    constructor( private http: HttpClient ){}
 
     private apiHost = environment.API_ENDPOINT;
 
@@ -28,7 +27,7 @@ export class UserService {
         
         
         var token = (await res).token;
-        var decoded: UserDto = await JwtDecode(token); 
+        var decoded: any = await JwtDecode(token); 
     
         decoded.image_url = userProfile(decoded.sexo);
 
@@ -39,11 +38,15 @@ export class UserService {
         return res;
     }
 
-    public updateProfileImage = async (image: any)=> {
+    public updateProfileImage = async (image: any) => {
         await this.http
             .post<ApiResponse<UserDto>>(`${this.apiHost}/auth/signup`, image)
             .toPromise();
      
     }
     
-}
+    public getUserById = async(): Promise<ApiResponse<Partial<UserDto>>> =>
+        this.http
+            .get<ApiResponse<Partial<UserDto>>>(`${this.apiHost}/users/id`)
+            .toPromise()
+            .then((res) => ({...res}))}

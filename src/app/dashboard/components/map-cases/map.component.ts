@@ -34,6 +34,7 @@ export class MapComponent implements AfterViewInit {
     var map = new google.maps.Map(this.gmap.nativeElement, {
       center: pos,
       zoom: 16,
+      fullscreenControl: false
     });
    
     map.setTilt(45);
@@ -127,6 +128,7 @@ export class MapComponent implements AfterViewInit {
         imagePath:
           "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
       });
+
     } catch(error){
       console.log("Lista de casos vacia")
     }
