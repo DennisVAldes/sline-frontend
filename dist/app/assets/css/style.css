@@ -182,6 +182,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .my-profile .user-info-container .profile-image .change_img:hover { background: rgba(0, 0, 0, 0.5); text-indent: 0; }
 .my-profile .user-info-container .profile-image .change_img p { width: 80%; margin: 0 auto; padding: 60px 0; text-align: center; }
 
+.my-profile .user-info-container .form-content ul { display: flex; flex-direction: column; justify-content: center; flex-wrap: nowrap; }
+.my-profile .user-info-container .form-content ul li { display: flex; flex-direction: row; justify-content: center; flex-wrap: nowrap; width: 100px; }
+
 .my-profile .user-info-container .change-profile-image-container { z-index: 2; position: absolute; margin-top: 170px; background: #fff; box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 10px; }
 .my-profile .user-info-container .change-profile-image-container .arrow { width: 12px; height: 20px; overflow: hidden; position: relative; float: left; top: -26px; right: -60px; transform: rotate(90deg); }
 .my-profile .user-info-container .change-profile-image-container .arrow .outer { width: 0; height: 0; border-right: 20px solid #000000; border-top: 10px solid transparent; border-bottom: 10px solid transparent; position: absolute; top: 0; left: 0; }
