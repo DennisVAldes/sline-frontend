@@ -21,16 +21,32 @@
                 <button class="btn-primary btn-cancel" (click)='updateImage = false'>Cancelar</button>
             </div>
             
-            <div class="info-content">
-                <div class="username-content">
-                    <h1 class="info-item inline-block">{{ userData.username }}</h1>
-                </div>
-                <div class="email-content">
-                    <h1 class="info-item inline-block">{{ userData.email }}</h1>
-                </div>
-                <div class="birthday-content">
-                    <h1 class="info-item inline-block">{{ userData.fecha_nacimiento }}</h1>
-                </div>
+            <div class="form-content">
+                <form [formGroup]="userForm">
+                    <ul>
+                        <li>
+                            <p class="title">Nombre de usuario</p>
+                            <input type="text" formControlName="username">
+                            <div class="required">Minimo 6 caracteres.</div>
+                        </li>
+                        <li>
+                            <p class="title">Correo electronico</p>
+                            <input type="email" formControlName="email" autocomplete="off">
+                        </li>
+                        <li>
+                            <p class="title">Seleccione su sexo</p>
+                            <select formControlName="sexo">
+                                <option ngValue={{types}} *ngFor="let types of sexTypes">{{ types }}</option>
+                            </select>
+                        </li>
+                        <li>
+                            <p class="title">Fecha de nacimiento</p>
+                            <input type="date" 
+                                formControlName="fecha_nacimiento"
+                            >
+                        </li>
+                    </ul>
+                </form>
             </div>
         </div>
         <hr>

@@ -119,8 +119,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .cases_section #map #content a { transition: all .3s ease; display: block; text-decoration: none; margin-top: 5px; text-align: center; font-size: 18px; font-weight: 600; }
 
 /* List of Cases*/
-.list-cases { width: 60px; height: calc(100vh - 40px); padding: 20px 0; transition: all 0.5s ease; position: absolute; right: 0; z-index: 2; background: transparent; }
-.list-cases .header-content { width: 94%; margin: 0 auto 10px; position: relative; padding: 0; }
+.list-cases { width: 60px; height: calc(100vh - 40px); padding: 20px 0; transition: width 0.5s ease; position: absolute; right: 0; z-index: 2; background: transparent; }
+.list-cases .header-content { margin: 0 auto 10px; padding: 0; }
 .list-cases .header-content:before { content: ""; clear: both; display: block; width: 0; background: none !important; }
 .list-cases .header-content ul { width: 100%; list-style: none; }
 .list-cases .header-content ul .item { bottom: 10px; float: left; }
@@ -128,7 +128,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .list-cases .header-content ul .item.arrow em { width: 100%; }
 .list-cases .header-content ul .item.arrow em:before { margin: 0 !important; width: 100% !important; }
 .list-cases .header-content ul .title h2 { font-size: 34px; padding-left: 10px; }
-.list-cases .list-content { width: 0; max-height: calc(100% - 98px); height: 100%; margin: 0 auto; padding: 10px 0; transition: all .3s ease; overflow-y: auto; }
+.list-cases .list-content { width: 0; max-height: calc(100% - 110px); height: 100%; margin: 0 auto; padding: 10px 0; transition: all .3s ease; overflow-y: auto; }
 .list-cases .list-content .case-content { background: #FFD1FD; max-height: 230px; max-width: calc(100% - 70px); width: 100%; padding: 20px 10px 10px 50px; border-radius: 10px; margin-bottom: 10px; position: relative; }
 .list-cases .list-content .case-content .header { margin-bottom: 20px; position: relative; }
 .list-cases .list-content .case-content .header p { display: inline-block; white-space: pre; }
@@ -139,15 +139,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .list-cases .list-content .case-content .header .date { color: #657786; position: absolute; top: -10px; right: 0; }
 .list-cases .list-content .case-content .body .description-content { font-size: 18px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; padding: 0 30px 30px 0; }
 .list-cases .list-content .case-content .body .username { text-align: right; }
-.list-cases .footer-content { width: 0; overflow: hidden; text-align: center; padding: 5px 5px 5px 0; border-radius: 100px; margin: 3px auto 0; background: rgba(255, 255, 255, 0.5); }
+.list-cases .footer-content { width: 0; height: 0; overflow: hidden; text-align: center; border-radius: 100px; margin: 5px auto 0; background: rgba(255, 255, 255, 0.5); }
 .external-content { width: 200px; text-align: center; position: fixed; bottom: 10px; left: 50%; padding: 5px 5px 5px 0; border-radius: 100px; background: rgba(255, 255, 255, 0.5); }
 
 .black-layer { background: rgba(0 , 0, 0, 0.5); width: 0; height: 100vh; z-index: 1; position: absolute; right: 0; top: 0; }
 
 .list-cases.open { width: 450px; background: #FEB6FF; }
-.list-cases.open .header-content ul li.arrow { transform: rotate(-180deg); }
-.list-cases.open .footer-content { width: 100%; }
+.list-cases.open .header-content ul li.arrow { transform: rotate(-180deg); width: auto; padding: 0 10px; }
 .list-cases.open .list-content { width: 94%; border-top: solid 1px #000; border-bottom: solid 1px #000; }
+.list-cases.open .footer-content { width: 200px; height: auto; padding: 5px 5px 5px 0; }
 .list-cases.open ~ .black-layer { width: 100%; }
 
 /* Create case page */
@@ -181,22 +181,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .my-profile .user-info-container .profile-image .change_img { text-indent: -9999px; color: #fff; cursor: pointer; max-width: 100%; max-height: 100%; width: 100%; height: 100%; position: absolute; top: 0; left: 0; border-radius: 100%; background: transparent; }
 .my-profile .user-info-container .profile-image .change_img:hover { background: rgba(0, 0, 0, 0.5); text-indent: 0; }
 .my-profile .user-info-container .profile-image .change_img p { width: 80%; margin: 0 auto; padding: 60px 0; text-align: center; }
-.my-profile .user-info-container .info-content { float: left; padding: 20px 0 0 20px; }
-.my-profile .user-info-container .info-content .username-content,
-.my-profile .user-info-container .info-content .email-content,
-.my-profile .user-info-container .info-content .birthday-content { margin-bottom: 10px; }
-
-.my-profile .user-info-container .info-content .username-content em,
-.my-profile .user-info-container .info-content .email-content em,
-.my-profile .user-info-container .info-content .birthday-content em,
-.my-profile .user-info-container .info-content .birthday-content .info-item { font-size: 18px; }
-
-.my-profile .user-info-container .info-content .birthday-content .info-item { font-weight: normal; }
 
 .my-profile .user-info-container .change-profile-image-container { z-index: 2; position: absolute; margin-top: 170px; background: #fff; box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 10px; }
 .my-profile .user-info-container .change-profile-image-container .arrow { width: 12px; height: 20px; overflow: hidden; position: relative; float: left; top: -26px; right: -60px; transform: rotate(90deg); }
 .my-profile .user-info-container .change-profile-image-container .arrow .outer { width: 0; height: 0; border-right: 20px solid #000000; border-top: 10px solid transparent; border-bottom: 10px solid transparent; position: absolute; top: 0; left: 0; }
 .my-profile .user-info-container .change-profile-image-container .arrow .inner { width: 0; height: 0; border-right: 20px solid #ffffff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; position: absolute; top: 0; left: 2px; }
+
+
 
 .my-profile .my-cases .header-content { width: 100%; }
 .my-profile .my-cases .header-content:before { background: none; }
