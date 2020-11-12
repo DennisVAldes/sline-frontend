@@ -46,7 +46,7 @@
                             <select 
                                 formControlName="sexo"
                                 [ngClass]="{'disable-element': !edit}"
-                                disabled="!edit"
+                                disabled="edit"
                             >
                                 <option ngValue={{types}} *ngFor="let types of sexTypes">{{ types }}</option>
                             </select>
@@ -56,12 +56,15 @@
                             <input 
                                 type="date" 
                                 formControlName="fecha_nacimiento"
+                                disabled="edit"
                                 [ngClass]="{'disable-element': !edit}"
                             >
                         </li>
                     </ul>
                 </form>
             </div>
+            
+            
         </div>
         <hr>
         <div class="my-cases">
