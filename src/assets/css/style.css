@@ -189,6 +189,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .my-profile .user-info-container .change-profile-image-container .arrow { width: 12px; height: 20px; overflow: hidden; position: relative; float: left; top: -26px; right: -60px; transform: rotate(90deg); }
 .my-profile .user-info-container .change-profile-image-container .arrow .outer { width: 0; height: 0; border-right: 20px solid #000000; border-top: 10px solid transparent; border-bottom: 10px solid transparent; position: absolute; top: 0; left: 0; }
 .my-profile .user-info-container .change-profile-image-container .arrow .inner { width: 0; height: 0; border-right: 20px solid #ffffff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; position: absolute; top: 0; left: 2px; }
+.my-profile .user-info-container .form-content { float: left; }
 .my-profile .user-info-container .form-content ul { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; max-width: 50%; }
 .my-profile .user-info-container .form-content ul li { display: flex; flex-direction: column; justify-content: center; max-width: 50%; width: 100%; }
 
@@ -218,17 +219,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .cluster img { width: 100% !important; height: 100% !important; }
 
 /* Mobile */
-
 @media(max-width: 1023px){
-    .modal{ max-height: 85%; margin: 50px auto 0; }
 }
 
 @media(max-width: 719px){
-    .modal{ max-width: 90%; margin: 40px auto 0; }
-    .modal .header-buttons{ max-width: 300px; margin-left: -150px; }
-    .modal .form-content ul li{ padding: 0; }
 }
 
 @media(max-height: 626px){
-    .modal { max-height: 500px !important; }
 }
