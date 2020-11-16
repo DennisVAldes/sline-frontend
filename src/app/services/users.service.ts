@@ -49,4 +49,13 @@ export class UserService {
         this.http
             .get<ApiResponse<Partial<UserDto>>>(`${this.apiHost}/users/id`)
             .toPromise()
-            .then((res) => ({...res}))}
+            .then((res) => ({...res}))
+
+    public updateUser = async (user: Partial<UserDto>) => 
+        this.http
+            .put<ApiResponse<Partial<UserDto>>>(`${this.apiHost}/users/update`, user)
+            .toPromise().
+            then((res) => ({...res}))
+
+}   
+        

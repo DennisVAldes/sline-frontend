@@ -69,6 +69,15 @@ export class MyProfileComponent implements OnInit {
     image_url: new FormControl('', [])
   })
 
+  private setUser = () => {
+    return {
+      "username": this.userForm.value.username,
+      "email": this.userForm.value.email,
+      "sexo": this.userForm.value.sexo,
+      "fecha_nacimiento": this.userForm.value.fecha_nacimiento
+    }
+  }
+
   public updateProfileImage = () => {
     try {
       console.log(this.newImage)
@@ -88,9 +97,25 @@ export class MyProfileComponent implements OnInit {
   }
 
   public deleteCaseById = async (id: string) => {
-    let res = await this.casesService.deleteCaseById(id);
-    this.ngOnInit();
-    this.notifier.notify("succes", res.message)
+    try {
+      let res = await this.casesService.deleteCaseById(id);
+      this.ngOnInit();
+      this.notifier.notify("succes", res.message)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  public updateUser = async () => {
+    try {
+      const user = this.setUser();
+      this.userService.updateUser(user);
+      this.edit = false;
+      this.ngOnInit();
+
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   ngOnInit(): void {
