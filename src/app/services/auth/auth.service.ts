@@ -47,7 +47,7 @@ export class AuthService {
       var token = res.token;
       var decoded: any = await JwtDecode(token);
 
-      decoded.image_url === undefined ? decoded.image_url = userProfile(decoded.sexo) : '';
+      decoded.image_url === undefined ? decoded.image_url = userProfile(decoded.sexo) : decoded.image_url = decoded.image_url;
       
       localStorage.setItem('isLogged', 'true');
       localStorage.setItem('userData', JSON.stringify(decoded));

@@ -33,7 +33,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* General headers */
 .container .header-content:before { content: ""; clear: both; display: block; width: 100%; height: 62px; position: absolute; left: 0; top: 0; z-index: -1; background: #ffd1fd; }
-.container .header-content { max-width: 100%; width: 94%; height: 63px; margin: 0 auto; padding: 10px 0; }
+.container .header-content { max-width: 100%; width: 94%; height: 43px; margin: 0 auto; padding: 10px 0; position: static; top: 0; }
 .container .header-content em { float: left; font-size: 34px; }
 .container .header-content .title { font-weight: 500; float: left; font-size: 26px; padding: 5px 0 0 10px; margin-bottom: -10px; }
 
