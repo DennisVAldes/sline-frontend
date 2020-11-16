@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { NotifierService } from 'angular-notifier';
 import { CasesService } from 'src/app/services/cases.service';
 import { UserService } from 'src/app/services/users.service';
@@ -28,46 +29,33 @@ export class MyProfileComponent implements OnInit {
   newImage: any;
   deleteCase = false;
 
-  userLocalData: UserDto = JSON.parse(localStorage.getItem('userData'));
-  
   userData: Partial<UserDto>;
   
   sexTypes = sexTypes;  
   myCases: CaseDto[];
-  
+
+  public userForm = new FormGroup({
+    username: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    sexo: new FormControl('', [Validators.required]),
+    fecha_nacimiento: new FormControl('', [Validators.required]),
+    image_url: new FormControl('', [])
+  })
+
   private getUser = async() => {
     try {
-      const res = await this.userService.getUserById();
-      this.userData = res.data;
-
-      if(this.userData.image_url === undefined) {
-        this.userData.image_url = this.userLocalData.image_url;
-      }
+      this.userData = JSON.parse(localStorage.getItem('userData'));
 
       this.userForm.controls['username'].setValue(this.userData.username);
       this.userForm.controls['email'].setValue(this.userData.email);
-      this.userForm.controls['password'].setValue(this.userData.password);
       this.userForm.controls['sexo'].setValue(this.userData.sexo);
-      this.userForm.controls['fecha_registro'].setValue(this.userData.fecha_registro);
       this.userForm.controls['fecha_nacimiento'].setValue(this.userData.fecha_nacimiento);
-      this.userForm.controls['id'].setValue(this.userData.id);
       this.userForm.controls['image_url'].setValue(this.userData.image_url);
 
     } catch (error) {
       console.log(error)
     }
   }
-
-  public userForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-    sexo: new FormControl('', [Validators.required]),
-    fecha_registro: new FormControl('', [Validators.required]),
-    fecha_nacimiento: new FormControl('', [Validators.required]),
-    id: new FormControl('', [Validators.required]),
-    image_url: new FormControl('', [])
-  })
 
   private setUser = () => {
     return {
@@ -111,6 +99,7 @@ export class MyProfileComponent implements OnInit {
       const user = this.setUser();
       this.userService.updateUser(user);
       this.edit = false;
+
       this.ngOnInit();
 
     } catch (error) {

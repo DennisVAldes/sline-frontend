@@ -51,11 +51,20 @@ export class UserService {
             .toPromise()
             .then((res) => ({...res}))
 
-    public updateUser = async (user: Partial<UserDto>) => 
-        this.http
-            .put<ApiResponse<Partial<UserDto>>>(`${this.apiHost}/users/update`, user)
-            .toPromise().
-            then((res) => ({...res}))
+    public updateUser = async (user: Partial<UserDto>) => {
+        let res = await this.http
+                    .put<ApiResponse<UserDto>>(`${this.apiHost}/users/update`, user)
+                    .toPromise()
+                    .then((_res) => ({..._res}));
+    
+        var token = (await res).token;
+        var decoded: any = await JwtDecode(token)
+        decoded.image_url = userProfile(decoded.sexo);
+        
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('userData', JSON.stringify(decoded));
+        
+    }
 
 }   
         
