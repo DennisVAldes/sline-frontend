@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { NotifierService } from 'angular-notifier';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { CasesService } from 'src/app/services/cases.service';
 import { UserService } from 'src/app/services/users.service';
 import { CaseDto, UserDto } from 'src/app/types/dtos/models';
@@ -17,6 +18,7 @@ export class MyProfileComponent implements OnInit {
   constructor(
     private casesService: CasesService,
     private userService: UserService,
+    private authService: AuthService,
     notifierService: NotifierService,
   ) {
     this.notifier = notifierService;
@@ -26,9 +28,10 @@ export class MyProfileComponent implements OnInit {
 
   edit = false;
   updateImage = false;
-  newImage: any;
+  updatePassword = false;
   deleteCase = false;
-
+  
+  newImage: any;
   userData: Partial<UserDto>;
   
   sexTypes = sexTypes;  
@@ -40,6 +43,11 @@ export class MyProfileComponent implements OnInit {
     sexo: new FormControl('', [Validators.required]),
     fecha_nacimiento: new FormControl('', [Validators.required]),
     image_url: new FormControl('', [])
+  })
+
+  public changePasswordForm = new FormGroup({
+    currentPassword: new FormControl('', [Validators.required]),
+    newPassword: new FormControl('', [Validators.required]),
   })
 
   private getUser = async() => {
@@ -66,6 +74,13 @@ export class MyProfileComponent implements OnInit {
     }
   }
 
+  private setPasswords = () => {
+    return {
+      "currentPassword": this.changePasswordForm.value.currentPassword,
+      "newPassword": this.changePasswordForm.value.newPassword
+    }
+  }
+
   public updateProfileImage = () => {
     try {
       console.log(this.newImage)
@@ -77,7 +92,7 @@ export class MyProfileComponent implements OnInit {
   private getMyCases = async () => {
     try {
       const res = await this.casesService.getCaseByUserId();
-
+      console.log(res)
       this.myCases = res.data;
     } catch (error) {
       console.log(error)
@@ -97,11 +112,21 @@ export class MyProfileComponent implements OnInit {
   public updateUser = async () => {
     try {
       const user = this.setUser();
-      this.userService.updateUser(user);
+      await this.userService.updateUser(user);
       this.edit = false;
 
-      this.ngOnInit();
+      document.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
+  public changePassword = async () => {
+    try {
+      const data = this.setPasswords();
+      await this.userService.changePassword(data);
+      
+      this.authService.logout();
     } catch (error) {
       console.log(error);
     }
