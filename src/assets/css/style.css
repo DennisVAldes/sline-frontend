@@ -237,7 +237,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .donde-denunciar .main-content article .right-content { max-width: 50%; width: 100%; float: right; }
 .donde-denunciar .main-content article .right-content .title { font-size: 26px; font-weight: 600; margin-bottom: 10px; }
-.donde-denunciar .main-content article .right-content .sub-title { font-size: 18px; color: #657786; }
+.donde-denunciar .main-content article .right-content .sub-title { font-size: 18px; color: #657786; display: block; }
 .donde-denunciar .main-content article .right-content .text { font-size: 16px; padding: 10px; margin-top: 20px; }
 
 .donde-denunciar .main-content article .right-content .footer-content { max-width: 100%; width: 100%; }
