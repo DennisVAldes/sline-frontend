@@ -105,7 +105,6 @@ export class MapComponent implements AfterViewInit {
             <p>Tipo: ${caseData.tipo_violencia}</p>
             <p>Registro de caso: ${caseData.fecha_registro}</p>
             <p>Verificado: ${caseData.verificado ? 'Si' : 'No'}</p>
-            <a href="/cases/${caseData.id_caso}">Ver caso</a>
           </div>`
         })
 

@@ -229,6 +229,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .notifier__container ul .notifier__container-list { border-radius: 10px; background-image: linear-gradient(to bottom right, #FFD1FD, #da81d5); padding: 10px 50px 10px 10px; position: relative; font-size: 18px; }
 .notifier__container ul .notifier__container-list button { position: absolute; top: 8px; right: 5px; border: none; background: none; color: #fff; }
 
+/* Donde denunciar section */
+.donde-denunciar .main-content article { max-width: 100%; width: 100%; padding: 50px 0; }
+.donde-denunciar .main-content article .left-content { max-width: 50%; width: 100%; float: left; }
+.donde-denunciar .main-content article .left-content figure { max-width: 80%; width: 100%; float: left; }
+.donde-denunciar .main-content article .left-content figure img { width: 100%; height: 100%; }
+
+.donde-denunciar .main-content article .right-content { max-width: 50%; width: 100%; float: right; }
+.donde-denunciar .main-content article .right-content .title { font-size: 26px; font-weight: 600; margin-bottom: 10px; }
+.donde-denunciar .main-content article .right-content .sub-title { font-size: 18px; color: #657786; display: block; }
+.donde-denunciar .main-content article .right-content .text { font-size: 16px; padding: 10px; margin-top: 20px; }
+
+.donde-denunciar .main-content article .right-content .footer-content { max-width: 100%; width: 100%; }
+.donde-denunciar .main-content article .right-content .footer-content span { font-size: 16px; }
+.donde-denunciar .main-content article .right-content .footer-content li { float: left; margin: 10px; }
+.donde-denunciar .main-content article .right-content .footer-content figure { max-width: 50px; width: 100%; }
+.donde-denunciar .main-content article .right-content .footer-content figure img { width: 100%; height: 100%; }
+
 /* Clustes */
 .cluster img { width: 100% !important; height: 100% !important; }
 

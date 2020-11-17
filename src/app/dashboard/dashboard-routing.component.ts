@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { CasesComponent } from './pages/cases/cases-map-list/cases.component';
 import { CreateCaseComponent } from './pages/cases/create-case/create-case.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
+import { DondeDenunciarComponent } from './pages/donde-denunciar/donde-denunciar.component';
 
 const routes: Routes = [
     {
@@ -14,6 +15,7 @@ const routes: Routes = [
         { path: 'cases/:id', component: CreateCaseComponent },
         { path: 'create-case', component: CreateCaseComponent },
         { path: 'my-profile', component: MyProfileComponent },
+        { path: 'donde-denunciar', component: DondeDenunciarComponent },
         { path: '', redirectTo: 'cases', pathMatch: 'full' }
       ]
     }
