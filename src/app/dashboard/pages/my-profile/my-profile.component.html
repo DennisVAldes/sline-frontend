@@ -32,7 +32,7 @@
             </div>
 
             <!-- Update password modal -->
-            <div class="change-password-container change-profile-image-container" *ngIf="updatePassword">
+            <div class="change-password-container confirm-dlt-case black-layer" *ngIf="updatePassword">
                 <div class="arrow">
                     <div class="outer"></div>
                     <div class="inner"></div>
@@ -113,12 +113,10 @@
             <div class="config-options" class="icon-ellipsis-vert">
                 <ul>
                     <li title="Editar perfil de usuario" (click)="edit = !edit">
-                        <em class="icon-address-card"></em>
-                        Editar informacion de usuario
+                        <span><em class="icon-address-card"></em> Editar informacion de usuario</span>
                     </li>
                     <li title="Editar perfil de usuario" (click)="updatePassword = !updatePassword">
-                        <em class="icon-pencil"></em>
-                        Cambiar contraseña
+                        <span><em class="icon-pencil"></em> Cambiar contraseña</span>
                     </li>
                 </ul>
             </div>
