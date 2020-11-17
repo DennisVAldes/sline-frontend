@@ -12,6 +12,7 @@ import { MapComponent } from './components/map-cases/map.component';
 import { CreateCaseComponent } from './pages/cases/create-case/create-case.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DondeDenunciarComponent } from './pages/donde-denunciar/donde-denunciar.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MapComponent,
     CreateCaseComponent,
     MyProfileComponent,
+    DondeDenunciarComponent,
   ],
   imports: [
     CommonModule,
