@@ -174,7 +174,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .case-edit .main-content .form-content ul { list-style: none; }
 
 /* My profile */
-.my-profile .user-info-container { margin-bottom: 50px; padding: 10px; width: 100%; height: 170px; }
+.my-profile .user-info-container { margin-bottom: 50px; padding: 10px; width: 100%; height: 170px; position: relative; }
 
 .my-profile .user-info-container .profile-image { position: relative; max-width: 170px; max-height: 100%; width: 100%; float: left; border-radius: 100%; overflow: hidden; }
 .my-profile .user-info-container .profile-image img { width: 100%; height: 100%; }
@@ -194,10 +194,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .my-profile .user-info-container .form-content form ul li input,
 .my-profile .user-info-container .form-content form ul li select { padding: 5px 5px 5px 10px; border: solid 2px rgba(0, 0, 0, 0.5); border-radius: 5px; }
 .my-profile .user-info-container .form-content .buttons-content { justify-content: right; text-align: center; }
-.my-profile .user-info-container .form-content .buttons-content li { max-width: 100px; width: 100%; display: inline-block;}
+.my-profile .user-info-container .form-content .buttons-content li { max-width: 100px; width: 100%; display: inline-block; }
 
-.my-profile .user-info-container .icon-edit { font-size: 26px; cursor: pointer; }
-.my-profile .user-info-container .icon-edit:hover { font-size: 28px; }
+.my-profile .user-info-container .icon-ellipsis-vert { font-size: 26px; cursor: pointer; position: absolute; top: 20px; right: 0; }
+.my-profile .user-info-container .icon-ellipsis-vert ul { height: 0; overflow: hidden; transition: all .4s ease; border-radius: 5px; }
+.my-profile .user-info-container .icon-ellipsis-vert:hover ul { height: 70px; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2); margin-top: 10px; }
+.my-profile .user-info-container .icon-ellipsis-vert li { font-size: 14px; max-height: 50%; height: 100%; padding: 0 5px; vertical-align: middle; text-align: center; background: transparent; transition: all 0.5s ease; }
+.my-profile .user-info-container .icon-ellipsis-vert li:hover { background: rgba(0, 0, 0, 0.2); }
+.my-profile .user-info-container .icon-ellipsis-vert li span { display: inline-block; vertical-align: middle; height: 100%; line-height: 35px; } 
 
 .my-profile .my-cases .header-content { width: 100%; }
 .my-profile .my-cases .header-content:before { background: none; }
@@ -207,9 +211,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .my-profile .my-cases .main-content .cases-list .case .case-id { font-size: 18px; margin-right: 8px; padding-top: 8px }
 .my-profile .my-cases .main-content .cases-list .case .date { font-size: 16px; color: #657786; padding-top: 10px; }
 .my-profile .my-cases .main-content .cases-list .case .buttons { float: right; }
-.my-profile .my-cases .main-content .cases-list .case .confirm-dlt-case { position: fixed; width: 100vw; }
-.my-profile .my-cases .main-content .cases-list .case .confirm-dlt-case .modal { max-width: 350px; width: 100%; padding: 10px; margin: -58.5px auto 0; background: #fff; border-radius: 10px; position: relative; top: 50%; }
-.my-profile .my-cases .main-content .cases-list .case .confirm-dlt-case .modal .buttons { float: none; margin: 10px 0; text-align: center; }
+
+.my-profile .confirm-dlt-case { position: fixed; width: 100vw; }
+.my-profile .confirm-dlt-case .modal { max-width: 350px; width: 100%; padding: 10px; margin: 0 auto; background: #fff; border-radius: 10px; position: relative; top: 30%; }
+.my-profile .confirm-dlt-case .modal .title { margin-bottom: 20px; }
+.my-profile .confirm-dlt-case .modal .buttons-content li { float: left; max-width: 100px; width: 100%; text-align: center; }
+
 .my-profile .not-cases p { text-align: center; font-size: 26px; color: #657786; }
 
 /* Disable elements */
