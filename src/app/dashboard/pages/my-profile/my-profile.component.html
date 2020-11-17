@@ -1,26 +1,64 @@
 <section class="container my-profile">
     <header class="header-content clearfix">
-        <em class="icon-address-card-o"></em>
+        <em class="icon-address-card"></em>
         <h2 class="title">Mi perfil</h2>
     </header>
     <div class="main-content">
         <div class="user-info-container clearfix">
+            <!-- User profile image -->
             <figure class="profile-image">
                 <img [src]='userData.image_url' alt="Profile image">
                 <span class="change_img" (click)='updateImage = !updateImage'><p>Cambiar imagen de perfil</p></span>
             </figure>
             
+            <!-- Change image modal -->
             <div class="change-profile-image-container" *ngIf="updateImage">
                 <div class="arrow">
                     <div class="outer"></div>
                     <div class="inner"></div>
                 </div>
+                
                 <p>Presione el boton que se encuentra debajo </p><hr>
                 <input type="file" accept="image/png, image/jpeg" [(ngModel)]="newImage"> <hr>
-                <button class="btn-primary btn-submit" (click)='updateProfileImage()'>Aceptar</button>
-                <button class="btn-primary btn-cancel" (click)='updateImage = false'>Cancelar</button>
+
+                <ul class="buttons-content clearfix">
+                    <li class="btn-primary btn-submit" (click)='updateProfileImage()'>
+                        Aceptar
+                    </li>
+                    <li class="btn-primary btn-cancel" (click)='updateImage = false'>
+                        Cancelar
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Update password modal -->
+            <div class="change-password-container confirm-dlt-case black-layer" *ngIf="updatePassword">
+                <div class="modal">
+                    <div class="arrow">
+                        <div class="outer"></div>
+                        <div class="inner"></div>
+                    </div>
+                    
+                    <form [formGroup]="changePasswordForm">
+                        <p>Contraseña actual </p>
+                        <input type="text" formControlName="currentPassword"> <hr>
+                    
+                        <p>Nueva contraseña </p>
+                        <input type="text" formControlName="newPassword"> <hr>
+                    </form>
+                    
+                    <ul class="buttons-content clearfix">
+                        <li class="btn-primary btn-cancel" (click)='updatePassword = false'>
+                            Cancelar
+                        </li>
+                        <li class="btn-primary btn-submit" (click)='changePassword()'>
+                            Aceptar
+                        </li>
+                    </ul>
+                </div>
             </div>
             
+            <!-- User information form -->
             <div class="form-content">
                 <form [formGroup]="userForm">
                     <ul>
@@ -30,6 +68,7 @@
                                 type="text" 
                                 formControlName="username"
                                 [ngClass]="{'disable-element': !edit}"
+                                [attr.disabled]="!edit ? '' : null"
                             >
                         </li>
                         <li>
@@ -39,6 +78,7 @@
                                 formControlName="email" 
                                 autocomplete="off"
                                 [ngClass]="{'disable-element': !edit}"    
+                                [attr.disabled]="!edit ? '' : null"
                             >
                         </li>
                         <li>
@@ -46,7 +86,7 @@
                             <select 
                                 formControlName="sexo"
                                 [ngClass]="{'disable-element': !edit}"
-                                disabled="edit"
+                                [attr.disabled]="!edit ? '' : null"
                             >
                                 <option ngValue={{types}} *ngFor="let types of sexTypes">{{ types }}</option>
                             </select>
@@ -54,17 +94,36 @@
                         <li>
                             <p class="title">Fecha de nacimiento</p>
                             <input 
-                                type="date" 
+                                type="date"
                                 formControlName="fecha_nacimiento"
-                                disabled="edit"
                                 [ngClass]="{'disable-element': !edit}"
+                                [attr.disabled]="!edit ? '' : null"
                             >
                         </li>
                     </ul>
                 </form>
+                <ul class="buttons-content clearfix" *ngIf="edit">
+                    <li 
+                        class="btn-primary btn-cancel" 
+                        (click)='edit = !edit'
+                    >
+                        Cancelar
+                    </li>
+                    <li class="btn-primary btn-submit" (click)="updateUser()"> Guardar </li>
+                </ul>
             </div>
             
-            
+            <!-- Options items -->
+            <div class="config-options" class="icon-ellipsis-vert">
+                <ul>
+                    <li title="Editar perfil de usuario" (click)="edit = !edit">
+                        <span><em class="icon-address-card"></em> Editar informacion de usuario</span>
+                    </li>
+                    <li title="Editar perfil de usuario" (click)="updatePassword = !updatePassword">
+                        <span><em class="icon-pencil"></em> Cambiar contraseña</span>
+                    </li>
+                </ul>
+            </div>
         </div>
         <hr>
         <div class="my-cases">
@@ -82,31 +141,32 @@
                                 <button class="btn-primary btn-submit"    
                                         title="Editar caso"
                                 >
-                                <em class="icon-envelope-open-o"></em>
+                                <em class="icon-edit"></em>
                             </button>
                             </a>
                             <button class="btn-primary btn-cancel"
                                     (click)='deleteCase = !deleteCase'
                                     title="Eliminar caso"
                             >
-                                <em class="icon-wide-cross"></em>
+                                <em class="icon-cancel"></em>
                             </button>
                         </div>
                         <div class="confirm-dlt-case black-layer" *ngIf="deleteCase">
                             <div class="modal clearfix">
-                                <h2>¿Seguro que desea eliminar el reporte? Esta acción es irreversible.</h2>
-                                <div class="buttons">
-                                    <button class="btn-primary btn-cancel"
+                                <h3 class="title">¿Seguro que desea eliminar el reporte? Esta acción es irreversible.</h3>
+                                
+                                <ul class="buttons-content clearfix">
+                                    <li class="btn-primary btn-cancel"
                                             (click)="deleteCase = !deleteCase"
                                     >
                                         Cancelar
-                                    </button>
-                                    <button class="btn-primary btn-submit"
+                                    </li>
+                                    <li class="btn-primary btn-submit"
                                             (click)="deleteCaseById(case.id_caso)"
                                     >
                                         Confirmar
-                                    </button>
-                                </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </li>

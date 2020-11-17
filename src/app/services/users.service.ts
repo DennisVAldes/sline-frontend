@@ -4,6 +4,7 @@ import { environment } from './../../environments/environment';
 import { UserDto, ApiResponse } from '../types/dtos/models';
 import JwtDecode from 'jwt-decode';
 import { userProfile } from '../types/enums';
+import { async } from '@angular/core/testing';
 
 @Injectable({
 	providedIn: 'root',
@@ -49,4 +50,30 @@ export class UserService {
         this.http
             .get<ApiResponse<Partial<UserDto>>>(`${this.apiHost}/users/id`)
             .toPromise()
-            .then((res) => ({...res}))}
+            .then((res) => ({...res}))
+
+    public updateUser = async (user: Partial<UserDto>) => {
+        let res = await this.http
+                    .put<ApiResponse<UserDto>>(`${this.apiHost}/users/update`, user)
+                    .toPromise()
+                    .then((_res) => ({..._res}));
+                    
+        var token = res.token;
+        var decoded: any = await JwtDecode(token)
+        decoded.image_url = userProfile(decoded.sexo);
+        
+        localStorage.removeItem('token');
+        localStorage.removeItem('userData');
+    
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('userData', JSON.stringify(decoded));
+        
+    }
+
+    public changePassword = async(data: {"currentPassword": string, "newPassword": string}) =>
+        await this.http
+            .put<ApiResponse<any>>(`${this.apiHost}/users/changePassword`, data)
+            .toPromise()
+            .then((_res) => ({..._res}));
+}   
+        

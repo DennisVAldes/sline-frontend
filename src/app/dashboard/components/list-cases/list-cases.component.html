@@ -3,7 +3,7 @@
         <ul class="clearfix">
             <li class="item" *ngIf="open"> <em class="icon-list"> </em></li>
             <li class="title" *ngIf="open"><h2>Reportes</h2> </li>
-            <li class="arrow item" (click)="open = !open"> <em class="icon-right-open"> </em></li>
+            <li class="arrow item" (click)="open = !open"> <em class="icon-right"> </em></li>
         </ul>
     </div>
     <div class="list-content">
@@ -41,14 +41,14 @@
         </div>
     </div>
     <div class="footer-content">
-        <a href="create-case" class="pink-btn">
+        <a [routerLink]="['/create-case']" class="pink-btn">
             <em class="icon-plus inline-block"></em>
             <p class="inline-block">Reportar</p>
         </a>
     </div>
 </div>
 <div class="external-content" *ngIf="!open">
-    <a href="create-case" class="pink-btn">
+    <a [routerLink]="['/create-case']" class="pink-btn">
         <em class="icon-plus inline-block"></em>
         <p class="inline-block">Reportar</p>
     </a>
