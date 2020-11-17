@@ -39,18 +39,20 @@
                         <div class="inner"></div>
                     </div>
                     
-                    <p>Contraseña actual </p>
-                    <input type="text" accept="image/png, image/jpeg" [(ngModel)]="newImage"> <hr>
-                
-                    <p>Nueva contraseña </p>
-                    <input type="text" accept="image/png, image/jpeg" [(ngModel)]="newImage"> <hr>
+                    <form [formGroup]="changePasswordForm">
+                        <p>Contraseña actual </p>
+                        <input type="text" formControlName="currentPassword"> <hr>
+                    
+                        <p>Nueva contraseña </p>
+                        <input type="text" formControlName="newPassword"> <hr>
+                    </form>
                     
                     <ul class="buttons-content clearfix">
-                        <li class="btn-primary btn-submit" (click)='updateProfileImage()'>
-                            Aceptar
-                        </li>
                         <li class="btn-primary btn-cancel" (click)='updatePassword = false'>
                             Cancelar
+                        </li>
+                        <li class="btn-primary btn-submit" (click)='changePassword()'>
+                            Aceptar
                         </li>
                     </ul>
                 </div>
@@ -151,19 +153,20 @@
                         </div>
                         <div class="confirm-dlt-case black-layer" *ngIf="deleteCase">
                             <div class="modal clearfix">
-                                <h2>¿Seguro que desea eliminar el reporte? Esta acción es irreversible.</h2>
-                                <div class="buttons">
-                                    <button class="btn-primary btn-cancel"
+                                <h3 class="title">¿Seguro que desea eliminar el reporte? Esta acción es irreversible.</h3>
+                                
+                                <ul class="buttons-content clearfix">
+                                    <li class="btn-primary btn-cancel"
                                             (click)="deleteCase = !deleteCase"
                                     >
                                         Cancelar
-                                    </button>
-                                    <button class="btn-primary btn-submit"
+                                    </li>
+                                    <li class="btn-primary btn-submit"
                                             (click)="deleteCaseById(case.id_caso)"
                                     >
                                         Confirmar
-                                    </button>
-                                </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </li>

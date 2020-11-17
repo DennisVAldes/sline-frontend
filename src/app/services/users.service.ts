@@ -4,6 +4,7 @@ import { environment } from './../../environments/environment';
 import { UserDto, ApiResponse } from '../types/dtos/models';
 import JwtDecode from 'jwt-decode';
 import { userProfile } from '../types/enums';
+import { async } from '@angular/core/testing';
 
 @Injectable({
 	providedIn: 'root',
@@ -69,5 +70,10 @@ export class UserService {
         
     }
 
+    public changePassword = async(data: {"currentPassword": string, "newPassword": string}) =>
+        await this.http
+            .put<ApiResponse<any>>(`${this.apiHost}/users/changePassword`, data)
+            .toPromise()
+            .then((_res) => ({..._res}));
 }   
         

@@ -213,8 +213,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .my-profile .my-cases .main-content .cases-list .case .buttons { float: right; }
 
 .my-profile .confirm-dlt-case { position: fixed; width: 100vw; }
-.my-profile .confirm-dlt-case .modal { max-width: 350px; width: 100%; padding: 10px; margin: -58.5px auto 0; background: #fff; border-radius: 10px; position: relative; top: 50%; }
-.my-profile .confirm-dlt-case .modal .buttons { float: none; margin: 10px 0; text-align: center; }
+.my-profile .confirm-dlt-case .modal { max-width: 350px; width: 100%; padding: 10px; margin: 0 auto; background: #fff; border-radius: 10px; position: relative; top: 30%; }
+.my-profile .confirm-dlt-case .modal .title { margin-bottom: 20px; }
+.my-profile .confirm-dlt-case .modal .buttons-content li { float: left; max-width: 100px; width: 100%; text-align: center; }
 
 .my-profile .not-cases p { text-align: center; font-size: 26px; color: #657786; }
 

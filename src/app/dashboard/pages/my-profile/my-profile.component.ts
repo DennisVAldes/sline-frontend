@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { NotifierService } from 'angular-notifier';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { CasesService } from 'src/app/services/cases.service';
 import { UserService } from 'src/app/services/users.service';
 import { CaseDto, UserDto } from 'src/app/types/dtos/models';
@@ -17,6 +18,7 @@ export class MyProfileComponent implements OnInit {
   constructor(
     private casesService: CasesService,
     private userService: UserService,
+    private authService: AuthService,
     notifierService: NotifierService,
   ) {
     this.notifier = notifierService;
@@ -43,6 +45,11 @@ export class MyProfileComponent implements OnInit {
     image_url: new FormControl('', [])
   })
 
+  public changePasswordForm = new FormGroup({
+    currentPassword: new FormControl('', [Validators.required]),
+    newPassword: new FormControl('', [Validators.required]),
+  })
+
   private getUser = async() => {
     try {
       this.userData = JSON.parse(localStorage.getItem('userData'));
@@ -64,6 +71,13 @@ export class MyProfileComponent implements OnInit {
       "email": this.userForm.value.email,
       "sexo": this.userForm.value.sexo,
       "fecha_nacimiento": this.userForm.value.fecha_nacimiento
+    }
+  }
+
+  private setPasswords = () => {
+    return {
+      "currentPassword": this.changePasswordForm.value.currentPassword,
+      "newPassword": this.changePasswordForm.value.newPassword
     }
   }
 
@@ -102,6 +116,17 @@ export class MyProfileComponent implements OnInit {
       this.edit = false;
 
       document.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public changePassword = async () => {
+    try {
+      const data = this.setPasswords();
+      await this.userService.changePassword(data);
+      
+      this.authService.logout();
     } catch (error) {
       console.log(error);
     }
