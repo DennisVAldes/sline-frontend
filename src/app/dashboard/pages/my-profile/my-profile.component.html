@@ -17,10 +17,41 @@
                     <div class="outer"></div>
                     <div class="inner"></div>
                 </div>
+                
                 <p>Presione el boton que se encuentra debajo </p><hr>
                 <input type="file" accept="image/png, image/jpeg" [(ngModel)]="newImage"> <hr>
-                <button class="btn-primary btn-submit" (click)='updateProfileImage()'>Aceptar</button>
-                <button class="btn-primary btn-cancel" (click)='updateImage = false'>Cancelar</button>
+
+                <ul class="buttons-content clearfix">
+                    <li class="btn-primary btn-submit" (click)='updateProfileImage()'>
+                        Aceptar
+                    </li>
+                    <li class="btn-primary btn-cancel" (click)='updateImage = false'>
+                        Cancelar
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Update password modal -->
+            <div class="change-password-container change-profile-image-container" *ngIf="updatePassword">
+                <div class="arrow">
+                    <div class="outer"></div>
+                    <div class="inner"></div>
+                </div>
+                
+                <p>Contraseña actual </p><hr>
+                <input type="file" accept="image/png, image/jpeg" [(ngModel)]="newImage"> <hr>
+                
+                <p>Nueva contraseña </p><hr>
+                <input type="file" accept="image/png, image/jpeg" [(ngModel)]="newImage"> <hr>
+                
+                <ul class="buttons-content clearfix">
+                    <li class="btn-primary btn-submit" (click)='updateProfileImage()'>
+                        Aceptar
+                    </li>
+                    <li class="btn-primary btn-cancel" (click)='updatePassword = false'>
+                        Cancelar
+                    </li>
+                </ul>
             </div>
             
             <!-- User information form -->
@@ -79,12 +110,18 @@
             </div>
             
             <!-- Options items -->
-            <em 
-                class="icon-edit"
-                (click)="edit = !edit"   
-                title="Editar perfil de usuario"   
-            ></em>
-
+            <div class="config-options" class="icon-ellipsis-vert">
+                <ul>
+                    <li title="Editar perfil de usuario" (click)="edit = !edit">
+                        <em class="icon-address-card"></em>
+                        Editar informacion de usuario
+                    </li>
+                    <li title="Editar perfil de usuario" (click)="updatePassword = !updatePassword">
+                        <em class="icon-pencil"></em>
+                        Cambiar contraseña
+                    </li>
+                </ul>
+            </div>
         </div>
         <hr>
         <div class="my-cases">

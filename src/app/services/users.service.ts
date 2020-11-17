@@ -56,11 +56,14 @@ export class UserService {
                     .put<ApiResponse<UserDto>>(`${this.apiHost}/users/update`, user)
                     .toPromise()
                     .then((_res) => ({..._res}));
-    
-        var token = (await res).token;
+                    
+        var token = res.token;
         var decoded: any = await JwtDecode(token)
         decoded.image_url = userProfile(decoded.sexo);
         
+        localStorage.removeItem('token');
+        localStorage.removeItem('userData');
+    
         localStorage.setItem('token', res.token);
         localStorage.setItem('userData', JSON.stringify(decoded));
         

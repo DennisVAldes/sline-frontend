@@ -26,9 +26,10 @@ export class MyProfileComponent implements OnInit {
 
   edit = false;
   updateImage = false;
-  newImage: any;
+  updatePassword = false;
   deleteCase = false;
-
+  
+  newImage: any;
   userData: Partial<UserDto>;
   
   sexTypes = sexTypes;  
@@ -77,7 +78,7 @@ export class MyProfileComponent implements OnInit {
   private getMyCases = async () => {
     try {
       const res = await this.casesService.getCaseByUserId();
-
+      console.log(res)
       this.myCases = res.data;
     } catch (error) {
       console.log(error)
@@ -97,11 +98,10 @@ export class MyProfileComponent implements OnInit {
   public updateUser = async () => {
     try {
       const user = this.setUser();
-      this.userService.updateUser(user);
+      await this.userService.updateUser(user);
       this.edit = false;
 
-      this.ngOnInit();
-
+      document.location.reload();
     } catch (error) {
       console.log(error);
     }
