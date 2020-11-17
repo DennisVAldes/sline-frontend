@@ -33,25 +33,27 @@
 
             <!-- Update password modal -->
             <div class="change-password-container confirm-dlt-case black-layer" *ngIf="updatePassword">
-                <div class="arrow">
-                    <div class="outer"></div>
-                    <div class="inner"></div>
+                <div class="modal">
+                    <div class="arrow">
+                        <div class="outer"></div>
+                        <div class="inner"></div>
+                    </div>
+                    
+                    <p>Contraseña actual </p>
+                    <input type="text" accept="image/png, image/jpeg" [(ngModel)]="newImage"> <hr>
+                
+                    <p>Nueva contraseña </p>
+                    <input type="text" accept="image/png, image/jpeg" [(ngModel)]="newImage"> <hr>
+                    
+                    <ul class="buttons-content clearfix">
+                        <li class="btn-primary btn-submit" (click)='updateProfileImage()'>
+                            Aceptar
+                        </li>
+                        <li class="btn-primary btn-cancel" (click)='updatePassword = false'>
+                            Cancelar
+                        </li>
+                    </ul>
                 </div>
-                
-                <p>Contraseña actual </p><hr>
-                <input type="file" accept="image/png, image/jpeg" [(ngModel)]="newImage"> <hr>
-                
-                <p>Nueva contraseña </p><hr>
-                <input type="file" accept="image/png, image/jpeg" [(ngModel)]="newImage"> <hr>
-                
-                <ul class="buttons-content clearfix">
-                    <li class="btn-primary btn-submit" (click)='updateProfileImage()'>
-                        Aceptar
-                    </li>
-                    <li class="btn-primary btn-cancel" (click)='updatePassword = false'>
-                        Cancelar
-                    </li>
-                </ul>
             </div>
             
             <!-- User information form -->
